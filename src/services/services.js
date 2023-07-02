@@ -35,7 +35,7 @@ export const loginService = async (username, password) => {
 
         return response.data
     } catch (error) {
-        console.log(error)
+        window.alert(error.response.data.message)
     }
 }
 

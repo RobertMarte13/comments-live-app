@@ -14,12 +14,11 @@ import Navbar from "./components/navbar/Navbar";
 import CreateComments from "./components/createComments/CreateComments";
 
 function App() {
-  const [isValid, setIsValid] = useState(false)
-  const [id, setId] = useState(null)
+  const [isValid, setIsValid] = useState(true)
+  const [id, setId] = useLocalStorage("id", null);
   const [isValidation, setIsValidation] = useLocalStorage("isValidation", false);
   const [username, setUsername] = useLocalStorage("username", "");
-
-  console.log(isValidation, id)
+  console.log(isValidation)
 
   function updateDate(props) {
     console.log(props)

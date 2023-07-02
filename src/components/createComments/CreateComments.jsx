@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { createComment } from "../../services/services";
+import { useNavigate } from "react-router-dom";
 
 const CreateComments = ({ id }) => {
   const [comment, setComment] = useState('')
-  console.log(comment)
+
+  const navigate = useNavigate()
   
   const handleSubmit = (event) => {
     event.preventDefault();
     createComment(comment, id)
+    return navigate('/home')
   }
 
   return (

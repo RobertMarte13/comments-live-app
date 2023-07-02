@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { loginService } from "../../services/services";
+import { setRegister } from "../../services/services";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = ({ setIsValid, updateDate, isValidation }) => {
+const Register = ({ isValidation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -10,18 +10,12 @@ const Login = ({ setIsValid, updateDate, isValidation }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    loginService(username, password)
-      .then(res => {
-        setIsValid(res.isValidation)
-        updateDate(res)
-        if (res !== undefined && res !== null) {
-          return navigate('/')
-        }
-      })
+    setRegister(username, password);
+    return navigate("/login");
   };
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -35,15 +29,15 @@ const Login = ({ setIsValid, updateDate, isValidation }) => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Login</button>
+        <button>Create User</button>
       </form>
       {isValidation ? null : (
         <li>
-          <Link to="/register">register</Link>
+          <Link to="/login">login</Link>
         </li>
       )}
     </div>
   );
 };
 
-export default Login;
+export default Register;

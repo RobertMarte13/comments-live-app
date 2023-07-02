@@ -11,17 +11,20 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Navbar from "./components/navbar/Navbar";
+import CreateComments from "./components/createComments/CreateComments";
 
 function App() {
   const [isValid, setIsValid] = useState(false)
+  const [id, setId] = useState(null)
   const [isValidation, setIsValidation] = useLocalStorage("isValidation", false);
   const [username, setUsername] = useLocalStorage("username", "");
 
-  console.log(isValidation)
+  console.log(isValidation, id)
 
   function updateDate(props) {
     console.log(props)
     setUsername(props.user)
+    setId(props.pin)
     setIsValidation(isValid)
   }
   
@@ -40,6 +43,7 @@ function App() {
         <Route element={<ProtectedRouter isValidation={isValidation} redirect='/' />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/createComments" element={<CreateComments id={id} />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
         <Route path="/login" element={<Login setIsValid={setIsValid} updateDate={updateDate} isValidation={isValidation} />} />

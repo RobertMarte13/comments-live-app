@@ -17,6 +17,11 @@ const Navbar = ({ closedSession, isValidation }) => {
             </li>
           )}
           {!isValidation ? null : (
+            <li>
+              <Link to="/createComments">Create Comment</Link>
+            </li>
+          )}
+          {!isValidation ? null : (
             <button onClick={closedSession}>Cerrar session</button>
           )}
         </ul>

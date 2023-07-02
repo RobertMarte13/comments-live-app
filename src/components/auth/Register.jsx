@@ -1,41 +1,45 @@
 import { useState } from "react";
-import { setRegister } from "../../services/services";
-import { Link, useNavigate } from "react-router-dom";
+import { registerService } from "../../services/services";
+import { Link } from "react-router-dom";
 
+// Estilos
+import "../../styles/autenticacion.css";
+
+// eslint-disable-next-line react/prop-types
 const Register = ({ isValidation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    setRegister(username, password);
-    return navigate("/login");
+    registerService(username, password);
   };
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="box-autenticated">
+      <form className="form-autenticated" onSubmit={handleSubmit}>
+        <h1 className="title-autenticated">Register</h1>
         <input
           type="text"
           name="username"
           placeholder="Username"
+          className="input-autenticated txt"
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
           name="password"
           placeholder="password"
+          className="input-autenticated 
+          pswd"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>Create User</button>
+        <button className="btn-autenticated">Create User</button>
+        {isValidation ? null : (
+          <Link className="links-autenticated" to="/login">
+            login
+          </Link>
+        )}
       </form>
-      {isValidation ? null : (
-        <li>
-          <Link to="/login">login</Link>
-        </li>
-      )}
     </div>
   );
 };

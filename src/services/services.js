@@ -9,12 +9,15 @@ export const getComments = async () => {
     }
 }
 
-export const setRegister = async (username, password) => {
+// servicio de registro.
+export const registerService = async (username, password) => {
     try {
         console.log(username, password)
+        const auth_id = crypto.randomUUID() 
         await axios.post('https://server-anisearch-production.up.railway.app/api/register', {
             username,
-            password
+            password,
+            auth_id: auth_id
         })
 
 
@@ -24,6 +27,7 @@ export const setRegister = async (username, password) => {
     }
 }
 
+// servicio de logueo.
 export const loginService = async (username, password) => {
     try {
         console.log(username, password)
@@ -34,3 +38,18 @@ export const loginService = async (username, password) => {
         console.log(error)
     }
 }
+
+export const createComment = async (comment, id) => {
+    try {
+        await axios.post('https://server-anisearch-production.up.railway.app/api/comment', {
+            comment,
+            likes: 0,
+            comment_id: id
+        })
+
+        
+    } catch (error) {
+        console.log(error)
+    }
+}
+

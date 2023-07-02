@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getComments } from "../../services/services";
 import Comments from "./Comments";
 
+import '../../styles/comments.css';
+
 const HomePage = () => {
   const [comments, setComments] = useState([]);
   const [subComments, setSubComments] = useState([]);
@@ -23,7 +25,7 @@ const HomePage = () => {
       <h1>Home</h1>
       {comments &&
         comments.map((comment, index) => (
-          <div key={index}>
+          <div className="content-comments" key={index}>
             <Comments comment={comment.comment} username={comment.username} />
           </div>
         ))}

@@ -4,7 +4,6 @@ import NotFound from "./components/notfound/NotFound";
 import ProfilePage from "./components/profile/ProfilePage";
 import HomePage from "./components/home/HomePage";
 // import Login from './components/auth/Login'
-import "./App.css";
 import ProtectedRouter from "./components/protectedRouter/ProtectedRouter";
 import { useState } from "react";
 import Login from "./components/auth/Login";
@@ -12,6 +11,9 @@ import Register from "./components/auth/Register";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Navbar from "./components/navbar/Navbar";
 import CreateComments from "./components/createComments/CreateComments";
+
+import "./App.css";
+import "./styles/navbar.css";
 
 function App() {
   const [isValid, setIsValid] = useState(true)
@@ -34,7 +36,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      <header className="header">
         <Navbar closedSession={closedSession} isValidation={isValidation} />
       </header>
 

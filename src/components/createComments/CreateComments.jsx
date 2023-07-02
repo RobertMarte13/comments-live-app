@@ -2,6 +2,8 @@ import { useState } from "react";
 import { createComment } from "../../services/services";
 import { useNavigate } from "react-router-dom";
 
+import '../../styles/createComments.css'
+
 const CreateComments = ({ id }) => {
   const [comment, setComment] = useState('')
 
@@ -14,13 +16,15 @@ const CreateComments = ({ id }) => {
   }
 
   return (
-    <div>
-      <h1>create comment</h1>
-      <form onSubmit={handleSubmit}>
-        <textarea rows="4"
-        onChange={event => setComment(event.target.value)}
-        style={{ resize: 'none', width: '90%' }}/>
-        <button>Create Comment</button>
+    <div className="content-create-comment">
+      <h1 className="title-create-comment">create comment</h1>
+      <form className="form-comment" onSubmit={handleSubmit}>
+        <textarea 
+          className="box-comment"
+          rows="10"
+          onChange={event => setComment(event.target.value)}
+        />
+        <button className="btn-create-comment">Create Comment</button>
       </form>
     </div>
   );

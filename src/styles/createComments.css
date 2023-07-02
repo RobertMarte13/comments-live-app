@@ -1,0 +1,41 @@
+.content-create-comment {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-create-comment {
+    padding: 30px;
+    text-transform: capitalize;
+}
+
+.form-comment {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box-comment {
+    resize: none;
+    width: 90%;
+    outline: none;
+    padding: 10px;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.btn-create-comment {
+    margin-top: 10px;
+    border: none;
+    background: #52a0ff;
+    width: 90%;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+    font-family: monospace;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+}

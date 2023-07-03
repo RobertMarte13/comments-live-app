@@ -1,12 +1,19 @@
 .content-home {
-    width: 100%;
+  width: 100%;
 }
 
 .content-home h1 {
-    padding: 10px;
+  padding: 10px;
+}
+
+.content-main-post {
+  min-height: 800px;
+  overflow: hidden;
 }
 
 .content-post {
-    border-top: 2px solid rgba(0, 0, 0, 0.119);
-    padding: 10px;
+  border-top: 2px solid rgba(0, 0, 0, 0.119);
+  padding: 10px;
+  overflow-y: scroll;
+  height: 900px;
 }

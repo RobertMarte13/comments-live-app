@@ -40,7 +40,7 @@ const Comments = ({ comment, subComments, username, authId, commentId, commentId
             : { opacity: 1, visibility: "visible", display: "block" }
         }
       >
-        <SubComments subComments={subComments} commentIdSubComment={commentIdSubComment} setActive={setActive} active={active} />
+        <SubComments subComments={subComments} commentIdSubComment={commentIdSubComment} setActive={setActive} active={active} username={username} comment={comment} />
       </div>
     </div>
   );

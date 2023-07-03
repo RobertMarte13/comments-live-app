@@ -22,7 +22,6 @@ function App() {
   const [isValidation, setIsValidation] = useLocalStorage("isValidation", false);
   // eslint-disable-next-line no-unused-vars
   const [username, setUsername] = useLocalStorage("username", "");
-  console.log(isValidation)
 
   function updateDate(props) {
     console.log(props)

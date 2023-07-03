@@ -1,28 +1,27 @@
 import { Link } from "react-router-dom";
 
 const Navbar = ({ closedSession, isValidation }) => {
-  console.log(isValidation);
   return (
     <>
-      <nav>
-        <ul>
+      <nav className="navbar">
+        <ul className="content-ul">
           {!isValidation ? null : (
-            <li>
-              <Link to="/">Home</Link>
+            <li className="content-li">
+              <Link className="links-navbar" to="/">Home</Link>
             </li>
           )}
           {!isValidation ? null : (
-            <li>
-              <Link to="/profile">Profile</Link>
+            <li className="content-li">
+              <Link className="links-navbar" to="/profile">Profile</Link>
             </li>
           )}
           {!isValidation ? null : (
-            <li>
-              <Link to="/createComments">Create Comment</Link>
+            <li className="content-li">
+              <Link className="links-navbar" to="/createComments">Create Comment</Link>
             </li>
           )}
           {!isValidation ? null : (
-            <button onClick={closedSession}>Cerrar session</button>
+            <button className="btn-session" onClick={closedSession}>Cerrar session</button>
           )}
         </ul>
       </nav>

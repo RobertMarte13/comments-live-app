@@ -12,7 +12,6 @@ const invisible = {
   display: 'none'
 }
 
-// eslint-disable-next-line react/prop-types
 const SubComments = ({
   subComments,
   commentIdSubComment,
@@ -22,25 +21,27 @@ const SubComments = ({
   comment
 }) => {
   return (
-    <div className="content-sub-comentario" onClick={() => setActive(!active)}>
+    <div className="content-sub-comentario">
       <div className="sub-comentario">
-        <div className="box-comment b-comment">
-          <p>@{username}</p>
-          <div>
-            <h3>{comment}</h3>
+        <div className="b-comment">
+        <p className="btn-back" onClick={() => setActive(!active)} >back </p>
+          <p className="sub-username">@{username}</p>
+          <div className="subcomentario">
+            <p>{comment}</p>
           </div>
         </div>
         <h3 className="title-comentario">Comentarios</h3>
         {subComments &&
           // eslint-disable-next-line react/prop-types
           subComments.map((comment, index) => (
+            // eslint-disable-next-line react/prop-types
             <div style={comment.commentIdSubComment2 === commentIdSubComment ?  visible : invisible} className="comments" key={index}>
               {/* Esta validacion lo que hace es verificar que el id en comun del comentario
             principal sea igual id en comun del sub comentario. */}
               {comment.commentIdSubComment2 === commentIdSubComment ? (
-                <div>
+                <div className="subcomentario">
                   <p>@{comment.username}</p>
-                  <h1 className="comment">{comment.comments}</h1>
+                  <p className="comment">{comment.comments}</p>
                 </div>
               ) : null}
             </div>

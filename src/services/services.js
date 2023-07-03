@@ -34,7 +34,7 @@ export const registerService = async (username, password) => {
 // servicio de logueo.
 export const loginService = async (username, password) => {
   try {
-    console.log(username, password);
+    
     const response = await axios.get(
       `https://server-anisearch-production.up.railway.app/api/login/${username}/${password}`
     );
@@ -46,7 +46,7 @@ export const loginService = async (username, password) => {
 };
 
 // Creador de comentarios
-export const createComment = async (comment, id) => {
+export const createComment = async (comment, id ) => {
   try {
     const commentIdSubComment = crypto.randomUUID()
     await axios.post(

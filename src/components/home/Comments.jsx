@@ -12,9 +12,10 @@ const Comments = ({ comment, subComments, username, authId, commentId, commentId
 
   const handleSubmit = (event) => {
     event.preventDefault();
+     
     // Este es para crear respuestas de comentarios a los comentarios
     // principales.
-    createSubComment(subComment, authId, commentId, commentIdSubComment);
+    createSubComment(subComment, authId, commentId, commentIdSubComment );
   }; 
 
   return (

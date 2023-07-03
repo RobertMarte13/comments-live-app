@@ -4,7 +4,7 @@ import SubComments from "../createComments/SubComments";
 import { createSubComment } from "../../services/services";
 
 // eslint-disable-next-line react/prop-types
-const Comments = ({ comment, subComments, username, authId, commentId, commentIdSubComment }) => {
+const Comments = ({ comment, subComments, username, fecha, authId, commentId, commentIdSubComment }) => {
   // Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
   // Este es para mostrar o no un subcomentario oculto.
@@ -21,7 +21,7 @@ const Comments = ({ comment, subComments, username, authId, commentId, commentId
   return (
     <div>
       <div className="box-comment">
-        <p>@{username}</p>
+        <p>@{username} <span className="fecha">{fecha}</span></p>
         <div onClick={() => setActive(!active)}>
           <h3>{comment}</h3>
         </div>
@@ -41,7 +41,7 @@ const Comments = ({ comment, subComments, username, authId, commentId, commentId
             : { opacity: 1, visibility: "visible", display: "block" }
         }
       >
-        <SubComments subComments={subComments} commentIdSubComment={commentIdSubComment} setActive={setActive} active={active} username={username} comment={comment} />
+        <SubComments subComments={subComments} commentIdSubComment={commentIdSubComment} setActive={setActive} active={active} username={username} comment={comment} fecha={fecha} />
       </div>
     </div>
   );

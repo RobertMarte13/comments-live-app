@@ -28,6 +28,11 @@
   font-size: 26px;
 }
 
+.fecha {
+  font-size: 12px;
+  color: #2424245d;
+}
+
 .content-sub-comentario {
   position: absolute;
   top: 0;
@@ -66,4 +71,9 @@
 
 .comment {
   padding: 20px 0 0 20px;
+}
+
+.content-sub-post {
+  width: 100%;
+  overflow-y: auto;
 }

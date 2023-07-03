@@ -11,6 +11,7 @@ import Register from "./components/auth/Register";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import Navbar from "./components/navbar/Navbar";
 import CreateComments from "./components/createComments/CreateComments";
+import SubComments from "./components/createComments/SubComments";
 
 import "./App.css";
 import "./styles/navbar.css";
@@ -19,12 +20,15 @@ function App() {
   const [isValid, setIsValid] = useState(true)
   const [id, setId] = useLocalStorage("id", null);
   const [isValidation, setIsValidation] = useLocalStorage("isValidation", false);
+  // eslint-disable-next-line no-unused-vars
   const [username, setUsername] = useLocalStorage("username", "");
   console.log(isValidation)
 
   function updateDate(props) {
     console.log(props)
+    // eslint-disable-next-line react/prop-types
     setUsername(props.user)
+    // eslint-disable-next-line react/prop-types
     setId(props.pin)
     setIsValidation(isValid)
   }
@@ -42,9 +46,10 @@ function App() {
 
       <Routes>
         <Route element={<ProtectedRouter isValidation={isValidation} redirect='/' />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/" element={<HomePage authId={id} />} />
+          <Route path="/home" element={<HomePage authId={id} />} />
           <Route path="/createComments" element={<CreateComments id={id} />} />
+          <Route path="/sub_comments" element={<SubComments />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
         <Route path="/login" element={<Login setIsValid={setIsValid} updateDate={updateDate} isValidation={isValidation} />} />

@@ -12,7 +12,7 @@ const CreateProfileInfo = ({ auth_id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log((auth_id, username, img.slice(12), bio, fechaNacimiento))
+    console.log((auth_id, username, img, bio, fechaNacimiento))
     createUserInfo(auth_id, username, img, bio, fechaNacimiento);
   };
 

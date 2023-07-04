@@ -97,11 +97,12 @@ export const getUserInfo = async (auth_id) => {
 export const createUserInfo = async (auth_id, username, img, bio, fechaNacimiento) => {
   try {
     await axios.post(
-      `https://server-anisearch-production.up.railway.app/api/users/${auth_id}`, {
+      'https://server-anisearch-production.up.railway.app/api/users', {
         username,
         img,
         bio,
-        fechaNacimiento
+        fechaNacimiento,
+        user_id: auth_id
       }
     );
   } catch (error) {

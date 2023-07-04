@@ -94,6 +94,7 @@ export const getUserInfo = async (auth_id) => {
   }
 }
 
+// Este codigo crea la informacion del perfil que todas las personas podran ver.
 export const createUserInfo = async (auth_id, username, img, bio, fechaNacimiento) => {
   try {
     await axios.post(
@@ -110,6 +111,7 @@ export const createUserInfo = async (auth_id, username, img, bio, fechaNacimient
   }
 }
 
+// Este codigo actualiza la informacion del perfil del usuario.
 export const UpdateInfoUsers = async (auth_id, username, img, bio, fechaNacimiento) => {
   try {
     await axios.patch(`https://server-anisearch-production.up.railway.app/api/users/${auth_id}`, {

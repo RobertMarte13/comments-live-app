@@ -24,6 +24,7 @@ import NavbarMobile from "./components/navbar/NavbarMobile";
 // Estilos
 import "./App.css";
 import "./styles/navbar.css";
+import MenuHamburguer from "./components/svg/MenuHamburguer";
 
 function App() {
   // * Estados
@@ -50,21 +51,36 @@ function App() {
   function closedSession() {
     setUsername("");
     setIsValidation(false);
-    setIsActive(false)
+    setIsActive(false);
   }
 
   return (
     <div className="App">
-      <header className="header header-mobil" style={isActive ? { display: 'flex', opacity: 1, visibility: 'visible' } : {display: 'none'}}>
-          <NavbarMobile closedSession={closedSession} isValidation={isValidation} isActive={isActive} />
-        </header>
-      
-        <header id="header" className="header">
-          <Navbar closedSession={closedSession} isValidation={isValidation} isActive={isActive} />
-        </header>
+      <header
+        className="header header-mobil"
+        style={
+          isActive
+            ? { display: "flex", opacity: 1, visibility: "visible" }
+            : { display: "none" }
+        }
+      >
+        <NavbarMobile
+          closedSession={closedSession}
+          isValidation={isValidation}
+          isActive={isActive}
+        />
+      </header>
+
+      <header id="header" className="header">
+        <Navbar
+          closedSession={closedSession}
+          isValidation={isValidation}
+          isActive={isActive}
+        />
+      </header>
 
       <button className="btn-hamburger" onClick={() => setIsActive(!isActive)}>
-        Menu
+        <MenuHamburguer />
       </button>
 
       {/* Rutas con react router dom */}

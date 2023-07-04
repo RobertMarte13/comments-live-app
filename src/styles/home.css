@@ -28,3 +28,10 @@
   overflow-y: scroll;
   height: 90vh;
 }
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  .header-page input {
+    width: 200px;
+  }
+}

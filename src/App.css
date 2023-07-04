@@ -1,48 +1,53 @@
-
 .App {
-    display: flex;
+  display: flex;
 }
 
 body {
-    /* overflow: hidden; */
-    min-height: 100vh;
+  /* overflow: hidden; */
+  min-height: 100vh;
 }
 
 .btn-hamburger {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    padding: 10px;
-    font-size: 24px;
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  font-size: 24px;
 }
 
 @media screen and (max-width: 480px) {
+  .header-mobil,
+  .navbar-mobile,
+  .navbar {
+    display: none;
+    opacity: 0;
+    visibility: 0;
+  }
 
-    .header-mobil, .navbar-mobile, .navbar {
-        display: none;
-        opacity: 0;
-        visibility: 0;
-    }
+  #header {
+    display: none;
+    opacity: 0;
+    visibility: 0;
+  }
 
-    #header {
-        display: none;
-        opacity: 0;
-        visibility: 0;
-    }
+  #content-ul {
+    list-style: none;
+    padding: 120px;
+    text-align: center;
+  }
 
-    #content-ul {
-        list-style: none;
-        padding: 120px;
-        text-align: center;
-      }
-
-    .btn-hamburger {
-        display: block;
-        opacity: 1;
-        visibility: visible;
-    }
-    
+  .btn-hamburger {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
 }

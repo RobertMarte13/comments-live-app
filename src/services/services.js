@@ -123,3 +123,25 @@ export const UpdateInfoUsers = async (auth_id, username, img, bio, fechaNacimien
     console.log(error)
   }
 }
+
+// Obtener un usuario por medio de un id 
+export const obtainUserId = async (userid) => {
+  try {
+    const data = await axios.get(`https://server-anisearch-production.up.railway.app/api/users/${userid}`)
+
+    return data.data
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+// Obtener un usuario por medio de un id 
+export const obtainUserName = async (username) => {
+  try {
+    const data = await axios.get(`https://server-anisearch-production.up.railway.app/api/search_username/${username}`)
+
+    return data.data[0]
+  } catch (error) {
+    console.log(error.message)
+  }
+}

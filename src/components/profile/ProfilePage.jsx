@@ -12,7 +12,7 @@ const ProfilePage = ({ auth_id }) => {
   const [img, setImg] = useState();
   const [fecha, setFecha] = useState();
   const [objeto, setObjeto] = useState();
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
 
   useEffect(() => {
@@ -85,7 +85,7 @@ const ProfilePage = ({ auth_id }) => {
       <div>
         <p>{biografia}</p>
       </div>
-      {CommetsUser()}
+      {comments !== null ? CommetsUser() : <h>Cargando comentarios...</h>}
     </div>
   );
 };

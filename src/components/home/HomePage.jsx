@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../../services/services";
+import { getComments, obtainUserName } from "../../services/services";
 import Comments from "./Comments";
 
 import "../../styles/home.css";
@@ -7,30 +7,55 @@ import "../../styles/comments.css";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({ authId }) => {
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
+  const [search, setSearch] = useState("");
+  const [isActiveS, setIsActiveS] = useState(false)
+  const [result, setResult] = useState(null)
 
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
-    setTimeout( () => {
+    setTimeout(() => {
       getComments().then((res) => {
         setComments(res.comment);
         setSubComments(res.subcomment);
       });
-    }, 1500)
+    }, 1500);
 
     // Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
     return () => {
-      clearTimeout() 
-    }
-  });
+      clearTimeout();
+    };
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    
+    const username = search
+
+    setIsActiveS(!isActiveS)
+
+    obtainUserName(username).then(res => {
+      setResult(res)
+    })
+  };
 
   return (
     <div className="content-home">
-      <h1>Home</h1>
+      <header className="header-page">
+        <h1>Home</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="searchusers"
+            placeholder="Search Users"
+            onChange={(event) => setSearch(event.target.value)}
+          />
+        </form>
+      </header>
       <div className="content-main-post">
-      <div className="content-post">
-          {comments &&
+        <div className="content-post">
+          {comments !== null ? (
             comments.map((comment, index) => (
               <div className="content-comments" key={index}>
                 <Comments
@@ -41,9 +66,15 @@ const HomePage = ({ authId }) => {
                   authId={authId}
                   commentId={comment.auth_id}
                   commentIdSubComment={comment.commentIdSubComment}
+                  result={result}
+                  setIsActiveS={setIsActiveS}
+                  isActiveS={isActiveS}
                 />
               </div>
-            ))}
+            ))
+          ) : (
+            <h1>Cargando Comentarios...</h1>
+          )}
         </div>
       </div>
     </div>

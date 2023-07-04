@@ -1,25 +1,31 @@
 import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
+// Custom hooks
+import { useLocalStorage } from "./hooks/useLocalStorage";
+
+// import { getUserInfo } from "./services/services";
+
+// Componentes
 import NotFound from "./components/notfound/NotFound";
 import ProfilePage from "./components/profile/ProfilePage";
 import HomePage from "./components/home/HomePage";
 // import Login from './components/auth/Login'
 import ProtectedRouter from "./components/protectedRouter/ProtectedRouter";
-import { useState } from "react";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import { useLocalStorage } from "./hooks/useLocalStorage";
 import Navbar from "./components/navbar/Navbar";
 import CreateComments from "./components/createComments/CreateComments";
 import SubComments from "./components/createComments/SubComments";
-
-import "./App.css";
-import "./styles/navbar.css";
-import { getUserInfo } from "./services/services";
 import CreateProfileInfo from "./components/profile/CreateProfileInfo";
 import UpdateProfile from "./components/profile/UpdateProfile";
 
+// Estilos
+import "./App.css";
+import "./styles/navbar.css";
+
 function App() {
+  // * Estados
   const [isValid, setIsValid] = useState(true);
   const [id, setId] = useLocalStorage("id", null);
   const [isValidation, setIsValidation] = useLocalStorage(
@@ -30,6 +36,7 @@ function App() {
   const [username, setUsername] = useLocalStorage("username", "");
   const [isActive, setIsActive] = useState(false);
 
+  // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
     // eslint-disable-next-line react/prop-types
     setUsername(props.user);
@@ -38,6 +45,7 @@ function App() {
     setIsValidation(isValid);
   }
 
+  // * Esta funcion sirve para cerrar seccion en la pagina.
   function closedSession() {
     setUsername("");
     setIsValidation(false);
@@ -55,6 +63,7 @@ function App() {
         Menu
       </button>
 
+      {/* Rutas con react router dom */}
       <Routes>
         <Route
           element={<ProtectedRouter isValidation={isValidation} redirect="/" />}

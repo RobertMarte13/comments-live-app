@@ -1,14 +1,23 @@
 // import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import SubComments from "../createComments/SubComments";
-import { createSubComment } from "../../services/services";
+import { createSubComment, obtainUserId } from "../../services/services";
+import UsersProfilePage from "../profile/UsersProfilePage";
+
+
+import '../../styles/usersProfile.css'
 
 // eslint-disable-next-line react/prop-types
-const Comments = ({ comment, subComments, username, fecha, authId, commentId, commentIdSubComment }) => {
+const Comments = ({ comment, subComments, username, fecha, authId, commentId, commentIdSubComment, result, setIsActiveS, isActiveS }) => {
+
+  console.log(isActiveS)
   // Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
   // Este es para mostrar o no un subcomentario oculto.
   const [active, setActive] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const [dataUsers, setDataUsers] = useState(null);
+  const [user_id, setUser_Id] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,10 +27,19 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
     createSubComment(subComment, authId, commentId, commentIdSubComment );
   }; 
 
+  function getUserId(commentId) {
+    setIsActive(!isActive)
+    const userid = commentId
+    setUser_Id(userid)
+    obtainUserId(userid).then((res) =>{
+      setDataUsers(res)
+    })
+  }
+
   return (
     <div className="box-main-comment">
       <div className="box-comment">
-        <p>@{username} <span className="fecha">{fecha}</span></p>
+        <p onClick={() => getUserId(commentId)}>@{username} <span className="fecha">{fecha}</span></p>
         <div onClick={() => setActive(!active)}>
           <h3>{comment}</h3>
         </div>
@@ -43,6 +61,7 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
       >
         <SubComments subComments={subComments} commentIdSubComment={commentIdSubComment} setActive={setActive} active={active} username={username} comment={comment} fecha={fecha} />
       </div>
+      <UsersProfilePage isActive={isActive} setIsActive={setIsActive} dataUsers={dataUsers} userId={user_id} result={result} setIsActiveS={setIsActiveS} isActiveS={isActiveS} />
     </div>
   );
 };

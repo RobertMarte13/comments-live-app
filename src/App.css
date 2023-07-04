@@ -7,3 +7,22 @@ body {
     /* overflow: hidden; */
     min-height: 100vh;
 }
+
+.btn-hamburger {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 24px;
+}
+
+@media screen and (max-width: 480px) {
+    .btn-hamburger {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+}

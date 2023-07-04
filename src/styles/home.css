@@ -7,7 +7,6 @@
 }
 
 .content-main-post {
-  min-height: 800px;
   overflow: hidden;
 }
 
@@ -15,5 +14,5 @@
   border-top: 2px solid rgba(0, 0, 0, 0.119);
   padding: 10px;
   overflow-y: scroll;
-  height: 93vh;
+  height: 90vh;
 }

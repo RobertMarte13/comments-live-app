@@ -25,20 +25,11 @@ const HomePage = ({ authId }) => {
     }
   });
 
-
-  // function getALLComments() {
-  //   getComments().then((res) => {
-  //     setComments(res.comment);
-  //     setSubComments(res.subcomment);
-  //     console.log(res);
-  //   });
-  // }
-
   return (
     <div className="content-home">
       <h1>Home</h1>
       <div className="content-main-post">
-        <div className="content-post">
+      <div className="content-post">
           {comments &&
             comments.map((comment, index) => (
               <div className="content-comments" key={index}>

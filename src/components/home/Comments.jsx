@@ -19,7 +19,7 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
   }; 
 
   return (
-    <div>
+    <div className="box-main-comment">
       <div className="box-comment">
         <p>@{username} <span className="fecha">{fecha}</span></p>
         <div onClick={() => setActive(!active)}>

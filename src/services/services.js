@@ -81,3 +81,45 @@ export const createSubComment = async (subComment, authId, commentId, commentIdS
     console.log(error);
   }
 };
+
+// obteniendo informacion del usuario logeado
+export const getUserInfo = async (auth_id) => {
+  try {
+    const res = await axios.get(
+      `https://server-anisearch-production.up.railway.app/api/users/${auth_id}`
+    );
+    return res.data;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const createUserInfo = async (auth_id, username, img, bio, fechaNacimiento) => {
+  try {
+    await axios.post(
+      `https://server-anisearch-production.up.railway.app/api/users/${auth_id}`, {
+        username,
+        img,
+        bio,
+        fechaNacimiento
+      }
+    );
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const UpdateInfoUsers = async (auth_id, username, img, bio, fechaNacimiento) => {
+  try {
+    await axios.patch(`https://server-anisearch-production.up.railway.app/api/users/${auth_id}`, {
+        username,
+        img,
+        bio,
+        fechaNacimiento,
+        user_id: auth_id
+      }
+    );
+  } catch (error) {
+    console.log(error)
+  }
+}

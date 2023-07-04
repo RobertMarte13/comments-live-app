@@ -4,14 +4,15 @@ import Comments from "./Comments";
 
 import "../../styles/home.css";
 import "../../styles/comments.css";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({ authId }) => {
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
   const [search, setSearch] = useState("");
-  const [isActiveS, setIsActiveS] = useState(false)
-  const [result, setResult] = useState(null)
+  const [isActiveS, setIsActiveS] = useState(false);
+  const [result, setResult] = useState(null);
 
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
@@ -28,16 +29,21 @@ const HomePage = ({ authId }) => {
     };
   }, []);
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    const username = search;    
     
-    const username = search
+    obtainUserName(username).then((res) => {
+      setResult([res]);
+      if(res !== undefined) {
+        setIsActiveS(!isActiveS);
+      }else {
 
-    setIsActiveS(!isActiveS)
-
-    obtainUserName(username).then(res => {
-      setResult(res)
-    })
+        window.alert('No existe ese usuario!')
+      }
+    });
   };
 
   return (

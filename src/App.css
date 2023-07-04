@@ -20,9 +20,29 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+
+    .header-mobil, .navbar-mobile, .navbar {
+        display: none;
+        opacity: 0;
+        visibility: 0;
+    }
+
+    #header {
+        display: none;
+        opacity: 0;
+        visibility: 0;
+    }
+
+    #content-ul {
+        list-style: none;
+        padding: 120px;
+        text-align: center;
+      }
+
     .btn-hamburger {
         display: block;
         opacity: 1;
         visibility: visible;
     }
+    
 }

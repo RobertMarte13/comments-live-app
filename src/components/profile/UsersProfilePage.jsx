@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../../services/services";
 import Comments from "../home/Comments";
+import CommentsUsersPerfil from "./CommentsUsersPerfil";
 
 // eslint-disable-next-line react/prop-types
-const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, setIsActiveS, isActiveS }) => {
-
-  console.log(result)
+const UsersProfilePage = ({
+  isActive,
+  setIsActive,
+  dataUsers,
+  userId,
+  result,
+  setIsActiveS,
+  isActiveS,
+}) => {
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
+  
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,30 +31,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
     return () => {
       clearTimeout();
     };
-  }, []); 
-
-  const CommetsUser = () => {
-    return (
-      <div className="content-comments-perfil">
-        {comments &&
-          comments.map((comment, index) =>
-            comment.auth_id === userId ? (
-              <div className="comments-perfil" key={index}>
-                <Comments
-                  comment={comment.comment}
-                  subComments={subComments}
-                  username={comment.username}
-                  fecha={comment.fechaCreacion}
-                  authId={userId}
-                  commentId={comment.auth_id}
-                  commentIdSubComment={comment.commentIdSubComment}
-                />
-              </div>
-            ) : null
-          )}
-      </div>
-    );
-  };
+  }, []);
 
   return (
     <>
@@ -58,7 +43,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
                 <button
                   className="btn-back-perfil"
                   onClick={() => {
-                    setIsActive(!isActive)
+                    setIsActive(!isActive);
                   }}
                 >
                   back
@@ -77,7 +62,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
               <div className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>
                 {comments !== null ? (
-                  CommetsUser()
+                  <CommentsUsersPerfil userId={userId} comments={comments} subComments={subComments} />
                 ) : (
                   <h>Cargando comentarios...</h>
                 )}
@@ -88,6 +73,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
           )}
         </div>
       ) : null}
+
       {isActiveS ? (
         <div className="contain-user-perfile">
           {result ? (
@@ -96,7 +82,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
                 <button
                   className="btn-back-perfil"
                   onClick={() => {
-                    setIsActiveS(!isActiveS)
+                    setIsActiveS(!isActiveS);
                   }}
                 >
                   back
@@ -104,18 +90,18 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
               </div>
               <img
                 className="img-perfil"
-                src={result !== null ? result.img : null}
+                src={result !== null ? result[0].img : null}
               />
-              <p>@{result !== null ? result.username : null}</p>
-              <h1>{result !== null ? result.fechaNacimiento : null}</h1>
+              <p>@{result !== null ? result[0].username : null}</p>
+              <h1>{result !== null ? result[0].fechaNacimiento : null}</h1>
               <div className="content-bio">
                 <h3>Biografia</h3>
-                <p>{result !== null ? result.bio : null}</p>
+                <p>{result !== null ? result[0].bio : null}</p>
               </div>
               <div className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>
                 {comments !== null ? (
-                  CommetsUser()
+                  <CommentsUsersPerfil userId={userId} comments={comments} subComments={subComments} result={result} />
                 ) : (
                   <h>Cargando comentarios...</h>
                 )}

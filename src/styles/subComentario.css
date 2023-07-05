@@ -53,6 +53,7 @@
   height: 90%;
   background: white;
   border-radius: 10px;
+  z-index: 1000;
 }
 
 .title-comentario {

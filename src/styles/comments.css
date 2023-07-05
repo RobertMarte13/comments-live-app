@@ -1,56 +1,92 @@
 .box-main-comment {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .content-comments {
-    padding: 10px;
+  padding: 10px;
+}
+
+.header-comments {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.content-arrow-bottom {
+  padding-right: 50px;
+  color: #242424;
+  cursor: pointer;
+}
+
+.content-config-comments {
+  position: absolute;
+  right: 0;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  visibility: hidden;
+  opacity: 0;
+  display: none;
+}
+
+.content-config-comments button {
+  border: none;
+  padding: 15px 5px;
+  cursor: pointer;
+}
+
+.clear {
+    border-radius: 0px 0px 10px 10px;
 }
 
 .input-sub-comment {
-    width: 100%;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
-    background: #d7d7d7;
-    margin-top: 20px;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background: #d7d7d7;
+  margin-top: 20px;
 }
 
 .box-comment {
-    background: #f2f2f2;
-    border: 1px solid #cecece;
-    border-radius: 5px;
-    margin: 10px 0 10px 0;
+  background: #f2f2f2;
+  border: 1px solid #cecece;
+  border-radius: 5px;
+  margin: 10px 0 10px 0;
 }
 
 .box-interative {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #heart-svg {
-    color: #f21010;
-    cursor: pointer;
+  color: #f21010;
+  cursor: pointer;
 }
 
 #comment-svg {
-    color: #66aeff;
-    cursor: pointer;
+  color: #66aeff;
+  cursor: pointer;
 }
 
 /* Responsive */
 @media screen and (max-width: 480px) {
-    .content-comments {
-        padding: 0px;
-    }
+  .content-comments {
+    padding: 0px;
+  }
 
-    .box-comment {
-        border-radius: 0px;
-        margin: 0px;
-        width: 100% !important;
-        padding: 15px;
-    }
+  .box-comment {
+    border-radius: 0px;
+    margin: 0px;
+    width: 100% !important;
+    padding: 15px;
+  }
 }

@@ -50,13 +50,15 @@ export const loginService = async (username, password) => {
 export const createComment = async (comment, id ) => {
   try {
     const commentIdSubComment = crypto.randomUUID()
+    const delete_id = crypto.randomUUID()
     await axios.post(
       "https://server-anisearch-production.up.railway.app/api/comment",
       {
         comment,
         likes: 0,
         comment_id: id,
-        commentIdSubComment
+        commentIdSubComment,
+        delete_id
       }
     );
   } catch (error) {
@@ -64,9 +66,32 @@ export const createComment = async (comment, id ) => {
   }
 };
 
+// Eliminar comment
+export const deleteComment = async (delete_id) => {
+  try {
+    await axios.delete(`https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`)
+
+  } catch (error) {
+    console.log(error.message)
+  }
+}
+
+export const updateComments = async (comment, delete_id) => {
+  try {
+    console.log(comment, delete_id)
+    await axios.patch(`https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`, {
+      comment,
+      likes: 0,
+    })
+  } catch (error) {
+    console.log(error.response.data.message)
+  }
+}
+
 // Creador de sub comentarios.
 export const createSubComment = async (subComment, authId, commentId, commentIdSubComment) => {
   try {
+    const sub_delete_id = crypto.randomUUID()
     await axios.post(
       "https://server-anisearch-production.up.railway.app/api/subcomment",
       {
@@ -74,7 +99,8 @@ export const createSubComment = async (subComment, authId, commentId, commentIdS
         likes: 0,
         sub_comment_id: commentId,
         auth_comment_id: authId,
-        commentIdSubComment2: commentIdSubComment
+        commentIdSubComment2: commentIdSubComment,
+        sub_delete_id
       }
     );
   } catch (error) {

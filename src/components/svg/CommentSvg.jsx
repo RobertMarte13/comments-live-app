@@ -1,5 +1,6 @@
 import "../../styles/comments.css";
 
+// eslint-disable-next-line react/prop-types
 const CommentSvg = ({ setActive, active }) => {
   return (
     <div onClick={() => setActive(!active)}>

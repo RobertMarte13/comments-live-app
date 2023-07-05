@@ -12,7 +12,7 @@ const HomePage = ({ authId }) => {
   const [search, setSearch] = useState("");
   const [isActiveS, setIsActiveS] = useState(false);
   const [result, setResult] = useState(null);
-
+  
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
     setTimeout(() => {
@@ -21,17 +21,17 @@ const HomePage = ({ authId }) => {
         setSubComments(res.subcomment);
       });
     }, 1500);
-
+    
     // Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
     return () => {
       clearTimeout();
     };
   }, []);
-
-
+  
+  
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    
     const username = search;    
     
     obtainUserName(username).then((res) => {
@@ -39,13 +39,16 @@ const HomePage = ({ authId }) => {
       if(res !== undefined) {
         setIsActiveS(!isActiveS);
       }else {
-
+        
         window.alert('No existe ese usuario!')
       }
       setSearch('')
     });
   };
 
+  console.log(comments)
+  
+  console.log(comments)
   return (
     <div className="content-home">
       <header className="header-page">
@@ -73,9 +76,11 @@ const HomePage = ({ authId }) => {
                   authId={authId}
                   commentId={comment.auth_id}
                   commentIdSubComment={comment.commentIdSubComment}
+                  deleteId={comment.delete_id}
                   result={result}
                   setIsActiveS={setIsActiveS}
                   isActiveS={isActiveS}
+
                 />
               </div>
             ))

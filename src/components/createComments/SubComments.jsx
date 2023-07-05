@@ -1,4 +1,5 @@
 import "../../styles/subComentario.css";
+import ArrowBotom from "../svg/ArrowBotom";
 
 const visible = {
   visibility: "visible",
@@ -28,7 +29,9 @@ const SubComments = ({
           <p className="btn-back" onClick={() => setActive(!active)}>
             back{" "}
           </p>
-          <p className="sub-username">@{username} <span className="fecha">{fecha}</span></p>
+          <p className="sub-username">
+            @{username} <span className="fecha">{fecha}</span>
+          </p>
           <div className="subcomentario">
             <p>{comment}</p>
           </div>
@@ -52,7 +55,10 @@ const SubComments = ({
             principal sea igual id en comun del sub comentario. */}
                 {comment.commentIdSubComment2 === commentIdSubComment ? (
                   <div className="subcomentario">
-                    <p>@{comment.username} <span className="fecha">{comment.fechaCreacion}</span></p>
+                    <p>
+                      @{comment.username}{" "}
+                      <span className="fecha">{comment.fechaCreacion}</span>
+                    </p>
                     <p className="comment">{comment.comments}</p>
                   </div>
                 ) : null}

@@ -14,23 +14,13 @@ import HeartSvg from "../svg/HeartSvg";
 import CommentSvg from "../svg/CommentSvg";
 import ArrowBotom from "../svg/ArrowBotom";
 
-const Comments = ({
-  comment,
-  subComments,
-  username,
-  fecha,
-  authId,
-  commentId,
-  commentIdSubComment,
-  deleteId,
-  result,
-  setIsActiveS,
-  isActiveS,
-}) => {
-  // Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
+// eslint-disable-next-line react/prop-types
+const Comments = ({comment, subComments, username, fecha, authId, commentId, commentIdSubComment, deleteId, result, setIsActiveS, isActiveS}) => {
+
+  // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
 
-  // Este es para mostrar o no un subcomentario oculto.
+  // * Este es para mostrar o no un subcomentario oculto.
   const [active, setActive] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [activeConfig, setActiveConfig] = useState(false);
@@ -41,29 +31,36 @@ const Comments = ({
 
   const [customComment, setCustomComment] = useState(null);
 
+  // * Esta funcion me permite crear sub comentarios que luego podran ver los usuarios.
   const handleSubmit = (event) => {
     event.preventDefault();
-
     // Este es para crear respuestas de comentarios a los comentarios
     // principales.
     createSubComment(subComment, authId, commentId, commentIdSubComment);
+    // * Esto limpia el input donde hacemos los sub comentarios.
     setSubComment("");
   };
 
+  // * Esta funcion me permite obtener usuarios por medio del id del mismo
   function getUserId(commentId) {
     setIsActive(!isActive);
+
     const userid = commentId;
+
     setUser_Id(userid);
+
     obtainUserId(userid).then((res) => {
       setDataUsers(res);
     });
   }
 
+  // * Esta funcion me permite eliminar comentarios principales
   function deleteComments() {
     const delete_id = deleteId;
     deleteComment(delete_id);
   }
 
+  // * Esta funcion me permite modificar o editar comentarios principales.
   function modifyComments(event) {
     event.preventDefault();
 
@@ -72,7 +69,7 @@ const Comments = ({
     setActiveModifyCMMT(!activeModifyCMMT);
     setActiveConfig(!activeConfig);
 
-    const comment = customComment
+    const comment = customComment;
     updateComments(comment, delete_id);
 
     setCustomComment("");
@@ -86,12 +83,14 @@ const Comments = ({
         </p>
         <header className="header-comments">
           <h3>{comment}</h3>
-          <div
-            className="content-arrow-bottom"
-            onClick={() => setActiveConfig(!activeConfig)}
-          >
-            <ArrowBotom />
-          </div>
+          {authId === commentId ? (
+            <div
+              className="content-arrow-bottom"
+              onClick={() => setActiveConfig(!activeConfig)}
+            >
+              <ArrowBotom />
+            </div>
+          ) : null}
           <div
             className="content-config-comments"
             style={

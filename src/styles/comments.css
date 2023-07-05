@@ -77,6 +77,21 @@
   cursor: pointer;
 }
 
+.content-username-img {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 35px;
+}
+
+.img-perfil-comments {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 70px;
+}
+
 /* Responsive */
 @media screen and (max-width: 480px) {
   .content-comments {

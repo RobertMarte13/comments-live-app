@@ -7,14 +7,17 @@ import Comments from "../home/Comments";
 
 // eslint-disable-next-line react/prop-types
 const ProfilePage = ({ auth_id }) => {
+
+  // * Estado
   const [username, setUsername] = useState();
   const [biografia, setBiografia] = useState();
   const [img, setImg] = useState();
   const [fecha, setFecha] = useState();
-  const [objeto, setObjeto] = useState();
+  const [infoProfile, setInfoProfile] = useState();
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
 
+  // * Esta funcion lo que hace es obtener la informacion que el usuario creo para su perfil.
   useEffect(() => {
     getUserInfo(auth_id).then((res) => {
       if (res !== undefined) {
@@ -23,9 +26,10 @@ const ProfilePage = ({ auth_id }) => {
         setFecha(res.fechaNacimiento);
         setImg(res.img);
       }
-      setObjeto(res);
+      setInfoProfile(res);
     });
 
+    // * Este me devuleve todos los comentarios y subcomentarios que luego pondre en el perfil
     setTimeout(() => {
       getComments().then((res) => {
         if (res !== undefined) {
@@ -35,12 +39,12 @@ const ProfilePage = ({ auth_id }) => {
       });
     }, 1500);
 
-    // Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
+    // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
     return () => {
       clearTimeout();
       getUserInfo();
     };
-  }, []);
+  }, [auth_id]);
 
   const CommetsUser = () => {
     return (
@@ -67,7 +71,7 @@ const ProfilePage = ({ auth_id }) => {
 
   return (
     <div className="box-profile">
-      {objeto !== undefined ? null : (
+      {infoProfile !== undefined ? null : (
         <nav className="box-config-profile">
           <Link to="/config_profile">configurar perfil</Link>
         </nav>
@@ -75,7 +79,7 @@ const ProfilePage = ({ auth_id }) => {
       <h1>{username}</h1>
       <img className="img-perfil" src={img} alt="Imagen de perfil" />
       <p>{fecha}</p>
-      {objeto !== undefined ? (
+      {infoProfile !== undefined ? (
         <nav>
           <Link to="/config_profile_update" className="box-config-profile">
             Actualizar Perfil

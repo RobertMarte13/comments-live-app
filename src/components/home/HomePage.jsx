@@ -7,6 +7,7 @@ import "../../styles/comments.css";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({ authId }) => {
+  // * Estados
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
   const [search, setSearch] = useState("");
@@ -16,19 +17,20 @@ const HomePage = ({ authId }) => {
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
     setTimeout(() => {
+      // * Funcion que me permite recuperar todos los comentarios de los usuarios.
       getComments().then((res) => {
         setComments(res.comment);
         setSubComments(res.subcomment);
       });
     }, 1500);
     
-    // Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
+    // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
     return () => {
       clearTimeout();
     };
   }, []);
   
-  
+  // * Esta funcion me permite buscar un usuario existente.
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -36,19 +38,20 @@ const HomePage = ({ authId }) => {
     
     obtainUserName(username).then((res) => {
       setResult([res]);
+      
       if(res !== undefined) {
         setIsActiveS(!isActiveS);
       }else {
-        
         window.alert('No existe ese usuario!')
       }
+
+      // * Este set me permite limpiar el search cuando doy enter al buscar algo.
       setSearch('')
     });
   };
 
-  console.log(comments)
-  
-  console.log(comments)
+  console.log(authId)
+
   return (
     <div className="content-home">
       <header className="header-page">
@@ -80,7 +83,6 @@ const HomePage = ({ authId }) => {
                   result={result}
                   setIsActiveS={setIsActiveS}
                   isActiveS={isActiveS}
-
                 />
               </div>
             ))

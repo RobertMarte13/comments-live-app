@@ -3,16 +3,16 @@ import { createUserInfo } from "../../services/services.js";
 
 // eslint-disable-next-line react/prop-types
 const CreateProfileInfo = ({ auth_id }) => {
+
+  //  * Estado
   const [username, setUsername] = useState("");
   const [img, setImg] = useState("");
   const [bio, setBio] = useState("");
   const [fechaNacimiento, setFechaNacimiento] = useState('');
 
-  console.log(img.slice(12))
-
+  // * Esta funcion sirve para crear por primera ves la informacion de un usuarios.
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log((auth_id, username, img, bio, fechaNacimiento))
     createUserInfo(auth_id, username, img, bio, fechaNacimiento);
   };
 

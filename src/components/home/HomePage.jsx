@@ -42,6 +42,7 @@ const HomePage = ({ authId }) => {
 
         window.alert('No existe ese usuario!')
       }
+      setSearch('')
     });
   };
 
@@ -54,6 +55,7 @@ const HomePage = ({ authId }) => {
             type="text"
             name="searchusers"
             placeholder="Search Users"
+            value={search}
             onChange={(event) => setSearch(event.target.value)}
           />
         </form>

@@ -6,6 +6,8 @@ import UsersProfilePage from "../profile/UsersProfilePage";
 
 
 import '../../styles/usersProfile.css'
+import HeartSvg from "../svg/HeartSvg";
+import CommentSvg from "../svg/CommentSvg";
 
 // eslint-disable-next-line react/prop-types
 const Comments = ({ comment, subComments, username, fecha, authId, commentId, commentIdSubComment, result, setIsActiveS, isActiveS }) => {
@@ -24,6 +26,7 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
     // Este es para crear respuestas de comentarios a los comentarios
     // principales.
     createSubComment(subComment, authId, commentId, commentIdSubComment );
+    setSubComment('')
   }; 
 
   function getUserId(commentId) {
@@ -39,7 +42,7 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
     <div className="box-main-comment">
       <div className="box-comment">
         <p onClick={() => getUserId(commentId)}>@{username} <span className="fecha">{fecha}</span></p>
-        <div onClick={() => setActive(!active)}>
+        <div>
           <h3>{comment}</h3>
         </div>
         <form onSubmit={handleSubmit}>
@@ -47,9 +50,14 @@ const Comments = ({ comment, subComments, username, fecha, authId, commentId, co
             type="text"
             className="input-sub-comment"
             placeholder="Escribe un comentario..."
+            value={subComment}
             onChange={(event) => setSubComment(event.target.value)}
           />
         </form>
+        <div className="box-interative">
+          <HeartSvg />
+          <CommentSvg setActive={setActive} active={active} />
+        </div>
       </div>
       <div
         style={

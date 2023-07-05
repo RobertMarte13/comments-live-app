@@ -19,7 +19,21 @@
 
 .box-comment {
     background: #f2f2f2;
-    border: 1px solid #c5c5c5;
+    border: 1px solid #cecece;
     border-radius: 5px;
     margin: 10px 0 10px 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+    .content-comments {
+        padding: 0px;
+    }
+
+    .box-comment {
+        border-radius: 0px;
+        margin: 0px;
+        width: 100% !important;
+        padding: 15px;
+    }
 }

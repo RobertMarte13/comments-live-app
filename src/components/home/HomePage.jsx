@@ -4,7 +4,6 @@ import Comments from "./Comments";
 
 import "../../styles/home.css";
 import "../../styles/comments.css";
-import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const HomePage = ({ authId }) => {
@@ -60,7 +59,7 @@ const HomePage = ({ authId }) => {
         </form>
       </header>
       <div className="content-main-post">
-        <div className="content-post">
+        <div className="content-post" id="content-post">
           {comments !== null ? (
             comments.map((comment, index) => (
               <div className="content-comments" key={index}>

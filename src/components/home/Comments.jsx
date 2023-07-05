@@ -10,7 +10,6 @@ import '../../styles/usersProfile.css'
 // eslint-disable-next-line react/prop-types
 const Comments = ({ comment, subComments, username, fecha, authId, commentId, commentIdSubComment, result, setIsActiveS, isActiveS }) => {
 
-  console.log(isActiveS)
   // Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
   // Este es para mostrar o no un subcomentario oculto.

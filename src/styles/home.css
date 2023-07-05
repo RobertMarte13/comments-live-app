@@ -34,4 +34,8 @@
   .header-page input {
     width: 200px;
   }
+
+  .content-post {
+    padding: 0;
+  }
 }

@@ -7,13 +7,9 @@
 
 .img-perfil {
     width: 120px;
-    min-height: 120px;
+    max-height: 120px;
     object-fit: cover;
     border-radius: 50%;
-}
-
-.box-config-profile {
-
 }
 
 .content-comments-perfil {

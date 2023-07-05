@@ -1,15 +1,11 @@
-.header {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .navbar {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: 300px;
     border-right: 2px solid rgba(0, 0, 0, 0.119);
+    display: flex;
+    justify-content: center;
 }
 
 .content-ul {

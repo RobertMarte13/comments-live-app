@@ -8,14 +8,28 @@ body {
 }
 
 .btn-hamburger {
-  display: none;
-  opacity: 0;
-  visibility: hidden;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 30px;
   padding: 10px;
   font-size: 24px;
+  z-index: 1500;
+  border-radius: 50%;
+  border: none;
+  background: darkcyan;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-mobil {
+  position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1200;
+    background: white;
 }
 
 @media screen and (max-width: 480px) {
@@ -31,6 +45,7 @@ body {
     display: none;
     opacity: 0;
     visibility: 0;
+    background: white;
   }
 
   #content-ul {

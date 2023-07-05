@@ -12,7 +12,9 @@ import UsersProfilePage from "../profile/UsersProfilePage";
 import "../../styles/usersProfile.css";
 import HeartSvg from "../svg/HeartSvg";
 import CommentSvg from "../svg/CommentSvg";
-import ArrowBotom from "../svg/ArrowBotom";
+
+import SettingsSvg from "../svg/SettingsSvg";
+import ClearSvg from "../svg/ClearSvg";
 
 // eslint-disable-next-line react/prop-types
 const Comments = ({comment, subComments, username, fecha, authId, commentId, commentIdSubComment, deleteId, result, setIsActiveS, isActiveS}) => {
@@ -88,7 +90,9 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
               className="content-arrow-bottom"
               onClick={() => setActiveConfig(!activeConfig)}
             >
-              <ArrowBotom />
+              {
+                activeConfig ? <ClearSvg /> : <SettingsSvg />
+              }
             </div>
           ) : null}
           <div

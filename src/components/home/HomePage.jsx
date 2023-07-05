@@ -50,8 +50,6 @@ const HomePage = ({ authId }) => {
     });
   };
 
-  console.log(authId)
-
   return (
     <div className="content-home">
       <header className="header-page">

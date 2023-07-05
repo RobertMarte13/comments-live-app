@@ -5,8 +5,8 @@ const ArrowBotom = () => {
     <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="25"
+        width="22"
+        height="22"
         fill="currentColor"
         className="bi bi-caret-down-fill"
         viewBox="0 0 16 16"

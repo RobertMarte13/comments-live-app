@@ -48,7 +48,7 @@ const ProfilePage = ({ auth_id }) => {
 
   const CommetsUser = () => {
     return (
-      <div className="content-comments-perfil">
+      <div className="content-comment-perfil">
         {comments &&
           comments.map((comment, index) =>
             comment.auth_id === auth_id ? (

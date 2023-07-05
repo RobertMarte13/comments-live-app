@@ -14,7 +14,6 @@ import HomePage from "./components/home/HomePage";
 import ProtectedRouter from "./components/protectedRouter/ProtectedRouter";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Navbar from "./components/navbar/Navbar";
 import CreateComments from "./components/createComments/CreateComments";
 import SubComments from "./components/createComments/SubComments";
 import CreateProfileInfo from "./components/profile/CreateProfileInfo";
@@ -38,7 +37,6 @@ function App() {
   const [username, setUsername] = useLocalStorage("username", "");
   const [isActive, setIsActive] = useState(false);
 
-
   // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
     // eslint-disable-next-line react/prop-types
@@ -58,22 +56,9 @@ function App() {
   return (
     <div className="App">
       <header
-        className="header header-mobil"
-        style={
-          isActive
-            ? { display: "flex", opacity: 1, visibility: "visible" }
-            : { display: "none" }
-        }
+        className="header-mobil"
       >
         <NavbarMobile
-          closedSession={closedSession}
-          isValidation={isValidation}
-          isActive={isActive}
-        />
-      </header>
-
-      <header id="header" className="header">
-        <Navbar
           closedSession={closedSession}
           isValidation={isValidation}
           isActive={isActive}

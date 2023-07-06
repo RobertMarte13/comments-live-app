@@ -14,6 +14,17 @@
   padding: 10px 20px;
 }
 
+.search-users {
+  border-radius: 10px;
+  border: none;
+  background: rgb(236, 236, 236);
+  outline: none;
+}
+
+.search-users:focus {
+  outline: 2px #0000ff27 solid;
+}
+
 .content-home h1 {
   padding: 10px;
 }

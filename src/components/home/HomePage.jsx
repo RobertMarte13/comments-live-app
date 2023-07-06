@@ -56,6 +56,7 @@ const HomePage = ({ authId }) => {
         <h1>Home</h1>
         <form onSubmit={handleSubmit}>
           <input
+            className="search-users"
             type="text"
             name="searchusers"
             placeholder="Search Users"

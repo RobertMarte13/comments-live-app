@@ -39,7 +39,7 @@ const UsersProfilePage = ({
         <div className="contain-user-perfile">
           {dataUsers ? (
             <>
-              <div className="content-btn-back-profile">
+              <div className  ="content-btn-back-profile">
                 <button
                   className="btn-back-perfil"
                   onClick={() => {

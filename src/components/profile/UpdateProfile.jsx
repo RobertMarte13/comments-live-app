@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { UpdateInfoUsers } from "../../services/services";
 
+import '../../styles/updatePerfilInfo.css'
+
 // eslint-disable-next-line react/prop-types
 const UpdateProfile = ({ auth_id }) => {
   const [username, setUsername] = useState("");
@@ -10,14 +12,13 @@ const UpdateProfile = ({ auth_id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log((auth_id, username, img.slice(12), bio, fechaNacimiento));
     UpdateInfoUsers(auth_id, username, img, bio, fechaNacimiento);
   };
 
   return (
-    <div>
+    <div className="box-config-profile">
+      <form className="form-config-profile" onSubmit={handleSubmit}>
       <h1>Create Profile</h1>
-      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"
@@ -34,6 +35,7 @@ const UpdateProfile = ({ auth_id }) => {
           type="url"
           name="file"
           onChange={(e) => setImg(e.target.value)}
+          placeholder="https://Example_Imagen"
         />
         <input
           type="date"

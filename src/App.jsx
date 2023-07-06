@@ -24,6 +24,7 @@ import NavbarMobile from "./components/navbar/NavbarMobile";
 import "./App.css";
 import "./styles/navbar.css";
 import MenuHamburguer from "./components/svg/MenuHamburguer";
+import ClosedSvg from "./components/svg/ClosedSvg";
 
 function App() {
   // * Estados
@@ -66,7 +67,9 @@ function App() {
       </header>
 
       <button className="btn-hamburger" onClick={() => setIsActive(!isActive)}>
-        <MenuHamburguer />
+        {
+          isActive ? <ClosedSvg /> : <MenuHamburguer />
+        }
       </button>
 
       {/* Rutas con react router dom */}
@@ -87,6 +90,7 @@ function App() {
             path="/config_profile_update"
             element={<UpdateProfile auth_id={id} />}
           />
+          <Route path="*" element={<NotFound />} />
         </Route>
         <Route
           path="/login"

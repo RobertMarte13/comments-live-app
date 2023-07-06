@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { createUserInfo } from "../../services/services.js";
 
+import '../../styles/updatePerfilInfo.css'
+
 // eslint-disable-next-line react/prop-types
 const CreateProfileInfo = ({ auth_id }) => {
-
   //  * Estado
   const [username, setUsername] = useState("");
   const [img, setImg] = useState("");
   const [bio, setBio] = useState("");
-  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState("");
 
   // * Esta funcion sirve para crear por primera ves la informacion de un usuarios.
   const handleSubmit = (event) => {
@@ -17,9 +18,9 @@ const CreateProfileInfo = ({ auth_id }) => {
   };
 
   return (
-    <div>
+    <div className="box-config-profile">
+      <form className="form-config-profile" onSubmit={handleSubmit}>
       <h1>Create Profile</h1>
-      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="username"
@@ -32,8 +33,17 @@ const CreateProfileInfo = ({ auth_id }) => {
           placeholder="Biografia"
           onChange={(event) => setBio(event.target.value)}
         />
-        <input type="url" name="file" onChange={(e) => setImg(e.target.value)}/>
-        <input type="date" name="fechaNacimiento" onChange={(e) => setFechaNacimiento(e.target.value)} />
+        <input
+          type="url"
+          name="file"
+          onChange={(e) => setImg(e.target.value)}
+          placeholder="https://Example_Imagen"
+        />
+        <input
+          type="date"
+          name="fechaNacimiento"
+          onChange={(e) => setFechaNacimiento(e.target.value)}
+        />
         <button>Create</button>
       </form>
     </div>

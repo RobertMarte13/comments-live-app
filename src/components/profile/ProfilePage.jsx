@@ -72,7 +72,7 @@ const ProfilePage = ({ auth_id }) => {
   return (
     <div className="box-profile">
       {infoProfile !== undefined ? null : (
-        <nav className="box-config-profile">
+        <nav className="box-config-prof">
           <Link to="/config_profile">configurar perfil</Link>
         </nav>
       )}
@@ -81,7 +81,7 @@ const ProfilePage = ({ auth_id }) => {
       <p>{fecha}</p>
       {infoProfile !== undefined ? (
         <nav>
-          <Link to="/config_profile_update" className="box-config-profile">
+          <Link to="/config_profile_update" className="box-config-prof">
             Actualizar Perfil
           </Link>
         </nav>

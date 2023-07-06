@@ -15,6 +15,8 @@ import CommentSvg from "../svg/CommentSvg";
 
 import SettingsSvg from "../svg/SettingsSvg";
 import ClearSvg from "../svg/ClearSvg";
+import DeleteSvg from "../svg/DeleteSvg";
+import UpdateSvg from "../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types
 const Comments = ({comment, subComments, username, fecha, authId, commentId, commentIdSubComment, deleteId, result, setIsActiveS, isActiveS}) => {
@@ -109,7 +111,7 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
               onClick={() => setActiveModifyCMMT(!activeModifyCMMT)}
               name="editar"
             >
-              Editar comentario
+              Editar comentario <UpdateSvg />
             </button>
             <button
               type="button"
@@ -117,7 +119,7 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
               onClick={() => deleteComments()}
               name="clear"
             >
-              Eliminar comentario
+              Eliminar <DeleteSvg />
             </button>
           </div>
           <div

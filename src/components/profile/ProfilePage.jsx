@@ -27,13 +27,13 @@ const ProfilePage = ({ auth_id }) => {
         setImg(res.img);
       }
       setInfoProfile(res);
-      console.log(res)
     });
 
     // * Este me devuleve todos los comentarios y subcomentarios que luego pondre en el perfil
     setTimeout(() => {
       getComments().then((res) => {
         if (res !== undefined) {
+          console.log(res.comment)
           setComments(res.comment);
           setSubComments(res.subcomment);
         }
@@ -52,15 +52,16 @@ const ProfilePage = ({ auth_id }) => {
       <div className="content-comment-perfil">
         {comments &&
           comments.map((comment, index) =>
-            comment.auth_id === auth_id ? (
+            comment.user_id === auth_id ? (
               <div className="comments-perfil" key={index}>
                 <Comments
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
+                  img={comment.img}
                   fecha={comment.created_at}
                   authId={auth_id}
-                  commentId={comment.auth_id}
+                  commentId={comment.user_id}
                   commentIdSubComment={comment.commentIdSubComment}
                 />
               </div>

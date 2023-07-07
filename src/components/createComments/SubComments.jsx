@@ -19,9 +19,11 @@ const SubComments = ({
   setActive,
   active,
   username,
+  img,
   comment,
   fecha
 }) => {
+
   return (
     <div className="content-sub-comentario">
       <div className="sub-comentario">
@@ -29,6 +31,7 @@ const SubComments = ({
           <p className="btn-back" onClick={() => setActive(!active)}>
             back{" "}
           </p>
+          <img className="img-perfil" src={img} alt="Imagen perfil" />
           <p className="sub-username">
             @{username} <span className="fecha">{fecha}</span>
           </p>
@@ -55,9 +58,10 @@ const SubComments = ({
             principal sea igual id en comun del sub comentario. */}
                 {comment.commentIdSubComment2 === commentIdSubComment ? (
                   <div className="subcomentario">
+                    <img className="img-perfil" src={comment.img} alt="Imagen perfil" />
                     <p>
                       @{comment.username}{" "}
-                      <span className="fecha">{comment.fechaCreacion}</span>
+                      <span className="fecha">{comment.created_at}</span>
                     </p>
                     <p className="comment">{comment.comments}</p>
                   </div>

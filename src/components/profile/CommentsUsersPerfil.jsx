@@ -30,15 +30,15 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
           // eslint-disable-next-line react/prop-types
           comments.map((comment, index) =>
             // eslint-disable-next-line react/prop-types
-            comment.auth_id === result[0].user_id ? (
+            comment.user_id === result[0].user_id ? (
               <div className="comments-perfil" key={index}>
                 <Comments
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
                   fecha={comment.created_at}
-                  authId={comment.auth_id}
-                  commentId={comment.auth_id}
+                  authId={comment.user_id}
+                  commentId={comment.user_id}
                   commentIdSubComment={comment.commentIdSubComment}
                 />
               </div>

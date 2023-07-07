@@ -6,6 +6,7 @@ import {
   createSubComment,
   deleteComment,
   getLikes,
+  getUserInfo,
   obtainUserId,
   updateComments,
 } from "../../services/services";
@@ -21,21 +22,7 @@ import DeleteSvg from "../svg/DeleteSvg";
 import UpdateSvg from "../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types
-const Comments = ({
-  comment,
-  subComments,
-  username,
-  fecha,
-  authId,
-  usersId,
-  commentId,
-  commentIdSubComment,
-  deleteId,
-  commentsId,
-  result,
-  setIsActiveS,
-  isActiveS,
-}) => {
+const Comments = ({comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS}) => {
   // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
 
@@ -53,10 +40,10 @@ const Comments = ({
   const [customComment, setCustomComment] = useState(null);
 
   useEffect(() => {
-    setTimeout(()=> {
-      obtainLikes();
-    }, 1500)
-  });
+    getLikes().then((res) => {
+      setLikes(res.data);
+    });
+  }, []);
 
   // * Esta funcion me permite crear sub comentarios que luego podran ver los usuarios.
   const handleSubmit = (event) => {
@@ -102,12 +89,7 @@ const Comments = ({
     setCustomComment("");
   }
 
-  function obtainLikes() {
-    getLikes().then((res) => {
-      setLikes(res.data);
-    });
-  }
-
+  // * Esta funcion crea likes
   function createLikesComments() {
   
     const users_id = usersId;
@@ -116,9 +98,11 @@ const Comments = ({
     createLikes(users_id, comments_id);
   }
 
+
   return (
     <div className="box-main-comment">
       <div className="box-comment">
+        <img className="img-perfil" src={img} alt="Imagen perfil" />
         <p onClick={() => getUserId(commentId)}>
           @{username} <span className="fecha">{fecha}</span>
         </p>
@@ -214,6 +198,7 @@ const Comments = ({
           setActive={setActive}
           active={active}
           username={username}
+          img={img}
           comment={comment}
           fecha={fecha}
         />

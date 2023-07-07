@@ -74,6 +74,7 @@ const HomePage = ({ authId, usersId }) => {
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
+                  img={comment.img}
                   fecha={comment.created_at}
                   authId={authId}
                   usersId={usersId}

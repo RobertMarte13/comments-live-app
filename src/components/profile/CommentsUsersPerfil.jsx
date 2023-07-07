@@ -16,7 +16,7 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
                 comment={comment.comment}
                 subComments={subComments}
                 username={comment.username}
-                fecha={comment.fechaCreacion}
+                fecha={comment.created_at}
                 authId={comment.auth_id}
                 commentId={comment.auth_id}
                 commentIdSubComment={comment.commentIdSubComment}
@@ -36,7 +36,7 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
-                  fecha={comment.fechaCreacion}
+                  fecha={comment.created_at}
                   authId={comment.auth_id}
                   commentId={comment.auth_id}
                   commentIdSubComment={comment.commentIdSubComment}

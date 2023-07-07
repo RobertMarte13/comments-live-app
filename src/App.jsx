@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Custom hooks
 import { useLocalStorage } from "./hooks/useLocalStorage";
@@ -25,6 +25,7 @@ import "./App.css";
 import "./styles/navbar.css";
 import MenuHamburguer from "./components/svg/MenuHamburguer";
 import ClosedSvg from "./components/svg/ClosedSvg";
+import { getUserInfo } from "./services/services";
 
 function App() {
   // * Estados
@@ -37,6 +38,16 @@ function App() {
   // eslint-disable-next-line no-unused-vars
   const [username, setUsername] = useLocalStorage("username", "");
   const [isActive, setIsActive] = useState(false);
+  const [users_id, setUser_Id] = useState(null)
+
+  useEffect(() => {
+    getUserInfo(id).then((res) => {
+      if (res !== undefined) {
+        setUser_Id(res.users_id)
+      }
+    });
+  }, [id])
+
 
   // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
@@ -77,8 +88,8 @@ function App() {
         <Route
           element={<ProtectedRouter isValidation={isValidation} redirect="/" />}
         >
-          <Route path="/" element={<HomePage authId={id} />} />
-          <Route path="/home" element={<HomePage authId={id} />} />
+          <Route path="/" element={<HomePage authId={id} usersId={users_id} />} />
+          <Route path="/home" element={<HomePage authId={id} usersId={users_id} />} />
           <Route path="/createComments" element={<CreateComments id={id} />} />
           <Route path="/sub_comments" element={<SubComments />} />
           <Route path="/profile" element={<ProfilePage auth_id={id} />} />

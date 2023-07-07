@@ -27,6 +27,7 @@ const ProfilePage = ({ auth_id }) => {
         setImg(res.img);
       }
       setInfoProfile(res);
+      console.log(res)
     });
 
     // * Este me devuleve todos los comentarios y subcomentarios que luego pondre en el perfil
@@ -57,7 +58,7 @@ const ProfilePage = ({ auth_id }) => {
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
-                  fecha={comment.fechaCreacion}
+                  fecha={comment.created_at}
                   authId={auth_id}
                   commentId={comment.auth_id}
                   commentIdSubComment={comment.commentIdSubComment}

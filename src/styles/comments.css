@@ -95,6 +95,19 @@
   margin-right: 70px;
 }
 
+.box-heart {
+  display: flex;
+}
+
+.box-heart p {
+  padding-left: 5px;
+  font-family: inherit;
+  color: #646464;
+  font-weight: lighter;
+  font-size: 16px;
+  text-align: center;
+}
+
 /* Responsive */
 @media screen and (max-width: 480px) {
   .content-comments {

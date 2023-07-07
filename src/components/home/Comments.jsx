@@ -1,9 +1,11 @@
 // import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubComments from "../createComments/SubComments";
 import {
+  createLikes,
   createSubComment,
   deleteComment,
+  getLikes,
   obtainUserId,
   updateComments,
 } from "../../services/services";
@@ -19,8 +21,21 @@ import DeleteSvg from "../svg/DeleteSvg";
 import UpdateSvg from "../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types
-const Comments = ({comment, subComments, username, fecha, authId, commentId, commentIdSubComment, deleteId, result, setIsActiveS, isActiveS}) => {
-
+const Comments = ({
+  comment,
+  subComments,
+  username,
+  fecha,
+  authId,
+  usersId,
+  commentId,
+  commentIdSubComment,
+  deleteId,
+  commentsId,
+  result,
+  setIsActiveS,
+  isActiveS,
+}) => {
   // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
 
@@ -30,10 +45,18 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
   const [activeConfig, setActiveConfig] = useState(false);
   const [activeModifyCMMT, setActiveModifyCMMT] = useState(false);
 
+  const [likes, setLikes] = useState(null);
+
   const [dataUsers, setDataUsers] = useState(null);
   const [user_id, setUser_Id] = useState("");
 
   const [customComment, setCustomComment] = useState(null);
+
+  useEffect(() => {
+    setTimeout(()=> {
+      obtainLikes();
+    }, 1500)
+  });
 
   // * Esta funcion me permite crear sub comentarios que luego podran ver los usuarios.
   const handleSubmit = (event) => {
@@ -79,6 +102,20 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
     setCustomComment("");
   }
 
+  function obtainLikes() {
+    getLikes().then((res) => {
+      setLikes(res.data);
+    });
+  }
+
+  function createLikesComments() {
+  
+    const users_id = usersId;
+    const comments_id = commentsId;
+
+    createLikes(users_id, comments_id);
+  }
+
   return (
     <div className="box-main-comment">
       <div className="box-comment">
@@ -92,9 +129,7 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
               className="content-arrow-bottom"
               onClick={() => setActiveConfig(!activeConfig)}
             >
-              {
-                activeConfig ? <ClearSvg /> : <SettingsSvg />
-              }
+              {activeConfig ? <ClearSvg /> : <SettingsSvg />}
             </div>
           ) : null}
           <div
@@ -149,7 +184,20 @@ const Comments = ({comment, subComments, username, fecha, authId, commentId, com
           />
         </form>
         <div className="box-interative">
-          <HeartSvg />
+          <div className="box-heart" onClick={() => createLikesComments()}>
+            <HeartSvg />
+            {likes &&
+              likes.map((like, index) =>
+                like.comments_id === commentsId ? (
+                  <div key={index}>
+                    <p>
+                      {like.like_count} {like.like_count === 1 ? "Like" : "Likes"}
+                    </p>
+                  </div>
+                ) : null
+              )}
+          </div>
+
           <CommentSvg setActive={setActive} active={active} />
         </div>
       </div>

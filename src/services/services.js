@@ -32,6 +32,43 @@ export const registerService = async (username, password) => {
   }
 };
 
+// Get Likes
+export const getLikes = async () => {
+  try {
+    const response = await axios.get('https://server-anisearch-production.up.railway.app/api/comments_likes')
+
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Create Likes
+export const createLikes = async (users_id, comments_id) => {
+  try {
+
+    const response = await axios.post('https://server-anisearch-production.up.railway.app/api/comments_likes', {
+      users_id,
+      comments_id
+    })
+    
+    return response
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Remove Likes
+// export const removeLikes = async (update_likes) => {
+//   try {
+
+//     await axios.post(`https://server-anisearch-production.up.railway.app/api/comments_likes/${update_likes}`)
+    
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
 // servicio de logueo.
 export const loginService = async (username, password) => {
   try {

@@ -6,7 +6,7 @@ import "../../styles/home.css";
 import "../../styles/comments.css";
 
 // eslint-disable-next-line react/prop-types
-const HomePage = ({ authId }) => {
+const HomePage = ({ authId, usersId }) => {
   // * Estados
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
@@ -74,11 +74,13 @@ const HomePage = ({ authId }) => {
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
-                  fecha={comment.fechaCreacion}
+                  fecha={comment.created_at}
                   authId={authId}
+                  usersId={usersId}
                   commentId={comment.auth_id}
                   commentIdSubComment={comment.commentIdSubComment}
                   deleteId={comment.delete_id}
+                  commentsId={comment.comments_id}
                   result={result}
                   setIsActiveS={setIsActiveS}
                   isActiveS={isActiveS}

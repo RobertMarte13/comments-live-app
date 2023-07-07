@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../../services/services";
-import Comments from "../home/Comments";
 import CommentsUsersPerfil from "./CommentsUsersPerfil";
 
 // eslint-disable-next-line react/prop-types

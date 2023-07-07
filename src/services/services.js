@@ -6,7 +6,42 @@ export const getComments = async () => {
     const res = await axios.get(
       "https://server-anisearch-production.up.railway.app/api/comment"
     );
-    return res.data.data[0];
+    
+    // * Estos metodos sort lo que hacen es ordenar los comentarios de tal manera que aparescan los mas nuevos primero y los mas viejos de ultimo.
+    const result = res.data.data[0].comment.sort((a, b) => {
+      const commentIdA = a.comments_id
+      const commentIdB = b.comments_id
+
+      if(commentIdA < commentIdB){
+        return 1
+      }
+
+      if(commentIdA > commentIdB) {
+        return -2
+      }
+
+      return 0
+    })
+
+    const result2 = res.data.data[0].subcomment.sort((a, b) => {
+      const commentIdA = a.comments_id
+      const commentIdB = b.comments_id
+
+      if(commentIdA < commentIdB){
+        return 1
+      }
+
+      if(commentIdA > commentIdB) {
+        return -2
+      }
+
+      return 0
+    })
+
+    return {
+      comment: result,
+      subcomment: result2
+    };
   } catch (error) {
     console.log(error);
   }
@@ -194,7 +229,7 @@ export const UpdateInfoUsers = async (auth_id, username, img, bio, fechaNacimien
 export const obtainUserId = async (userid) => {
   try {
     const data = await axios.get(`https://server-anisearch-production.up.railway.app/api/users/${userid}`)
-
+    
     return data.data
   } catch (error) {
     console.log(error.message)

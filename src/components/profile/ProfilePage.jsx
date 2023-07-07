@@ -33,7 +33,6 @@ const ProfilePage = ({ auth_id }) => {
     setTimeout(() => {
       getComments().then((res) => {
         if (res !== undefined) {
-          console.log(res.comment)
           setComments(res.comment);
           setSubComments(res.subcomment);
         }

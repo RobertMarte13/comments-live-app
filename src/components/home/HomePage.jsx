@@ -29,6 +29,8 @@ const HomePage = ({ authId, usersId }) => {
       clearTimeout();
     };
   }, []);
+
+  console.log(comments)
   
   // * Esta funcion me permite buscar un usuario existente.
   const handleSubmit = (event) => {
@@ -78,7 +80,7 @@ const HomePage = ({ authId, usersId }) => {
                   fecha={comment.created_at}
                   authId={authId}
                   usersId={usersId}
-                  commentId={comment.auth_id}
+                  commentId={comment.user_id}
                   commentIdSubComment={comment.commentIdSubComment}
                   deleteId={comment.delete_id}
                   commentsId={comment.comments_id}

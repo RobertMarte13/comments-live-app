@@ -36,7 +36,9 @@ function App() {
     false
   );
   // eslint-disable-next-line no-unused-vars
-  const [username, setUsername] = useLocalStorage("username", "");
+  const [username, setUsername] = useState('')
+  const [imgUser, setImgUser] = useState('')
+
   const [isActive, setIsActive] = useState(false);
   const [users_id, setUser_Id] = useState(null)
 
@@ -44,6 +46,8 @@ function App() {
     getUserInfo(id).then((res) => {
       if (res !== undefined) {
         setUser_Id(res.users_id)
+        setUsername(res.user)
+        setImgUser(res.img)
       }
     });
   }, [id])
@@ -52,7 +56,6 @@ function App() {
   // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
     // eslint-disable-next-line react/prop-types
-    setUsername(props.user);
     // eslint-disable-next-line react/prop-types
     setId(props.pin);
     setIsValidation(isValid);
@@ -71,6 +74,8 @@ function App() {
         className="header-mobil"
       >
         <NavbarMobile
+          username={username}
+          imgUser={imgUser}
           closedSession={closedSession}
           isValidation={isValidation}
           isActive={isActive}

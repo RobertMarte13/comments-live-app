@@ -41,6 +41,19 @@
   align-items: center;
 }
 
+.box-link-perfil {
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  right: 0;
+}
+
+.link-perfil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 @media screen and (max-width: 458px) {
   .img-perfil {
     width: 80px;

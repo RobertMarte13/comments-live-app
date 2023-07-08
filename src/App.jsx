@@ -42,14 +42,18 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [users_id, setUser_Id] = useState(null)
 
+  const [commentsTodo, setCommentsTodo] = useState('')
+
   useEffect(() => {
     getUserInfo(id).then((res) => {
       if (res !== undefined) {
         setUser_Id(res.users_id)
         setUsername(res.user)
         setImgUser(res.img)
+        setCommentsTodo(res)
       }
     });
+
   }, [id])
 
 
@@ -95,7 +99,7 @@ function App() {
         >
           <Route path="/" element={<HomePage authId={id} usersId={users_id} />} />
           <Route path="/home" element={<HomePage authId={id} usersId={users_id} />} />
-          <Route path="/createComments" element={<CreateComments id={id} />} />
+          <Route path="/createComments" element={<CreateComments commentsTodo={commentsTodo} id={id} />} />
           <Route path="/sub_comments" element={<SubComments />} />
           <Route path="/profile" element={<ProfilePage auth_id={id} />} />
           <Route

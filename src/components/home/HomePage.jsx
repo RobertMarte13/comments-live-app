@@ -29,8 +29,6 @@ const HomePage = ({ authId, usersId }) => {
       clearTimeout();
     };
   }, []);
-
-  console.log(comments)
   
   // * Esta funcion me permite buscar un usuario existente.
   const handleSubmit = (event) => {

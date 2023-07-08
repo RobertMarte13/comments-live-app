@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import "../../styles/profile.css";
 import Comments from "../home/Comments";
+import UpdateSvg from "../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types
 const ProfilePage = ({ auth_id }) => {
-
   // * Estado
   const [username, setUsername] = useState();
   const [biografia, setBiografia] = useState();
@@ -72,24 +72,32 @@ const ProfilePage = ({ auth_id }) => {
 
   return (
     <div className="box-profile">
-      {infoProfile !== undefined ? null : (
-        <nav className="box-config-prof">
-          <Link to="/config_profile">configurar perfil</Link>
-        </nav>
-      )}
-      <h1>{username}</h1>
-      <img className="img-perfil" src={img} alt="Imagen de perfil" />
-      <p>{fecha}</p>
-      {infoProfile !== undefined ? (
-        <nav>
-          <Link to="/config_profile_update" className="box-config-prof">
-            Actualizar Perfil
-          </Link>
-        </nav>
-      ) : null}
-      <div>
-        <p>{biografia}</p>
+      <div className="content-biografia">
+        <div className="box-img-link">
+          <img className="img-perfil" src={img} alt="Imagen de perfil" />
+          {infoProfile !== undefined ? (
+            <nav>
+              <Link to="/config_profile_update" className="box-config-prof">
+                Actualizar Perfil <UpdateSvg />
+              </Link>
+            </nav>
+          ) : null}
+          {infoProfile !== undefined ? null : (
+            <nav>
+              <Link className="box-config-prof" to="/config_profile">
+                configurar perfil
+              </Link>
+            </nav>
+          )}
+        </div>
+        <div>
+          <p className="username">@{username}</p>
+          <h3>Biografia</h3>
+          <p>{biografia}</p>
+          <h3 className="fechaNacimiento">Fecha de Nacimiento: {fecha}</h3>
+        </div>
       </div>
+      <h1 style={{ paddingTop: '30px' }}>Mis Comentarios:</h1>
       {comments !== null ? CommetsUser() : <h>Cargando comentarios...</h>}
     </div>
   );

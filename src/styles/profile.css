@@ -3,6 +3,7 @@
   align-items: center;
   flex-direction: column;
   width: 100%;
+  padding-top: 20px;
 }
 
 .img-perfil {
@@ -11,6 +12,22 @@
   min-height: 120px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.username {
+  padding-bottom: 10px;
+}
+
+.box-config-prof {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #242424;
+  padding: 5px;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .box-main-comment {
@@ -54,10 +71,42 @@
   align-items: center;
 }
 
+.content-biografia {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  border-radius: 10px;
+  border: 1px solid #cecece;
+  background: #efefef;
+  width: 90%;
+  padding: 20px;
+}
+
+.fechaNacimiento {
+  padding-top: 20px;
+}
+
+.box-img-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media screen and (max-width: 458px) {
+  .box-profile {
+    padding-top: 0px;
+  }
+
   .img-perfil {
     width: 80px;
     max-height: 80px;
     min-height: 80px;
+  }
+
+  .content-biografia {
+    border-radius: 0px;
+    width: 100%;
   }
 }

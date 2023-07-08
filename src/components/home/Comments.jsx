@@ -104,7 +104,7 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
       <div className="box-comment">
         <img className="img-perfil" src={img} alt="Imagen perfil" />
         <p onClick={() => getUserId(commentId)}>
-          @{username} <span className="fecha">{fecha}</span>
+          <span style={{ cursor: 'pointer' }}>@{username}</span> <span className="fecha">{fecha}</span>
         </p>
         <header className="header-comments">
           <h3>{comment}</h3>

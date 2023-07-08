@@ -21,4 +21,14 @@
     height: 30px;
     font-size: 18px;
     text-transform: uppercase;
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.btn-back-perfil:hover {
+    color: rgb(255, 107, 107);
+    transition: all .3s ease-in-out;
 }

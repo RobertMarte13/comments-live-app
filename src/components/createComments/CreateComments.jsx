@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { createComment } from "../../services/services";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import '../../styles/createComments.css'
 
-const CreateComments = ({ id }) => {
+// eslint-disable-next-line react/prop-types
+const CreateComments = ({ commentsTodo, id }) => {
   const [comment, setComment] = useState('')
 
   const navigate = useNavigate()
@@ -15,8 +16,15 @@ const CreateComments = ({ id }) => {
     return navigate('/home')
   }
 
+
   return (
-    <div className="content-create-comment">
+    <>
+     { 
+      <>
+     { 
+      commentsTodo === '' ?
+        <Navigate to='/config_profile'/>
+       : <div className="content-create-comment">
       <h1 className="title-create-comment">create comment</h1>
       <form className="form-comment" onSubmit={handleSubmit}>
         <textarea 
@@ -27,6 +35,10 @@ const CreateComments = ({ id }) => {
         <button className="btn-create-comment">Create Comment</button>
       </form>
     </div>
+     }
+    </>
+     }
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+// eslint-disable-next-line react/prop-types
 const NavbarMobile = ({ username, imgUser, closedSession, isValidation, isActive }) => {
   return (
     <>
@@ -10,6 +11,11 @@ const NavbarMobile = ({ username, imgUser, closedSession, isValidation, isActive
               <Link className="links-navbar" to="/">Home</Link>
             </li>
           )}
+            {!isValidation ? null : (
+              <li className="content-li">
+                <Link className="links-navbar" to="/rankings_comments">Ranking</Link>
+              </li>
+            )}
           {!isValidation ? null : (
             <li className="content-li">
               <Link className="links-navbar" to="/createComments">Create Comment</Link>

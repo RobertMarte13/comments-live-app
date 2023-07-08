@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
-import { getComments, obtainUserName } from "../../services/services";
-import Comments from "./Comments";
-
-import "../../styles/home.css";
-import "../../styles/comments.css";
-import Header from "../navbar/Header";
+import { getComments, getLikes, obtainUserName } from "../../services/services";
+import Header from "../navbar/Header"
+import CommentsRankings from "./CommentsRankings";
+import commentsRankingsTools from "../../tools/commentsRankings";
 
 // eslint-disable-next-line react/prop-types
-const HomePage = ({ authId, usersId }) => {
-  // * Estados
+const RankingsComments = ({ authId, usersId }) => {
+
+    // * Estados
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
   const [search, setSearch] = useState("");
   const [isActiveS, setIsActiveS] = useState(false);
   const [result, setResult] = useState(null);
+
+  const [likes, setLikes] = useState(null);
 
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
@@ -24,6 +25,9 @@ const HomePage = ({ authId, usersId }) => {
         setSubComments(res.subcomment);
       });
 
+      getLikes().then((res) => {
+        setLikes(res.data);
+      });
     }, 1500);
 
     // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
@@ -51,17 +55,25 @@ const HomePage = ({ authId, usersId }) => {
       setSearch("");
     });
   };
- 
-  return (
-    <div className="content-home">
+  
+  // TODO: Haciendo un ranking de los comentarios que mas an gustado a las personas.
+  const commentRankings = commentsRankingsTools(comments, likes);
+
+    return (
+        <div className="content-home">
       <Header handleSubmit={handleSubmit} search={search} setSearch={setSearch} />
       <div className="content-main-post">
-        <div className="content-post" id="content-post">
-          <h1 style={{ textAlign: 'center' }}>Home</h1>
-          {comments !== null ? (
-            comments.map((comment, index) => (
+        {/* Agreagndo el rankig de commentarios por me gustas. */}
+        <div
+          className="content-post content-post-ranking"
+          id="content-post-ranking"
+          style={{  }}
+        >
+          <h1 style={{ textAlign: 'center' }}>Comentarios más populares</h1>
+          {commentRankings !== null ? (
+            commentRankings.map((comment, index) => (
               <div className="content-comments" key={index}>
-                <Comments
+                <CommentsRankings
                   comment={comment.comment}
                   subComments={subComments}
                   username={comment.username}
@@ -85,7 +97,7 @@ const HomePage = ({ authId, usersId }) => {
         </div>
       </div>
     </div>
-  );
-};
+    )
+}
 
-export default HomePage;
+export default RankingsComments

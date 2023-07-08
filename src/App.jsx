@@ -26,6 +26,7 @@ import "./styles/navbar.css";
 import MenuHamburguer from "./components/svg/MenuHamburguer";
 import ClosedSvg from "./components/svg/ClosedSvg";
 import { getUserInfo } from "./services/services";
+import RankingsComments from "./components/home/RankingsComments";
 
 function App() {
   // * Estados
@@ -99,6 +100,7 @@ function App() {
         >
           <Route path="/" element={<HomePage authId={id} usersId={users_id} />} />
           <Route path="/home" element={<HomePage authId={id} usersId={users_id} />} />
+          <Route path="/rankings_comments" element={<RankingsComments authId={id} usersId={users_id} />} />
           <Route path="/createComments" element={<CreateComments commentsTodo={commentsTodo} id={id} />} />
           <Route path="/sub_comments" element={<SubComments />} />
           <Route path="/profile" element={<ProfilePage auth_id={id} />} />

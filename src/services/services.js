@@ -1,46 +1,46 @@
 import axios from "axios";
 
-
 export const getComments = async () => {
   try {
     const res = await axios.get(
       "https://server-anisearch-production.up.railway.app/api/comment"
     );
-    
+
     // * Estos metodos sort lo que hacen es ordenar los comentarios de tal manera que aparescan los mas nuevos primero y los mas viejos de ultimo.
     const result = res.data.data[0].comment.sort((a, b) => {
-      const commentIdA = a.comments_id
-      const commentIdB = b.comments_id
+      const commentIdA = a.comments_id;
+      const commentIdB = b.comments_id;
 
-      if(commentIdA < commentIdB){
-        return 1
+      if (commentIdA < commentIdB) {
+        return 1;
       }
 
-      if(commentIdA > commentIdB) {
-        return -2
+      if (commentIdA > commentIdB) {
+        return -2;
       }
 
-      return 0
-    })
+      return 0;
+    });
 
     const result2 = res.data.data[0].subcomment.sort((a, b) => {
-      const commentIdA = a.comments_id
-      const commentIdB = b.comments_id
+      const commentIdA = a.comments_id;
+      const commentIdB = b.comments_id;
 
-      if(commentIdA < commentIdB){
-        return 1
+      if (commentIdA < commentIdB) {
+        return 1;
       }
 
-      if(commentIdA > commentIdB) {
-        return -2
+      if (commentIdA > commentIdB) {
+        return -2;
       }
 
-      return 0
-    })
+      return 0;
+    });
 
     return {
       comment: result,
-      subcomment: result2
+      subcomment: result2,
+      // commentsRankings: rankings
     };
   } catch (error) {
     console.log(error);
@@ -70,35 +70,39 @@ export const registerService = async (username, password) => {
 // Get Likes
 export const getLikes = async () => {
   try {
-    const response = await axios.get('https://server-anisearch-production.up.railway.app/api/comments_likes')
+    const response = await axios.get(
+      "https://server-anisearch-production.up.railway.app/api/comments_likes"
+    );
 
-    return response.data
+    return response.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Create Likes
 export const createLikes = async (users_id, comments_id) => {
   try {
+    const response = await axios.post(
+      "https://server-anisearch-production.up.railway.app/api/comments_likes",
+      {
+        users_id,
+        comments_id,
+      }
+    );
 
-    const response = await axios.post('https://server-anisearch-production.up.railway.app/api/comments_likes', {
-      users_id,
-      comments_id
-    })
-    
-    return response
+    return response;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Remove Likes
 // export const removeLikes = async (update_likes) => {
 //   try {
 
 //     await axios.post(`https://server-anisearch-production.up.railway.app/api/comments_likes/${update_likes}`)
-    
+
 //   } catch (error) {
 //     console.log(error)
 //   }
@@ -107,7 +111,6 @@ export const createLikes = async (users_id, comments_id) => {
 // servicio de logueo.
 export const loginService = async (username, password) => {
   try {
-    
     const response = await axios.get(
       `https://server-anisearch-production.up.railway.app/api/login/${username}/${password}`
     );
@@ -119,10 +122,10 @@ export const loginService = async (username, password) => {
 };
 
 // Creador de comentarios
-export const createComment = async (comment, id ) => {
+export const createComment = async (comment, id) => {
   try {
-    const commentIdSubComment = crypto.randomUUID()
-    const delete_id = crypto.randomUUID()
+    const commentIdSubComment = crypto.randomUUID();
+    const delete_id = crypto.randomUUID();
     await axios.post(
       "https://server-anisearch-production.up.railway.app/api/comment",
       {
@@ -130,7 +133,7 @@ export const createComment = async (comment, id ) => {
         likes: 0,
         comment_id: id,
         commentIdSubComment,
-        delete_id
+        delete_id,
       }
     );
   } catch (error) {
@@ -141,29 +144,38 @@ export const createComment = async (comment, id ) => {
 // Eliminar comment
 export const deleteComment = async (delete_id) => {
   try {
-    await axios.delete(`https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`)
-
+    await axios.delete(
+      `https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`
+    );
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-}
+};
 
 export const updateComments = async (comment, delete_id) => {
   try {
-    console.log(comment, delete_id)
-    await axios.patch(`https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`, {
-      comment,
-      likes: 0,
-    })
+    console.log(comment, delete_id);
+    await axios.patch(
+      `https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`,
+      {
+        comment,
+        likes: 0,
+      }
+    );
   } catch (error) {
-    console.log(error.response.data.message)
+    console.log(error.response.data.message);
   }
-}
+};
 
 // Creador de sub comentarios.
-export const createSubComment = async (subComment, authId, commentId, commentIdSubComment) => {
+export const createSubComment = async (
+  subComment,
+  authId,
+  commentId,
+  commentIdSubComment
+) => {
   try {
-    const sub_delete_id = crypto.randomUUID()
+    const sub_delete_id = crypto.randomUUID();
     await axios.post(
       "https://server-anisearch-production.up.railway.app/api/subcomment",
       {
@@ -172,7 +184,7 @@ export const createSubComment = async (subComment, authId, commentId, commentIdS
         sub_comment_id: commentId,
         auth_comment_id: authId,
         commentIdSubComment2: commentIdSubComment,
-        sub_delete_id
+        sub_delete_id,
       }
     );
   } catch (error) {
@@ -188,61 +200,80 @@ export const getUserInfo = async (auth_id) => {
     );
     return res.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Este codigo crea la informacion del perfil que todas las personas podran ver.
-export const createUserInfo = async (auth_id, username, img, bio, fechaNacimiento) => {
+export const createUserInfo = async (
+  auth_id,
+  username,
+  img,
+  bio,
+  fechaNacimiento
+) => {
   try {
     await axios.post(
-      'https://server-anisearch-production.up.railway.app/api/users', {
+      "https://server-anisearch-production.up.railway.app/api/users",
+      {
         username,
         img,
         bio,
         fechaNacimiento,
-        user_id: auth_id
+        user_id: auth_id,
       }
     );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Este codigo actualiza la informacion del perfil del usuario.
-export const UpdateInfoUsers = async (auth_id, username, img, bio, fechaNacimiento) => {
+export const UpdateInfoUsers = async (
+  auth_id,
+  username,
+  img,
+  bio,
+  fechaNacimiento
+) => {
   try {
-    await axios.patch(`https://server-anisearch-production.up.railway.app/api/users/${auth_id}`, {
+    await axios.patch(
+      `https://server-anisearch-production.up.railway.app/api/users/${auth_id}`,
+      {
         username,
         img,
         bio,
         fechaNacimiento,
-        user_id: auth_id
+        user_id: auth_id,
       }
     );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
-// Obtener un usuario por medio de un id 
+// Obtener un usuario por medio de un id
 export const obtainUserId = async (userid) => {
   try {
-    const data = await axios.get(`https://server-anisearch-production.up.railway.app/api/users/${userid}`)
-    
-    return data.data
-  } catch (error) {
-    console.log(error.message)
-  }
-}
+    const data = await axios.get(
+      `https://server-anisearch-production.up.railway.app/api/users/${userid}`
+    );
 
-// Obtener un usuario por medio de un id 
+    return data.data;
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// Obtener un usuario por medio de un id
 export const obtainUserName = async (username) => {
   try {
-    const data = await axios.get(`https://server-anisearch-production.up.railway.app/api/search_username/${username}`)
+    const data = await axios.get(
+      `https://server-anisearch-production.up.railway.app/api/search_username/${username}`
+    );
 
-    return data.data[0]
+    return data.data[0];
   } catch (error) {
-    console.log(error.message)
+    console.log(error.message);
   }
-}
+};

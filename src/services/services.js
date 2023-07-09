@@ -39,8 +39,7 @@ export const getComments = async () => {
 
     return {
       comment: result,
-      subcomment: result2,
-      // commentsRankings: rankings
+      subcomment: result2
     };
   } catch (error) {
     console.log(error);

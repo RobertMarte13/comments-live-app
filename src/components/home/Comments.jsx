@@ -133,6 +133,7 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
               Editar comentario <UpdateSvg />
             </button>
             <button
+              disabled="true"
               type="button"
               className="clear"
               onClick={() => deleteComments()}

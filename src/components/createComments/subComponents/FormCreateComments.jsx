@@ -8,6 +8,7 @@ const FormCreateComments = ({ handleSubmit, setComment, setEmojis, emojis }) => 
       <textarea
         className="box-comment"
         rows="10"
+        placeholder="255 letters allowed"
         onChange={(event) => setComment(event.target.value)}
       />
       <div className="controller-comment">

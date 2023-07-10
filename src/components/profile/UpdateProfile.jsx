@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { UpdateInfoUsers } from "../../services/services";
+import { useNavigate } from 'react-router-dom'
 
 import '../../styles/updatePerfilInfo.css'
 
 // eslint-disable-next-line react/prop-types
 const UpdateProfile = ({ auth_id }) => {
-  const [username, setUsername] = useState("");
-  const [img, setImg] = useState("");
-  const [bio, setBio] = useState("");
-  const [fechaNacimiento, setFechaNacimiento] = useState("");
+  const [username, setUsername] = useState(null);
+  const [img, setImg] = useState(null);
+  const [bio, setBio] = useState(null);
+  const [fechaNacimiento, setFechaNacimiento] = useState(null);
+
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault();
     UpdateInfoUsers(auth_id, username, img, bio, fechaNacimiento);
+    window.alert('Actualizacion del perfil con exito!')
+    return navigate("/profile");
   };
 
   return (

@@ -1,6 +1,5 @@
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SubComments from "../../createComments/SubComments";
 import {
   createLikes,
   createSubComment,
@@ -9,13 +8,15 @@ import {
   obtainUserId,
   updateComments,
 } from "../../../services/services";
+
+import SubComments from "../../createComments/SubComments";
 import UsersProfilePage from "../../profile/UsersProfilePage";
+import HeaderMainComments from "./HeaderMainComments";
+import LikesAndComments from "./LikesAndComments";
+import FormResponseComments from "./FormResponseComments";
 
 import "../../../styles/usersProfile.css";
-import HeartSvg from "../../svg/HeartSvg";
-import CommentSvg from "../../svg/CommentSvg";
 
-import HeaderMainComments from "./HeaderMainComments";
 
 // eslint-disable-next-line react/prop-types
 const Comments = ({comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS}) => {
@@ -99,7 +100,8 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
       <div className="box-comment">
         <img className="img-perfil" src={img} alt="Imagen perfil" />
         <p onClick={() => getUserId(commentId)}>
-          <span style={{ cursor: 'pointer' }}>@{username}</span> <span className="fecha">{fecha}</span>
+          <span style={{ cursor: 'pointer' }}>@{username} </span>
+          <span className="fecha">{fecha}</span>
         </p>
         <HeaderMainComments 
           comment={comment}
@@ -114,32 +116,18 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
           customComment={customComment}
           setCustomComment={setCustomComment}
         />
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="input-sub-comment"
-            placeholder="Escribe un comentario..."
-            value={subComment}
-            onChange={(event) => setSubComment(event.target.value)}
-          />
-        </form>
-        <div className="box-interative">
-          <div className="box-heart" onClick={() => createLikesComments()}>
-            <HeartSvg />
-            {likes &&
-              likes.map((like, index) =>
-                like.comments_id === commentsId ? (
-                  <div key={index}>
-                    <p>
-                      {like.like_count} {like.like_count === 1 ? "Like" : "Likes"}
-                    </p>
-                  </div>
-                ) : null
-              )}
-          </div>
-
-          <CommentSvg setActive={setActive} active={active} />
-        </div>
+        <FormResponseComments 
+          handleSubmit={handleSubmit}
+          setSubComment={setSubComment}
+          subComment={subComment}
+        />
+        <LikesAndComments
+          createLikesComments={createLikesComments}
+          likes={likes}
+          commentsId={commentsId}
+          setActive={setActive}
+          active={active}
+        />
       </div>
       <div
         style={

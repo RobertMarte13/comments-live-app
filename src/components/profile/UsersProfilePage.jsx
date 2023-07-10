@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
 import { getComments } from "../../services/services";
-import CommentsUsersPerfil from "./CommentsUsersPerfil";
-import ArrowBack from "../svg/ArrowBack";
+import CommentsUsersPerfil from "./subComponents/CommentsUsersPerfil";
+import BiographyUserClick from './subComponents/BiographyUserClick';
+import BiographyUserSearch from "./subComponents/BiographyUserSearch";
+
+//? NOTA: Este es el componente que se muestra si damos click en algun username o si buscamos un usuario.
 
 // eslint-disable-next-line react/prop-types
-const UsersProfilePage = ({
-  isActive,
-  setIsActive,
-  dataUsers,
-  userId,
-  result,
-  setIsActiveS,
-  isActiveS,
-}) => {
+const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, setIsActiveS, isActiveS }) => {
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
 
@@ -35,42 +30,16 @@ const UsersProfilePage = ({
 
   return (
     <>
+      {/* Este isActive es el que se activa cuando damos click algun username del usuario en el comentario. */}
       {isActive ? (
         <div className="contain-user-perfile">
           {dataUsers ? (
             <>
-              <div className="content-biografia">
-                <div className="box-img-link">
-                  <div className="box-img-link">
-                    <img
-                      className="img-perfil"
-                      src={dataUsers !== null ? dataUsers.img : null}
-                    />
-                  </div>
-                </div>
-                <div>
-                  <div className="content-btn-back-profile">
-                    <button
-                      className="btn-back-perfil"
-                      onClick={() => {
-                        setIsActive(!isActive);
-                      }}
-                    >
-                      <ArrowBack />
-                    </button>
-                  </div>
-                  <p>@{dataUsers !== null ? dataUsers.user : null}</p>
-
-                  <div className="content-bio">
-                    <h3>Biografia</h3>
-                    <p>{dataUsers !== null ? dataUsers.bio : null}</p>
-                    <h3 className="fechaNacimiento">
-                      Fecha de Nacimiento:{" "}
-                      {dataUsers !== null ? dataUsers.fechaNacimiento : null}
-                    </h3>
-                  </div>
-                </div>
-              </div>
+              <BiographyUserClick
+                dataUsers={dataUsers} 
+                setIsActive={setIsActive} 
+                isActive={isActive} 
+              />
               <div className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>
                 {comments !== null ? (
@@ -90,39 +59,16 @@ const UsersProfilePage = ({
         </div>
       ) : null}
 
+      {/* Este isActiveS es para cuando es una busqueda. */}
       {isActiveS ? (
         <div className="contain-user-perfile">
           {result ? (
             <>
-              <div className="content-biografia">
-                <div className="box-img-link">
-                  <img
-                    className="img-perfil"
-                    src={result !== null ? result[0].img : null}
-                  />
-                </div>
-                <div>
-                  <div className="content-btn-back-profile">
-                    <button
-                      className="btn-back-perfil"
-                      onClick={() => {
-                        setIsActiveS(!isActiveS);
-                      }}
-                    >
-                      <ArrowBack />
-                    </button>
-                  </div>
-                  <p>@{result !== null ? result[0].username : null}</p>
-                  <div className="content-bio">
-                    <h3>Biografia</h3>
-                    <p>{result !== null ? result[0].bio : null}</p>
-                    <h3 className="fechaNacimiento">
-                      Fecha de Nacimiento:{" "}
-                      {result !== null ? result[0].fechaNacimiento : null}
-                    </h3>
-                  </div>
-                </div>
-              </div>
+              <BiographyUserSearch
+                result={result}
+                setIsActiveS={setIsActiveS}
+                isActiveS={isActiveS} 
+              />
               <div className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>
                 {comments !== null ? (

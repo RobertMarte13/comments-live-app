@@ -1,5 +1,5 @@
 
-import Comments from "../home/subComponents/Comments";
+import Comments from "../../home/subComponents/Comments";
 
 // eslint-disable-next-line react/prop-types
 const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {

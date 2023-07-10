@@ -109,15 +109,13 @@ export const createLikes = async (users_id, comments_id) => {
 
 // servicio de logueo.
 export const loginService = async (username, password) => {
-  try {
+  
     const response = await axios.get(
       `https://server-anisearch-production.up.railway.app/api/login/${username}/${password}`
     );
 
     return response.data;
-  } catch (error) {
-    window.alert(error.response.data.message);
-  }
+  
 };
 
 // Creador de comentarios

@@ -27,6 +27,7 @@ import MenuHamburguer from "./components/svg/MenuHamburguer";
 import ClosedSvg from "./components/svg/ClosedSvg";
 import { getUserInfo } from "./services/services";
 import RankingsComments from "./components/home/RankingsComments";
+import { Toaster, toast } from "react-hot-toast";
 
 function App() {
   // * Estados
@@ -64,7 +65,11 @@ function App() {
     // eslint-disable-next-line react/prop-types
     setId(props.pin);
     setIsValidation(isValid);
+    return  notify()
   }
+
+  const notify = () => toast('Bienvenido/a a Comments Live')
+
 
   // * Esta funcion sirve para cerrar seccion en la pagina.
   function closedSession() {
@@ -75,6 +80,7 @@ function App() {
 
   return (
     <div className="App">
+    <Toaster />
       <header
         className="header-mobil"
       >

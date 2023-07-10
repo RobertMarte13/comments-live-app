@@ -51,6 +51,7 @@ const HeaderMainComments = ({ comment, authId, commentId, setActiveConfig, activ
           >
             <form onSubmit={modifyComments}>
               <input
+                className="custom-comments"
                 type="text"
                 name="custom-comments"
                 value={customComment}

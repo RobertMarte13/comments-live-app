@@ -54,10 +54,10 @@ const HomePage = ({ authId, usersId }) => {
  
   return (
     <div className="content-home">
+      
       <Header handleSubmit={handleSubmit} search={search} setSearch={setSearch} />
       <div className="content-main-post">
         <div className="content-post" id="content-post">
-          <h1 style={{ textAlign: 'center' }}>Home</h1>
           {comments !== null ? (
             comments.map((comment, index) => (
               <div className="content-comments" key={index}>

@@ -21,15 +21,6 @@
   flex-direction: column;
 }
 
-.box-comment {
-  resize: none;
-  width: 90%;
-  outline: none;
-  padding: 10px;
-  font-size: 18px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 .btn-create-comment {
   border: none;
   background: #52a0ff;
@@ -81,5 +72,11 @@
     visibility: hidden;
     display: none;
     opacity: 0;
+  }
+
+  .title-create-comment {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: inherit;
   }
 }

@@ -1,3 +1,20 @@
+import Emojis from "./subComponents/Emojis";
+
+const onEmojis = {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+  visibility: "visible",
+  opacity: 1,
+}
+
+const offEmojis = {
+  display: "none",
+  visibility: "hidden",
+  opacity: 0,
+}
+
 // eslint-disable-next-line react/prop-types
 const EmojisController = ({ emojis }) => {
   return (
@@ -5,123 +22,11 @@ const EmojisController = ({ emojis }) => {
       className="content-emojis"
       style={
         emojis
-          ? {
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              visibility: "visible",
-              opacity: 1,
-            }
-          : {
-              display: "none",
-              visibility: "hidden",
-              opacity: 0,
-            }
+          ? onEmojis
+          : offEmojis
       }
     >
-      <div style={{ display: "flex" }}>
-        <p>😀</p>
-        <p>😃</p>
-        <p>😄</p>
-        <p>😁</p>
-        <p>😆</p>
-        <p>😅</p>
-        <p>😂</p>
-        <p>🤣</p>
-        <p>😊</p>
-        <p>😇</p>
-        <p>🙂</p>
-        <p>🙃</p>
-        <p>😉</p>
-        <p>😌</p>
-        <p>😍</p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <p>🥰</p>
-        <p>😘</p>
-        <p>😗</p>
-        <p>😙</p>
-        <p>😚</p>
-        <p>😋</p>
-        <p>😛</p>
-        <p>😝</p>
-        <p>😜</p>
-        <p>🤪</p>
-        <p>🤨</p>
-        <p>🧐</p>
-        <p>😎</p>
-        <p>🤓</p>
-        <p>🤩</p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <p>🥳</p>
-        <p>😏</p>
-        <p>😒</p>
-        <p>😞</p>
-        <p>😔</p>
-        <p>😟</p>
-        <p>😕</p>
-        <p>☹️</p>
-        <p>😣</p>
-        <p>😖</p>
-        <p>😩</p>
-        <p>😭</p>
-        <p>😢</p>
-        <p>😮</p>
-        <p>😤</p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <p>😠</p>
-        <p>😡</p>
-        <p>🤬</p>
-        <p>🤯</p>
-        <p>😳</p>
-        <p>🥵</p>
-        <p>🥶</p>
-        <p>😱</p>
-        <p>😨</p>
-        <p>😥</p>
-        <p>😓</p>
-        <p>🤗</p>
-        <p>🤔</p>
-        <p>🤭</p>
-        <p>🤫</p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <p>😶</p>
-        <p>😐</p>
-        <p>😑</p>
-        <p>😬</p>
-        <p>🙄</p>
-        <p>😯</p>
-        <p>😦</p>
-        <p>🥱</p>
-        <p>😮</p>
-        <p>😴</p>
-        <p>😴</p>
-        <p>😪</p>
-        <p>😵</p>
-        <p>🤐</p>
-        <p>🥴</p>
-      </div>
-      <div style={{ display: "flex" }}>
-        <p>🤢</p>
-        <p>🤮</p>
-        <p>🤧</p>
-        <p>😷</p>
-        <p>🤒</p>
-        <p>🤑</p>
-        <p>😈</p>
-        <p>👿</p>
-        <p>🤡</p>
-        <p>💩</p>
-        <p>👻</p>
-        <p>💀</p>
-        <p>☠️</p>
-        <p>👾</p>
-        <p>🤖</p>
-      </div>
+      <Emojis />
     </div>
   );
 };

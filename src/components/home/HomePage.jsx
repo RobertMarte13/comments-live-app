@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getComments, obtainUserName } from "../../services/services";
-import Comments from "./Comments";
+import Comments from "./subComponents/Comments";
 
 import "../../styles/home.css";
 import "../../styles/comments.css";

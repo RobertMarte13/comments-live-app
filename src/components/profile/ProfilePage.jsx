@@ -3,7 +3,7 @@ import { getComments, getUserInfo } from "../../services/services";
 import { Link } from "react-router-dom";
 
 import "../../styles/profile.css";
-import Comments from "../home/Comments";
+import Comments from "../home/subComponents/Comments";
 import UpdateSvg from "../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types

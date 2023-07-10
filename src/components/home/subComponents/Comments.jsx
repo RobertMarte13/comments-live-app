@@ -1,25 +1,21 @@
 // import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SubComments from "../createComments/SubComments";
+import SubComments from "../../createComments/SubComments";
 import {
   createLikes,
   createSubComment,
   deleteComment,
   getLikes,
-  getUserInfo,
   obtainUserId,
   updateComments,
-} from "../../services/services";
-import UsersProfilePage from "../profile/UsersProfilePage";
+} from "../../../services/services";
+import UsersProfilePage from "../../profile/UsersProfilePage";
 
-import "../../styles/usersProfile.css";
-import HeartSvg from "../svg/HeartSvg";
-import CommentSvg from "../svg/CommentSvg";
+import "../../../styles/usersProfile.css";
+import HeartSvg from "../../svg/HeartSvg";
+import CommentSvg from "../../svg/CommentSvg";
 
-import SettingsSvg from "../svg/SettingsSvg";
-import ClearSvg from "../svg/ClearSvg";
-import DeleteSvg from "../svg/DeleteSvg";
-import UpdateSvg from "../svg/UpdateSvg";
+import HeaderMainComments from "./HeaderMainComments";
 
 // eslint-disable-next-line react/prop-types
 const Comments = ({comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS}) => {
@@ -98,7 +94,6 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
     createLikes(users_id, comments_id);
   }
 
-
   return (
     <div className="box-main-comment">
       <div className="box-comment">
@@ -106,59 +101,19 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
         <p onClick={() => getUserId(commentId)}>
           <span style={{ cursor: 'pointer' }}>@{username}</span> <span className="fecha">{fecha}</span>
         </p>
-        <header className="header-comments">
-          <h3>{comment}</h3>
-          {authId === commentId ? (
-            <div
-              className="content-arrow-bottom"
-              onClick={() => setActiveConfig(!activeConfig)}
-            >
-              {activeConfig ? <ClearSvg /> : <SettingsSvg />}
-            </div>
-          ) : null}
-          <div
-            className="content-config-comments"
-            style={
-              activeConfig
-                ? { visibility: "visible", opacity: 1, display: "flex" }
-                : null
-            }
-          >
-            <button
-              type="button"
-              className="editar"
-              onClick={() => setActiveModifyCMMT(!activeModifyCMMT)}
-              name="editar"
-            >
-              Editar comentario <UpdateSvg />
-            </button>
-            <button
-              disabled="true"
-              type="button"
-              className="clear"
-              onClick={() => deleteComments()}
-              name="clear"
-            >
-              Eliminar <DeleteSvg />
-            </button>
-          </div>
-          <div
-            style={
-              activeModifyCMMT
-                ? { visibility: "visible", opacity: 1, display: "block" }
-                : { visibility: "hidden", opacity: 0, display: "none" }
-            }
-          >
-            <form onSubmit={modifyComments}>
-              <input
-                type="text"
-                name="custom-comments"
-                value={customComment}
-                onChange={(event) => setCustomComment(event.target.value)}
-              />
-            </form>
-          </div>
-        </header>
+        <HeaderMainComments 
+          comment={comment}
+          authId={authId}
+          commentId={commentId}
+          setActiveConfig={setActiveConfig}
+          activeConfig={activeConfig}
+          setActiveModifyCMMT={setActiveModifyCMMT}
+          activeModifyCMMT={activeModifyCMMT}
+          deleteComments={deleteComments}
+          modifyComments={modifyComments}
+          customComment={customComment}
+          setCustomComment={setCustomComment}
+        />
         <form onSubmit={handleSubmit}>
           <input
             type="text"

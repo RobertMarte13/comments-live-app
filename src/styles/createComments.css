@@ -9,6 +9,9 @@
 .title-create-comment {
   padding: 30px;
   text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form-comment {
@@ -71,9 +74,9 @@
 }
 
 @media screen and (max-width: 458px) {
-    .btn-Emojis {
-        visibility: hidden;
-        display: none;
-        opacity: 0;
-    }
+  .btn-Emojis {
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+  }
 }

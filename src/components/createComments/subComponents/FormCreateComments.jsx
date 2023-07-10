@@ -1,3 +1,4 @@
+import EmojiBtnSvg from "../../svg/EmojiBtnSvg";
 import EmojisController from "../EmojisController";
 
 // eslint-disable-next-line react/prop-types
@@ -11,7 +12,7 @@ const FormCreateComments = ({ handleSubmit, setComment, setEmojis, emojis }) => 
       />
       <div className="controller-comment">
         <div className="btn-Emojis" onClick={() => setEmojis(!emojis)}>
-          Emojis
+          <EmojiBtnSvg />
         </div>
         <EmojisController emojis={emojis} />
         <button className="btn-create-comment">Create Comment</button>

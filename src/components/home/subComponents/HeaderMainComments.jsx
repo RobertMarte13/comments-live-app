@@ -7,7 +7,7 @@ import UpdateSvg from "../../svg/UpdateSvg"
 const HeaderMainComments = ({ comment, authId, commentId, setActiveConfig, activeConfig, setActiveModifyCMMT, activeModifyCMMT, deleteComments, modifyComments, customComment, setCustomComment }) => {
     return (
         <header className="header-comments">
-          <h3>{comment}</h3>
+          <p className="comment-p">{comment}</p>
           {authId === commentId ? (
             <div
               className="content-arrow-bottom"

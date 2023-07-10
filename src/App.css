@@ -1,3 +1,18 @@
+:root {
+  --backgroundBlue: #227ef0;
+  --primaryColor: whitesmoke;
+  --secondaryColor: #242424;
+
+  /* Para fuentes */
+  --font-weight-title: 600;
+  --font-size-title: 34px;
+  --font-size-p-1: 16px;
+  --font-size-p-2: 20px;
+
+  /* border color */
+  --border-color: #242424b0;
+}
+
 .App {
   display: flex;
 }
@@ -16,8 +31,8 @@ body {
   z-index: 1500;
   border-radius: 50%;
   border: none;
-  background: darkcyan;
-  color: white;
+  background: var(--backgroundBlue);
+  color: var(--primaryColor);
   cursor: pointer;
   display: flex;
   justify-content: center;

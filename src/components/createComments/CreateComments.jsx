@@ -9,7 +9,7 @@ import "../../styles/createComments.css";
 
 // eslint-disable-next-line react/prop-types
 const CreateComments = ({ commentsTodo, id }) => {
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState(null);
   const [emojis, setEmojis] = useState(false);
 
 
@@ -17,6 +17,7 @@ const CreateComments = ({ commentsTodo, id }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if(comment === null) return window.alert('No se pueden enviar comentarios vacios!')
     createComment(comment, id);
     return navigate("/home");
   };

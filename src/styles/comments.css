@@ -9,6 +9,10 @@
   position: relative;
 }
 
+.header-comments .comment-p {
+  font-family: inherit;
+}
+
 .content-arrow-bottom {
   padding-right: 50px;
   color: #242424;

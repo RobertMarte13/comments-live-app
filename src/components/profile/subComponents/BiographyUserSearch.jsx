@@ -11,6 +11,7 @@ const BiographyUserSearch = ({ result, setIsActiveS, isActiveS,  }) => {
             // eslint-disable-next-line react/prop-types
             ? result[0].img 
             : null}
+          alt="Avatar"
         />
       </div>
       <div>

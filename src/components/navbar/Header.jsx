@@ -7,6 +7,7 @@ const Header = ({ handleSubmit, search, setSearch }) => {
       <img
         style={{ width: 40, height: 40 }}
         src="../../../public/logo-commentsLive.png"
+        alt="logo comments live"
       />
       <div style={{ position: 'relative' }}>
         <form onSubmit={handleSubmit}>

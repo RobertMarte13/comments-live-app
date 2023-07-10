@@ -65,3 +65,8 @@
     background: var(--backgroundBlue2);
     transition: all .3s ease-in-out;
 }
+@media screen and (max-width: 458px) {
+    .form-config-profile input {
+        width: 275px;
+    }
+}

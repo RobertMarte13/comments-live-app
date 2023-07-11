@@ -1,14 +1,4 @@
-const visible = {
-    visibility: "visible",
-    opacity: 1,
-    display: "block",
-  };
-  
-  const invisible = {
-    visibility: "hidden",
-    opacity: 0,
-    display: "none",
-  };
+import { visible, invisible } from '../styles/styles.js'
 
 // eslint-disable-next-line react/prop-types
 const UserResponseComment = ({ subComments, commentIdSubComment }) => {

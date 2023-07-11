@@ -12,7 +12,6 @@ const CreateComments = ({ commentsTodo, id }) => {
   const [comment, setComment] = useState(null);
   const [emojis, setEmojis] = useState(false);
 
-
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {

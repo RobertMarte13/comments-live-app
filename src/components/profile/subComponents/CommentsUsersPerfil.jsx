@@ -20,6 +20,7 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
                 fecha={comment.created_at}
                 authId={comment.user_id}
                 commentId={comment.user_id}
+                commentsId={comment.comments_id}
                 commentIdSubComment={comment.commentIdSubComment}
               />
             </div>

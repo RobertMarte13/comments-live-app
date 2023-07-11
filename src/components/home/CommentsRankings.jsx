@@ -6,7 +6,6 @@ import {
   createSubComment,
   deleteComment,
   getLikes,
-  getUserInfo,
   obtainUserId,
   updateComments,
 } from "../../services/services";
@@ -20,6 +19,8 @@ import SettingsSvg from "../svg/SettingsSvg";
 import ClearSvg from "../svg/ClearSvg";
 import DeleteSvg from "../svg/DeleteSvg";
 import UpdateSvg from "../svg/UpdateSvg";
+
+import imgUserOptional from "../../assets/users_img_opcional.png"
 
 // eslint-disable-next-line react/prop-types
 const CommentsRankings = ({comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS}) => {
@@ -102,7 +103,15 @@ const CommentsRankings = ({comment, subComments, username, img, fecha, authId, u
   return (
     <div className="box-main-comment">
       <div className="box-comment">
-        <img className="img-perfil" src={img} alt="Imagen perfil" />
+        {img !== "" ? (
+          <img className="img-perfil" src={img} alt="Imagen perfil" />
+        ) : (
+          <img
+            className="img-perfil"
+            src={imgUserOptional}
+            alt="Imagen perfil"
+          />
+        )}
         <p onClick={() => getUserId(commentId)}>
           <span style={{ cursor: 'pointer' }}>@{username}</span> <span className="fecha">{fecha}</span>
         </p>

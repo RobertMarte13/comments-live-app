@@ -1,15 +1,27 @@
 import { Link } from "react-router-dom";
 import UpdateSvg from "../../svg/UpdateSvg";
+import imgUserOptional from "../../../assets/users_img_opcional.png"
 
 // eslint-disable-next-line react/prop-types
 const BiographyUser = ({ img, infoProfile, username, biografia, fecha }) => {
+
+  console.log(img !== '')
   return (
-    <div className="content-biografia">
+    <>
       <div className="content-img-header-profile">
 
       </div>
+    <div className="content-biografia">
       <div className="box-img-link">
-        <img className="img-perfil" src={img} alt="Imagen de perfil" />
+      {img !== "" ? (
+          <img className="img-perfil" src={img} alt="Imagen perfil" />
+        ) : (
+          <img
+            className="img-perfil"
+            src={imgUserOptional}
+            alt="Imagen perfil"
+          />
+        )}
         {infoProfile !== undefined ? (
           <nav>
             <Link to="/config_profile_update" className="box-config-prof">
@@ -32,6 +44,7 @@ const BiographyUser = ({ img, infoProfile, username, biografia, fecha }) => {
         <h3 className="fechaNacimiento">Fecha de Nacimiento: {fecha}</h3>
       </div>
     </div>
+    </>
   );
 };
 

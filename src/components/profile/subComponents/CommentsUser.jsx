@@ -1,5 +1,7 @@
+import Comments from "../../home/subComponents/Comments";
+
 // eslint-disable-next-line react/prop-types
-const CommetsUser = ({ comments, auth_id, Comments, subComments }) => {
+const CommetsUser = ({ comments, auth_id, subComments }) => {
   return (
     <div className="content-comment-perfil">
       {comments &&
@@ -15,6 +17,7 @@ const CommetsUser = ({ comments, auth_id, Comments, subComments }) => {
                 fecha={comment.created_at}
                 authId={auth_id}
                 commentId={comment.user_id}
+                commentsId={comment.comments_id}
                 commentIdSubComment={comment.commentIdSubComment}
               />
             </div>

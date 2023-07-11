@@ -28,6 +28,8 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
     };
   }, []);
 
+  console.log(dataUsers)
+
   return (
     <>
       {/* Este isActive es el que se activa cuando damos click algun username del usuario en el comentario. */}

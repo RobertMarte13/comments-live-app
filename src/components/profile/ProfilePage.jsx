@@ -61,7 +61,6 @@ const ProfilePage = ({ auth_id }) => {
         ? <CommetsUser 
           comments={comments} 
           auth_id={auth_id} 
-          Comments={Comments} 
           subComments={subComments} 
         /> 
         : <h>Cargando comentarios...</h>}

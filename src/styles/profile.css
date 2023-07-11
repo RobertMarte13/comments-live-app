@@ -76,7 +76,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: row-reverse;
-  border-radius: 10px;
+  border-radius: 0px 0px 10px 10px;
   border: 1px solid #cecece;
   background: #efefef;
   width: 90%;
@@ -85,14 +85,13 @@
 
 .content-img-header-profile {
   background-image: url(https://images3.alphacoders.com/131/1319704.png);
-  padding: 50px;
+  padding: 100px;
   width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  backdrop-filter: saturate;
   background-position: bottom;
-  margin-bottom: 10px;
-  border-radius: 10px;
+  border-radius: 10px 10px 0px 0px;
+  width: 90%;
 }
 
 .fechaNacimiento {
@@ -109,6 +108,11 @@
 @media screen and (max-width: 458px) {
   .box-profile {
     padding-top: 0px;
+  }
+
+  .content-img-header-profile {
+    border-radius: 0;
+    width: 100%;
   }
 
   .img-perfil {

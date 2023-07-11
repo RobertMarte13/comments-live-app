@@ -15,11 +15,12 @@ import HeaderMainComments from "./HeaderMainComments";
 import LikesAndComments from "./LikesAndComments";
 import FormResponseComments from "./FormResponseComments";
 
+import imgUserOptional from "../../../assets/users_img_opcional.png"
+
 import "../../../styles/usersProfile.css";
 
-
 // eslint-disable-next-line react/prop-types
-const Comments = ({comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS}) => {
+const Comments = ({ comment, subComments, username, img, fecha, authId, usersId, commentId, commentIdSubComment, deleteId, commentsId, result, setIsActiveS, isActiveS }) => {
   // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
 
@@ -88,7 +89,6 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
 
   // * Esta funcion crea likes
   function createLikesComments() {
-  
     const users_id = usersId;
     const comments_id = commentsId;
 
@@ -98,12 +98,21 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
   return (
     <div className="box-main-comment">
       <div className="box-comment">
-        <img className="img-perfil" src={img} alt="Imagen perfil" />
+        {img !== "" ? (
+          <img className="img-perfil" src={img} alt="Imagen perfil" />
+        ) : (
+          <img
+            className="img-perfil"
+            src={imgUserOptional}
+            alt="Imagen perfil"
+          />
+        )}
+
         <p onClick={() => getUserId(commentId)}>
-          <span style={{ cursor: 'pointer' }}>@{username} </span>
+          <span style={{ cursor: "pointer" }}>@{username} </span>
           <span className="fecha">{fecha}</span>
         </p>
-        <HeaderMainComments 
+        <HeaderMainComments
           comment={comment}
           authId={authId}
           commentId={commentId}
@@ -116,7 +125,7 @@ const Comments = ({comment, subComments, username, img, fecha, authId, usersId, 
           customComment={customComment}
           setCustomComment={setCustomComment}
         />
-        <FormResponseComments 
+        <FormResponseComments
           handleSubmit={handleSubmit}
           setSubComment={setSubComment}
           subComment={subComment}

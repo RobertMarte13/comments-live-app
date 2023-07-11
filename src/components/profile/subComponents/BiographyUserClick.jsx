@@ -1,18 +1,29 @@
 import ArrowBack from "../../svg/ArrowBack";
 
+import imgUserOptional from "../../../assets/users_img_opcional.png"
+
 // eslint-disable-next-line react/prop-types
 const BiographyUserSearch = ({ dataUsers, setIsActive, isActive  }) => {
   return (
+    <>
+    <div className="content-img-header-profile">
+
+      </div>
     <div className="content-biografia">
       <div className="box-img-link">
         <div className="box-img-link">
-          <img
-            className="img-perfil"
-            src={dataUsers !== null 
+          {dataUsers.img   !== "" ? (
+          <img className="img-perfil" src={dataUsers !== null 
               // eslint-disable-next-line react/prop-types
               ? dataUsers.img 
-              : null}
+              : null} alt="Avatar" />
+        ) : (
+          <img
+            className="img-perfil"
+            src={imgUserOptional}
+            alt="Imagen perfil"
           />
+        )}
         </div>
       </div>
       <div>
@@ -47,6 +58,7 @@ const BiographyUserSearch = ({ dataUsers, setIsActive, isActive  }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

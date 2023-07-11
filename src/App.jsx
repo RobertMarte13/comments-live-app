@@ -105,7 +105,6 @@ function App() {
           element={<ProtectedRouter isValidation={isValidation} redirect="/" />}
         >
           <Route path="/" element={<HomePage authId={id} usersId={users_id} />} />
-          <Route path="/home" element={<HomePage authId={id} usersId={users_id} />} />
           <Route path="/rankings_comments" element={<RankingsComments authId={id} usersId={users_id} />} />
           <Route path="/createComments" element={<CreateComments commentsTodo={commentsTodo} id={id} />} />
           <Route path="/sub_comments" element={<SubComments />} />

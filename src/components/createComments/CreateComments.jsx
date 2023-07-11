@@ -18,7 +18,7 @@ const CreateComments = ({ commentsTodo, id }) => {
     event.preventDefault();
     if(comment === null) return window.alert('No se pueden enviar comentarios vacios!')
     createComment(comment, id);
-    return navigate("/home");
+    return navigate("/");
   };
 
   return (

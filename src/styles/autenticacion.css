@@ -1,7 +1,7 @@
 :root {
   --backgroundBlue: #227ef0;
   --primaryColor: whitesmoke;
-  --secondaryColor: #242424;
+  --secondaryColor: #24242411;
 
   /* Para fuentes */
   --font-weight-title: 600;
@@ -89,6 +89,10 @@
   text-transform: capitalize;
 }
 
+.content-checkbox label {
+  padding: 5px;
+}
+
 /* Responsive */
 @media screen and (max-width: 480px) {
   .box-autenticated {
@@ -111,5 +115,17 @@
 
   .form-autenticated input {
     width: 250px;
+    border: 1px solid var(--backgroundBlue);
+  }
+
+  .form-autenticated > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .form-autenticated > div a {
+    padding: 0;
   }
 }

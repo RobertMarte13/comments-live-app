@@ -2,28 +2,13 @@ import { useState } from "react";
 import { loginService } from "../../services/services";
 import { Link, useNavigate } from "react-router-dom";
 
-
 // Estilos
 import "../../styles/autenticacion.css";
 import WarningSvg from "../svg/WarningSvg";
-
-const errorStyle = {
-  textAlign: "center",
-  fontSize: 20,
-  fontWeight: 400,
-  background: 'red',
-  color: 'white',
-  padding: 10,
-  borderRadius: 10,
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  flexDirection: 'row',
-  flexWrap: 'wrap',
-}
+import { errorStyle } from "./styleAuth/style";
 
 // eslint-disable-next-line react/prop-types
-const Login = ({ setIsValid, updateDate, isValidation,  }) => {
+const Login = ({ setIsValid, updateDate, isValidation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -45,19 +30,20 @@ const Login = ({ setIsValid, updateDate, isValidation,  }) => {
       });
   };
 
-
   return (
     <div className="box-autenticated">
       <form className="form-autenticated" onSubmit={handleSubmit}>
         <p className="title-autenticated">Log In To AniSearch</p>
-        {error ? <div className="content-err" style={errorStyle}>
-          <WarningSvg />
-          <p style={{ paddingLeft: 4 }}>{error}</p>
-        </div> : null}
+        {error ? (
+          <div className="content-err" style={errorStyle}>
+            <WarningSvg />
+            <p style={{ paddingLeft: 4 }}>{error}</p>
+          </div>
+        ) : null}
         <input
-          type="text"
+          type="email"
           name="username"
-          placeholder="Username"
+          placeholder="example@gmail.com"
           className="input-autenticated txt"
           onChange={(e) => setUsername(e.target.value)}
         />
@@ -70,9 +56,14 @@ const Login = ({ setIsValid, updateDate, isValidation,  }) => {
         />
         <button className="btn-autenticated">Login</button>
         {isValidation ? null : (
-          <Link className="links-autenticated" to="/register">
-            Sign Up For AniSearch
-          </Link>
+          <div style={{ paddingTop: 30 }}>
+            <Link className="links-autenticated" to="/register">
+              Sign Up For AniSearch
+            </Link>
+            <Link className="links-autenticated" to="/new_password">
+              Did you forget your password?
+            </Link>
+          </div>
         )}
       </form>
     </div>

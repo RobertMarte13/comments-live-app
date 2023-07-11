@@ -66,6 +66,16 @@ export const registerService = async (username, password) => {
   }
 };
 
+// Change Password
+export const setNewPassword = async (email, newPasword) => {
+  const data = await axios.patch("https://server-anisearch-production.up.railway.app/api/recover_password", {
+    username: email,
+    password: newPasword
+  });
+
+  return data
+}
+
 // Get Likes
 export const getLikes = async () => {
   try {

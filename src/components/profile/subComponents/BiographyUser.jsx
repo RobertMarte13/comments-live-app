@@ -5,6 +5,9 @@ import UpdateSvg from "../../svg/UpdateSvg";
 const BiographyUser = ({ img, infoProfile, username, biografia, fecha }) => {
   return (
     <div className="content-biografia">
+      <div className="content-img-header-profile">
+
+      </div>
       <div className="box-img-link">
         <img className="img-perfil" src={img} alt="Imagen de perfil" />
         {infoProfile !== undefined ? (

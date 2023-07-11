@@ -28,6 +28,7 @@ import ClosedSvg from "./components/svg/ClosedSvg";
 import { getUserInfo } from "./services/services";
 import RankingsComments from "./components/home/RankingsComments";
 import { Toaster, toast } from "react-hot-toast";
+import ChangePassword from "./components/auth/ChangePassword";
 
 function App() {
   // * Estados
@@ -38,26 +39,24 @@ function App() {
     false
   );
   // eslint-disable-next-line no-unused-vars
-  const [username, setUsername] = useState('')
-  const [imgUser, setImgUser] = useState('')
+  const [username, setUsername] = useState("");
+  const [imgUser, setImgUser] = useState("");
 
   const [isActive, setIsActive] = useState(false);
-  const [users_id, setUser_Id] = useState(null)
+  const [users_id, setUser_Id] = useState(null);
 
-  const [commentsTodo, setCommentsTodo] = useState('')
+  const [commentsTodo, setCommentsTodo] = useState("");
 
   useEffect(() => {
     getUserInfo(id).then((res) => {
       if (res !== undefined) {
-        setUser_Id(res.users_id)
-        setUsername(res.user)
-        setImgUser(res.img)
-        setCommentsTodo(res)
+        setUser_Id(res.users_id);
+        setUsername(res.user);
+        setImgUser(res.img);
+        setCommentsTodo(res);
       }
     });
-
-  }, [id])
-
+  }, [id]);
 
   // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
@@ -65,11 +64,10 @@ function App() {
     // eslint-disable-next-line react/prop-types
     setId(props.pin);
     setIsValidation(isValid);
-    return  notify()
+    return notify();
   }
 
-  const notify = () => toast('Bienvenido/a a Comments Live')
-
+  const notify = () => toast.success("Welcome to Comments Live");
 
   // * Esta funcion sirve para cerrar seccion en la pagina.
   function closedSession() {
@@ -80,10 +78,8 @@ function App() {
 
   return (
     <div className="App">
-    <Toaster />
-      <header
-        className="header-mobil"
-      >
+      <Toaster position="bottom-right" reverseOrder={false} />
+      <header className="header-mobil">
         <NavbarMobile
           username={username}
           imgUser={imgUser}
@@ -94,9 +90,7 @@ function App() {
       </header>
 
       <button className="btn-hamburger" onClick={() => setIsActive(!isActive)}>
-        {
-          isActive ? <ClosedSvg /> : <MenuHamburguer />
-        }
+        {isActive ? <ClosedSvg /> : <MenuHamburguer />}
       </button>
 
       {/* Rutas con react router dom */}
@@ -104,9 +98,18 @@ function App() {
         <Route
           element={<ProtectedRouter isValidation={isValidation} redirect="/" />}
         >
-          <Route path="/" element={<HomePage authId={id} usersId={users_id} />} />
-          <Route path="/rankings_comments" element={<RankingsComments authId={id} usersId={users_id} />} />
-          <Route path="/createComments" element={<CreateComments commentsTodo={commentsTodo} id={id} />} />
+          <Route
+            path="/"
+            element={<HomePage authId={id} usersId={users_id} />}
+          />
+          <Route
+            path="/rankings_comments"
+            element={<RankingsComments authId={id} usersId={users_id} />}
+          />
+          <Route
+            path="/createComments"
+            element={<CreateComments commentsTodo={commentsTodo} id={id} />}
+          />
           <Route path="/sub_comments" element={<SubComments />} />
           <Route path="/profile" element={<ProfilePage auth_id={id} />} />
           <Route
@@ -128,6 +131,10 @@ function App() {
               isValidation={isValidation}
             />
           }
+        />
+        <Route
+          path="/new_password"
+          element={<ChangePassword isValidation={isValidation} />}
         />
         <Route
           path="/register"

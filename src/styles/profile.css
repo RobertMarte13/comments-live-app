@@ -83,6 +83,18 @@
   padding: 20px;
 }
 
+.content-img-header-profile {
+  background-image: url(https://images3.alphacoders.com/131/1319704.png);
+  padding: 50px;
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  backdrop-filter: saturate;
+  background-position: bottom;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
 .fechaNacimiento {
   padding-top: 20px;
 }
@@ -108,5 +120,7 @@
   .content-biografia {
     border-radius: 0px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }

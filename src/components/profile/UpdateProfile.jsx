@@ -1,29 +1,15 @@
-import { useState } from "react";
-import { UpdateInfoUsers } from "../../services/services";
-import { useNavigate } from 'react-router-dom'
+// Custom Hooks
+import useUpdateProfile from "./hooks/useUpdateProfile";
 
-import '../../styles/updatePerfilInfo.css'
+import "../../styles/updatePerfilInfo.css";
 
-// eslint-disable-next-line react/prop-types
 const UpdateProfile = ({ auth_id }) => {
-  const [username, setUsername] = useState(null);
-  const [img, setImg] = useState(null);
-  const [bio, setBio] = useState(null);
-  const [fechaNacimiento, setFechaNacimiento] = useState(null);
-
-  const navigate = useNavigate()
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    UpdateInfoUsers(auth_id, username, img, bio, fechaNacimiento);
-    window.alert('Actualizacion del perfil con exito!')
-    return navigate("/profile");
-  };
+  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento } = useUpdateProfile(auth_id);
 
   return (
     <div className="box-config-profile">
       <form className="form-config-profile" onSubmit={handleSubmit}>
-      <h1>Create Profile</h1>
+        <h1>Create Profile</h1>
         <input
           type="text"
           name="username"

@@ -8,7 +8,6 @@ const LikesAndComments = ({ createLikesComments, likes, commentsId, setActive, a
       <div className="box-heart" onClick={() => createLikesComments()}>
         <HeartSvg />
         {likes &&
-          // eslint-disable-next-line react/prop-types
           likes.map((like, index) =>
             like.comments_id === commentsId ? (
               <div key={index}>

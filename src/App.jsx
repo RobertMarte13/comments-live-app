@@ -1,10 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-// Custom hooks
-import { useLocalStorage } from "./hooks/useLocalStorage";
-
-// import { getUserInfo } from "./services/services";
 
 // Componentes
 import NotFound from "./components/notfound/NotFound";
@@ -25,56 +19,25 @@ import "./App.css";
 import "./styles/navbar.css";
 import MenuHamburguer from "./components/svg/MenuHamburguer";
 import ClosedSvg from "./components/svg/ClosedSvg";
-import { getUserInfo } from "./services/services";
 import RankingsComments from "./components/home/RankingsComments";
-import { Toaster, toast } from "react-hot-toast";
 import ChangePassword from "./components/auth/ChangePassword";
+import useApp from "./hooks/useApp";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  // * Estados
-  const [isValid, setIsValid] = useState(true);
-  const [id, setId] = useLocalStorage("id", null);
-  const [isValidation, setIsValidation] = useLocalStorage(
-    "isValidation",
-    false
-  );
-  // eslint-disable-next-line no-unused-vars
-  const [username, setUsername] = useState("");
-  const [imgUser, setImgUser] = useState("");
-
-  const [isActive, setIsActive] = useState(false);
-  const [users_id, setUser_Id] = useState(null);
-
-  const [commentsTodo, setCommentsTodo] = useState("");
-
-  useEffect(() => {
-    getUserInfo(id).then((res) => {
-      if (res !== undefined) {
-        setUser_Id(res.users_id);
-        setUsername(res.user);
-        setImgUser(res.img);
-        setCommentsTodo(res);
-      }
-    });
-  }, [id]);
-
-  // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
-  function updateDate(props) {
-    // eslint-disable-next-line react/prop-types
-    // eslint-disable-next-line react/prop-types
-    setId(props.pin);
-    setIsValidation(isValid);
-    return notify();
-  }
-
-  const notify = () => toast.success("Welcome to Comments Live");
-
-  // * Esta funcion sirve para cerrar seccion en la pagina.
-  function closedSession() {
-    setUsername("");
-    setIsValidation(false);
-    setIsActive(false);
-  }
+  const {
+    id,
+    username,
+    setIsValid,
+    isValidation,
+    imgUser,
+    isActive,
+    users_id,
+    commentsTodo,
+    updateDate,
+    setIsActive,
+    closedSession
+  } = useApp()
 
   return (
     <div className="App">

@@ -2,11 +2,15 @@ import ArrowBack from "../../svg/ArrowBack";
 
 import imgUserOptional from "../../../assets/users_img_opcional.png"
 
-// eslint-disable-next-line react/prop-types
-const BiographyUserSearch = ({ dataUsers, setIsActive, isActive  }) => {
+const img_3 = {
+  backgroundImage: 'url(https://pm1.aminoapps.com/7660/f12308c69e0fac27a86e4757518931929b0dbc73r1-1920-1920v2_hq.jpg)',  
+  backgroundPosition: 'center',
+}
+
+const BiographyUserSearch = ({ dataUsers, setIsActive, isActive}) => {
   return (
     <>
-    <div className="content-img-header-profile">
+    <div className="content-img-header-profile" style={img_3}>
 
       </div>
     <div className="content-biografia">
@@ -14,7 +18,6 @@ const BiographyUserSearch = ({ dataUsers, setIsActive, isActive  }) => {
         <div className="box-img-link">
           {dataUsers.img   !== "" ? (
           <img className="img-perfil" src={dataUsers !== null 
-              // eslint-disable-next-line react/prop-types
               ? dataUsers.img 
               : null} alt="Avatar" />
         ) : (
@@ -38,20 +41,17 @@ const BiographyUserSearch = ({ dataUsers, setIsActive, isActive  }) => {
           </button>
         </div>
         <p>@{dataUsers !== null 
-          // eslint-disable-next-line react/prop-types
           ? dataUsers.user 
           : null}</p>
 
         <div className="content-bio">
           <h3>Biografia</h3>
           <p>{dataUsers !== null 
-            // eslint-disable-next-line react/prop-types
             ? dataUsers.bio 
             : null}</p>
           <h3 className="fechaNacimiento">
             Fecha de Nacimiento:{" "}
             {dataUsers !== null 
-              // eslint-disable-next-line react/prop-types
               ? dataUsers.fechaNacimiento 
               : null}
           </h3>

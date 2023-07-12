@@ -1,11 +1,10 @@
 import Comments from "../../home/subComponents/Comments";
 
-// eslint-disable-next-line react/prop-types
+
 const CommetsUser = ({ comments, auth_id, subComments }) => {
   return (
     <div className="content-comment-perfil">
       {comments &&
-        // eslint-disable-next-line react/prop-types
         comments.map((comment, index) =>
           comment.user_id === auth_id ? (
             <div className="comments-perfil" key={index}>

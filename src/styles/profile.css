@@ -84,14 +84,19 @@
 }
 
 .content-img-header-profile {
-  background-image: url(https://images3.alphacoders.com/131/1319704.png);
-  padding: 100px;
-  width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: bottom;
+  padding: 100px;
+  width: 100%;
   border-radius: 10px 10px 0px 0px;
   width: 90%;
+  position: relative;
+}
+
+.content-img-header-profile > select {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
 }
 
 .fechaNacimiento {

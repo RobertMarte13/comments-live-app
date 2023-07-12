@@ -3,23 +3,23 @@ import DeleteSvg from "../../svg/DeleteSvg";
 import SettingsSvg from "../../svg/SettingsSvg";
 import UpdateSvg from "../../svg/UpdateSvg";
 
-// eslint-disable-next-line react/prop-types
-const HeaderMainComments = ({
-  comment,
-  authId,
-  commentId,
-  setActiveConfig,
-  activeConfig,
-  setActiveModifyCMMT,
-  activeModifyCMMT,
-  deleteComments,
-  modifyComments,
-  customComment,
-  setCustomComment,
+const HeaderCommentsRankings = ({
+    comment,
+    authId,
+    commentId,
+    activeConfig,
+    setActiveConfig,
+    setActiveModifyCMMT,
+    activeModifyCMMT,
+    deleteComments,
+    modifyComments,
+    customComment,
+    setCustomComment
 }) => {
+    
   return (
     <header className="header-comments">
-      <p className="comment-p">{comment}</p>
+      <h3>{comment}</h3>
       {authId === commentId ? (
         <div
           className="content-arrow-bottom"
@@ -45,7 +45,6 @@ const HeaderMainComments = ({
           Editar comentario <UpdateSvg />
         </button>
         <button
-          disabled="true"
           type="button"
           className="clear"
           onClick={() => deleteComments()}
@@ -63,7 +62,6 @@ const HeaderMainComments = ({
       >
         <form onSubmit={modifyComments}>
           <input
-            className="custom-comments"
             type="text"
             name="custom-comments"
             value={customComment}
@@ -75,4 +73,4 @@ const HeaderMainComments = ({
   );
 };
 
-export default HeaderMainComments;
+export default HeaderCommentsRankings

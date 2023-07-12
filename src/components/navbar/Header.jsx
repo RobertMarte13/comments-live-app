@@ -1,6 +1,5 @@
 import SearchSvg from "../svg/SearchSvg";
 
-// eslint-disable-next-line react/prop-types
 const Header = ({ handleSubmit, search, setSearch }) => {
   return (
     <header className="header-page">

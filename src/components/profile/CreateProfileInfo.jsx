@@ -1,30 +1,15 @@
-import { useState } from "react";
-import { createUserInfo } from "../../services/services.js";
-import { useNavigate } from "react-router-dom";
+// Custom Hooks
+import useCreateProfileInfo from "./hooks/useCreateProfileInfo.js";
 
-import '../../styles/updatePerfilInfo.css'
+import "../../styles/updatePerfilInfo.css";
 
-// eslint-disable-next-line react/prop-types
 const CreateProfileInfo = ({ auth_id }) => {
-  //  * Estado
-  const [username, setUsername] = useState("");
-  const [img, setImg] = useState("");
-  const [bio, setBio] = useState("");
-  const [fechaNacimiento, setFechaNacimiento] = useState("");
-
-  const navigate = useNavigate()
-
-  // * Esta funcion sirve para crear por primera ves la informacion de un usuarios.
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    createUserInfo(auth_id, username, img, bio, fechaNacimiento);
-    return navigate("/profile");
-  };
+  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento } = useCreateProfileInfo(auth_id);
 
   return (
     <div className="box-config-profile">
       <form className="form-config-profile" onSubmit={handleSubmit}>
-      <h1>Create Profile</h1>
+        <h1>Create Profile</h1>
         <input
           type="text"
           name="username"

@@ -1,8 +1,7 @@
-import "../../styles/subComentario.css";
 import HeaderSubComments from "./subComponents/HeaderSubComments";
 import UserResponseComment from "./subComponents/UserResponseComment";
+import "../../styles/subComentario.css";
 
-// eslint-disable-next-line react/prop-types
 const SubComments = ({ subComments, commentIdSubComment, setActive, active, username, img, comment, fecha }) => {
   return (
     <div className="content-sub-comentario">

@@ -1,19 +1,12 @@
-import SubComments from "../createComments/SubComments";
-import UsersProfilePage from "../profile/UsersProfilePage";
+import SubComments from "../../createComments/SubComments";
+import UsersProfilePage from "../../profile/UsersProfilePage";
+import imgUserOptional from "../../../assets/users_img_opcional.png";
+import useComments from "../hooks/useComments";
+import LikesAndComments from "./LikesAndComments";
+import HeaderComments from "./HeaderComments";
+import FormResponseComments from "./FormResponseComments";
 
-import "../../styles/usersProfile.css";
-import HeartSvg from "../svg/HeartSvg";
-import CommentSvg from "../svg/CommentSvg";
-
-import SettingsSvg from "../svg/SettingsSvg";
-import ClearSvg from "../svg/ClearSvg";
-import DeleteSvg from "../svg/DeleteSvg";
-import UpdateSvg from "../svg/UpdateSvg";
-
-import imgUserOptional from "../../assets/users_img_opcional.png";
-import useCommentsRankings from "./hooks/useCommentsRankings";
-import HeaderCommentsRankings from "./subComponents/HeaderCommentsRankings";
-import LikesAndComments from "./subComponents/LikesAndComments";
+import "../../../styles/usersProfile.css";
 
 const CommentsRankings = ({
   comment,
@@ -53,7 +46,7 @@ const CommentsRankings = ({
     setIsActive,
     dataUsers,
     user_id,
-  } = useCommentsRankings(
+  } = useComments(
     authId,
     commentId,
     commentIdSubComment,
@@ -78,12 +71,12 @@ const CommentsRankings = ({
           <span style={{ cursor: "pointer" }}>@{username}</span>{" "}
           <span className="fecha">{fecha}</span>
         </p>
-        <HeaderCommentsRankings
+        <HeaderComments
           comment={comment}
           authId={authId}
           commentId={commentId}
-          activeConfig={activeConfig}
           setActiveConfig={setActiveConfig}
+          activeConfig={activeConfig}
           setActiveModifyCMMT={setActiveModifyCMMT}
           activeModifyCMMT={activeModifyCMMT}
           deleteComments={deleteComments}
@@ -91,19 +84,15 @@ const CommentsRankings = ({
           customComment={customComment}
           setCustomComment={setCustomComment}
         />
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            className="input-sub-comment"
-            placeholder="Escribe un comentario..."
-            value={subComment}
-            onChange={(event) => setSubComment(event.target.value)}
-          />
-        </form>
+        <FormResponseComments
+           handleSubmit={handleSubmit}
+           subComment={subComment}
+           setSubComment={setSubComment}
+        />
         <LikesAndComments 
           createLikesComments={createLikesComments}
           likes={likes}
-          commentsId={commentId}
+          commentsId={commentsId}
           setActive={setActive}
           active={active}
         />

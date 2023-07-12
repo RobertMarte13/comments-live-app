@@ -1,25 +1,17 @@
-import { useState } from "react";
-import { createComment } from "../../services/services";
-import { useNavigate, Navigate } from "react-router-dom";
-
 import CommentSvg from "../svg/CommentSvg";
 import FormCreateComments from "./subComponents/FormCreateComments";
 
 import "../../styles/createComments.css";
+import useCreateComments from "./hooks/useCreateComments";
+import { Navigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 const CreateComments = ({ commentsTodo, id }) => {
-  const [comment, setComment] = useState(null);
-  const [emojis, setEmojis] = useState(false);
-
-  const navigate = useNavigate();
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if(comment === null) return window.alert('No se pueden enviar comentarios vacios!')
-    createComment(comment, id);
-    return navigate("/");
-  };
+  const {
+    handleSubmit,
+    setComment,
+    setEmojis,
+    emojis,
+  } = useCreateComments(id)
 
   return (
     <>

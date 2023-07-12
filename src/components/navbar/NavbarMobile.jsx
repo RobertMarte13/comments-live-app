@@ -54,12 +54,12 @@ const NavbarMobile = ({
           {!isValidation ? null : (
             <li className="content-li box-link-perfil">
               <Link className="links-navbar link-perfil" to="/profile">
-                @{username}
                 <img
                   className="img-perfil"
                   src={imgUser}
                   alt="imagen de perfil"
                 />
+                @{username}
               </Link>
             </li>
           )}

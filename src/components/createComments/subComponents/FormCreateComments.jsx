@@ -1,7 +1,6 @@
 import EmojiBtnSvg from "../../svg/EmojiBtnSvg";
 import EmojisController from "../EmojisController";
 
-// eslint-disable-next-line react/prop-types
 const FormCreateComments = ({ handleSubmit, setComment, setEmojis, emojis }) => {
   return (
     <form className="form-comment" onSubmit={handleSubmit}>

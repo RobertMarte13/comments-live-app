@@ -1,5 +1,5 @@
 import Header from "../navbar/Header"
-import CommentsRankings from "./CommentsRankings";
+import CommentsRankings from "./subComponents/CommentsRankings";
 import commentsRankingsTools from "../../tools/commentsRankings";
 import useRankingsComments from "./hooks/useRankingsComments";
 

@@ -8,13 +8,12 @@ import {
   updateComments,
 } from "../../../services/services";
 
-const useCommentsRankings = (
+const useComments = (
   authId,
   commentId,
   commentIdSubComment,
   deleteId,
-  usersId,
-  commentId
+  usersId
 ) => {
   // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);
@@ -114,4 +113,4 @@ const useCommentsRankings = (
   };
 };
 
-export default useCommentsRankings;
+export default useComments;

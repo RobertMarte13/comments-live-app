@@ -1,4 +1,4 @@
-// eslint-disable-next-line react/prop-types
+
 const HeaderSubComments = ({ setActive, active, img, username, fecha, comment }) => {
   return (
     <div className="b-comment">

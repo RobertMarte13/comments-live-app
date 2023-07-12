@@ -4,7 +4,7 @@ import SettingsSvg from "../../svg/SettingsSvg";
 import UpdateSvg from "../../svg/UpdateSvg";
 
 // eslint-disable-next-line react/prop-types
-const HeaderMainComments = ({
+const HeaderComments = ({
   comment,
   authId,
   commentId,
@@ -75,4 +75,4 @@ const HeaderMainComments = ({
   );
 };
 
-export default HeaderMainComments;
+export default HeaderComments;

@@ -4,7 +4,7 @@ import useUpdateProfile from "./hooks/useUpdateProfile";
 import "../../styles/updatePerfilInfo.css";
 
 const UpdateProfile = ({ auth_id }) => {
-  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento } = useUpdateProfile(auth_id);
+  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento, setFrontPage } = useUpdateProfile(auth_id);
 
   return (
     <div className="box-config-profile">
@@ -27,6 +27,12 @@ const UpdateProfile = ({ auth_id }) => {
           name="file"
           onChange={(e) => setImg(e.target.value)}
           placeholder="https://Example_Imagen"
+        />
+        <input
+          type="url"
+          name="file"
+          onChange={(e) => setFrontPage(e.target.value)}
+          placeholder="https://Example_Portada"
         />
         <input
           type="date"

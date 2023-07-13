@@ -2,15 +2,26 @@ import ArrowBack from "../../svg/ArrowBack";
 
 import imgUserOptional from "../../../assets/users_img_opcional.png"
 
-const img_3 = {
-  backgroundImage: 'url(https://pm1.aminoapps.com/7660/f12308c69e0fac27a86e4757518931929b0dbc73r1-1920-1920v2_hq.jpg)',  
-  backgroundPosition: 'center',
-}
-
 const BiographyUserSearch = ({ result, setIsActiveS, isActiveS }) => {
+
+  console.log(result)
   return (
     <>
-    <div className="content-img-header-profile" style={img_3}></div>
+    <div className="content-img-header-profile">
+        {result !== "" ? (
+          <img
+            className="front-page"
+            src={result[0].front_page}
+            alt="front-page"
+          />
+        ) : (
+          <img
+            className="front-page"
+            src="https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000"
+            alt="front-page"
+          />
+        )}
+      </div>
     <div className="content-biografia">
       <div className="box-img-link">
 

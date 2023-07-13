@@ -10,6 +10,7 @@ const useProfilePage = (auth_id) => {
   const [infoProfile, setInfoProfile] = useState();
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
+  const [frontPage, setFrontPage] = useState([]);
 
   // * Esta funcion lo que hace es obtener la informacion que el usuario creo para su perfil.
   useEffect(() => {
@@ -19,8 +20,10 @@ const useProfilePage = (auth_id) => {
         setBiografia(res.bio);
         setFecha(res.fechaNacimiento);
         setImg(res.img);
+        setFrontPage(res.front_page)
       }
       setInfoProfile(res);
+      console.log(res)
     });
 
     // * Este me devuleve todos los comentarios y subcomentarios que luego pondre en el perfil
@@ -44,6 +47,7 @@ const useProfilePage = (auth_id) => {
     username,
     biografia,
     img,
+    frontPage,
     fecha,
     infoProfile,
     comments,

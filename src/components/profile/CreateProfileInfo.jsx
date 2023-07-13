@@ -4,7 +4,7 @@ import useCreateProfileInfo from "./hooks/useCreateProfileInfo.js";
 import "../../styles/updatePerfilInfo.css";
 
 const CreateProfileInfo = ({ auth_id }) => {
-  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento } = useCreateProfileInfo(auth_id);
+  const { handleSubmit, setUsername, setImg, setBio, setFechaNacimiento, setFrontPage } = useCreateProfileInfo(auth_id);
 
   return (
     <div className="box-config-profile">
@@ -27,6 +27,12 @@ const CreateProfileInfo = ({ auth_id }) => {
           name="file"
           onChange={(e) => setImg(e.target.value)}
           placeholder="https://Example_Imagen"
+        />
+        <input
+          type="url"
+          name="file"
+          onChange={(e) => setFrontPage(e.target.value)}
+          placeholder="https://Example_Portada"
         />
         <input
           type="date"

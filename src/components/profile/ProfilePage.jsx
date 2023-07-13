@@ -11,6 +11,7 @@ const ProfilePage = ({ auth_id }) => {
     username,
     biografia,
     img,
+    frontPage,
     fecha,
     infoProfile,
     comments,
@@ -21,6 +22,7 @@ const ProfilePage = ({ auth_id }) => {
     <div className="box-profile">
       <BiographyUser
         img={img}
+        frontPage={frontPage}
         infoProfile={infoProfile}
         username={username}
         biografia={biografia}

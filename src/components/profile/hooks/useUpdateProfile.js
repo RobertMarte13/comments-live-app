@@ -7,12 +7,13 @@ const useUpdateProfile = (auth_id) => {
   const [img, setImg] = useState(null);
   const [bio, setBio] = useState(null);
   const [fechaNacimiento, setFechaNacimiento] = useState(null);
+  const [frontPage, setFrontPage] = useState("");
 
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    UpdateInfoUsers(auth_id, username, img, bio, fechaNacimiento);
+    UpdateInfoUsers(auth_id, username, img, bio, fechaNacimiento, frontPage);
     window.alert("Actualizacion del perfil con exito!");
     return navigate("/profile");
   };
@@ -23,6 +24,7 @@ const useUpdateProfile = (auth_id) => {
     setImg,
     setBio,
     setFechaNacimiento,
+    setFrontPage
   };
 };
 

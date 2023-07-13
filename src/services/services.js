@@ -217,7 +217,8 @@ export const createUserInfo = async (
   username,
   img,
   bio,
-  fechaNacimiento
+  fechaNacimiento,
+  frontPage
 ) => {
   try {
     await axios.post(
@@ -228,6 +229,7 @@ export const createUserInfo = async (
         bio,
         fechaNacimiento,
         user_id: auth_id,
+        front_page: frontPage
       }
     );
   } catch (error) {
@@ -241,7 +243,8 @@ export const UpdateInfoUsers = async (
   username,
   img,
   bio,
-  fechaNacimiento
+  fechaNacimiento,
+  frontPage
 ) => {
   try {
     await axios.patch(
@@ -251,6 +254,7 @@ export const UpdateInfoUsers = async (
         img,
         bio,
         fechaNacimiento,
+        front_page: frontPage,
         user_id: auth_id,
       }
     );

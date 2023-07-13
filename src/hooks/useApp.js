@@ -33,8 +33,6 @@ const useApp = () => {
 
   // * Esta funcion sirve para actualizar los comment y subComment de la aplicacion en la pagina principal.
   function updateDate(props) {
-    // eslint-disable-next-line react/prop-types
-    // eslint-disable-next-line react/prop-types
     setId(props.pin);
     setIsValidation(isValid);
     return notify();

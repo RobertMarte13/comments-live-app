@@ -2,22 +2,22 @@ import { Link } from "react-router-dom";
 import UpdateSvg from "../../svg/UpdateSvg";
 import imgUserOptional from "../../../assets/users_img_opcional.png";
 
-const img_3 = {
-  backgroundImage: 'url(https://pm1.aminoapps.com/7660/f12308c69e0fac27a86e4757518931929b0dbc73r1-1920-1920v2_hq.jpg)',  
-  backgroundPosition: 'center',
-}
-
-const BiographyUser = ({ img, infoProfile, username, biografia, fecha }) => {
-
+const BiographyUser = ({
+  img,
+  frontPage,
+  infoProfile,
+  username,
+  biografia,
+  fecha,
+}) => {
   return (
     <>
-      <div className="content-img-header-profile" style={img_3}>
-
-        <select id="select">
-          <option value='imagen_1'>imagen 1</option>
-          <option value='imagen_2'>imagen 2</option>
-          <option value='imagen_3'>imagen 3</option>
-        </select>
+      <div className="content-img-header-profile" >
+        {frontPage !== "" ? (
+          <img className="front-page" src={frontPage} alt="front-page" />
+        ) : (
+          <img className="front-page" src="https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000" alt="front-page" />
+        )}
       </div>
       <div className="content-biografia">
         <div className="box-img-link">

@@ -40,12 +40,14 @@ const Comments = ({
     setSubComment,
     createLikesComments,
     likes,
+    dislike,
     setActive,
     isActive,
     active,
     setIsActive,
     dataUsers,
     user_id,
+    deleteLike,
   } = useComments(
     authId,
     commentId,
@@ -54,6 +56,8 @@ const Comments = ({
     usersId,
     commentsId
   );
+
+  console.log(usersId);
 
   return (
     <>
@@ -77,10 +81,10 @@ const Comments = ({
               alt="Imagen perfil"
             />
           )}
-         
+
           <p onClick={() => getUserId(commentId)}>
-              <span style={{ cursor: "pointer" }}>@{username} </span>
-              <span className="fecha">{fecha}</span>
+            <span style={{ cursor: "pointer" }}>@{username} </span>
+            <span className="fecha">{fecha}</span>
           </p>
           <HeaderComments
             comment={comment}
@@ -101,11 +105,14 @@ const Comments = ({
             subComment={subComment}
           />
           <LikesAndComments
+            usersId={usersId}
             createLikesComments={createLikesComments}
             likes={likes}
+            dislike={dislike}
             commentsId={commentsId}
             setActive={setActive}
             active={active}
+            deleteLike={deleteLike}
           />
         </div>
         <div

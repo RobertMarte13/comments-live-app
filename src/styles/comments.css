@@ -97,9 +97,18 @@
   margin-top: 20px;
 }
 
+.content-like-and-dLike {
+  display: flex;
+}
+
 #heart-svg {
   color: #f21010;
   cursor: pointer;
+}
+
+.content-disLike {
+  transform: rotate(180deg);
+  margin-left: 10px;
 }
 
 #comment-svg {

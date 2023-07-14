@@ -92,11 +92,13 @@ export const getLikes = async () => {
 // Create Likes
 export const createLikes = async (users_id, comments_id) => {
   try {
+    const id_delete = crypto.randomUUID()
     const response = await axios.post(
       "https://server-anisearch-production.up.railway.app/api/comments_likes",
       {
         users_id,
         comments_id,
+        id_delete
       }
     );
 
@@ -107,15 +109,17 @@ export const createLikes = async (users_id, comments_id) => {
 };
 
 // Remove Likes
-// export const removeLikes = async (update_likes) => {
-//   try {
+export const removeLikes = async (id_delete) => {
+  try {
 
-//     await axios.post(`https://server-anisearch-production.up.railway.app/api/comments_likes/${update_likes}`)
+    console.log(id_delete)
 
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+    await axios.delete(`https://server-anisearch-production.up.railway.app/api/comments_likes/${id_delete}`)
+
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 // servicio de logueo.
 export const loginService = async (username, password) => {

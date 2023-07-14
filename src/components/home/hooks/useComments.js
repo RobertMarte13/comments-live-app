@@ -5,6 +5,7 @@ import {
   deleteComment,
   getLikes,
   obtainUserId,
+  removeLikes,
   updateComments,
 } from "../../../services/services";
 
@@ -26,6 +27,7 @@ const useComments = (
   const [activeModifyCMMT, setActiveModifyCMMT] = useState(false);
 
   const [likes, setLikes] = useState(null);
+  const [dislike, setDislike] = useState(null);
 
   const [dataUsers, setDataUsers] = useState(null);
   const [user_id, setUser_Id] = useState("");
@@ -35,6 +37,7 @@ const useComments = (
   useEffect(() => {
     getLikes().then((res) => {
       setLikes(res.data);
+      setDislike(res.delete_data)
     });
   }, []);
 
@@ -90,6 +93,10 @@ const useComments = (
     createLikes(users_id, comments_id);
   }
 
+  function deleteLike (id_delete) {
+    removeLikes(id_delete)
+  }
+
   return {
     getUserId,
     setActiveConfig,
@@ -105,12 +112,14 @@ const useComments = (
     setSubComment,
     createLikesComments,
     likes,
+    dislike,
     setActive,
     isActive,
     active,
     setIsActive,
     dataUsers,
     user_id,
+    deleteLike
   };
 };
 

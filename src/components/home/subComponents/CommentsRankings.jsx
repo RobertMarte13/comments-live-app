@@ -40,12 +40,14 @@ const CommentsRankings = ({
     setSubComment,
     createLikesComments,
     likes,
+    dislike,
     setActive,
     isActive,
     active,
     setIsActive,
     dataUsers,
     user_id,
+    deleteLike
   } = useComments(
     authId,
     commentId,
@@ -92,9 +94,11 @@ const CommentsRankings = ({
         <LikesAndComments 
           createLikesComments={createLikesComments}
           likes={likes}
+          dislike={dislike}
           commentsId={commentsId}
           setActive={setActive}
           active={active}
+          deleteLike={deleteLike}
         />
       </div>
       <div

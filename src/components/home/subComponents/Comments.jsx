@@ -25,7 +25,6 @@ const Comments = ({
   setIsActiveS,
   isActiveS,
 }) => {
-  
   const {
     getUserId,
     setActiveConfig,
@@ -53,70 +52,11 @@ const Comments = ({
     commentIdSubComment,
     deleteId,
     usersId,
-    commentId
+    commentsId
   );
 
   return (
-    <div className="box-main-comment">
-      <div className="box-comment">
-        {img !== "" ? (
-          <img className="img-perfil" src={img} alt="Imagen perfil" />
-        ) : (
-          <img
-            className="img-perfil"
-            src={imgUserOptional}
-            alt="Imagen perfil"
-          />
-        )}
-
-        <p onClick={() => getUserId(commentId)}>
-          <span style={{ cursor: "pointer" }}>@{username} </span>
-          <span className="fecha">{fecha}</span>
-        </p>
-        <HeaderComments
-          comment={comment}
-          authId={authId}
-          commentId={commentId}
-          setActiveConfig={setActiveConfig}
-          activeConfig={activeConfig}
-          setActiveModifyCMMT={setActiveModifyCMMT}
-          activeModifyCMMT={activeModifyCMMT}
-          deleteComments={deleteComments}
-          modifyComments={modifyComments}
-          customComment={customComment}
-          setCustomComment={setCustomComment}
-        />
-        <FormResponseComments
-          handleSubmit={handleSubmit}
-          setSubComment={setSubComment}
-          subComment={subComment}
-        />
-        <LikesAndComments
-          createLikesComments={createLikesComments}
-          likes={likes}
-          commentsId={commentsId}
-          setActive={setActive}
-          active={active}
-        />
-      </div>
-      <div
-        style={
-          !active
-            ? { opacity: 0, visibility: "hidden", display: "none" }
-            : { opacity: 1, visibility: "visible", display: "block" }
-        }
-      >
-        <SubComments
-          subComments={subComments}
-          commentIdSubComment={commentIdSubComment}
-          setActive={setActive}
-          active={active}
-          username={username}
-          img={img}
-          comment={comment}
-          fecha={fecha}
-        />
-      </div>
+    <>
       <UsersProfilePage
         isActive={isActive}
         setIsActive={setIsActive}
@@ -126,7 +66,68 @@ const Comments = ({
         setIsActiveS={setIsActiveS}
         isActiveS={isActiveS}
       />
-    </div>
+      <div className="box-main-comment">
+        <div className="box-comment">
+          {img !== "" ? (
+            <img className="img-perfil" src={img} alt="Imagen perfil" />
+          ) : (
+            <img
+              className="img-perfil"
+              src={imgUserOptional}
+              alt="Imagen perfil"
+            />
+          )}
+         
+          <p onClick={() => getUserId(commentId)}>
+              <span style={{ cursor: "pointer" }}>@{username} </span>
+              <span className="fecha">{fecha}</span>
+          </p>
+          <HeaderComments
+            comment={comment}
+            authId={authId}
+            commentId={commentId}
+            setActiveConfig={setActiveConfig}
+            activeConfig={activeConfig}
+            setActiveModifyCMMT={setActiveModifyCMMT}
+            activeModifyCMMT={activeModifyCMMT}
+            deleteComments={deleteComments}
+            modifyComments={modifyComments}
+            customComment={customComment}
+            setCustomComment={setCustomComment}
+          />
+          <FormResponseComments
+            handleSubmit={handleSubmit}
+            setSubComment={setSubComment}
+            subComment={subComment}
+          />
+          <LikesAndComments
+            createLikesComments={createLikesComments}
+            likes={likes}
+            commentsId={commentsId}
+            setActive={setActive}
+            active={active}
+          />
+        </div>
+        <div
+          style={
+            !active
+              ? { opacity: 0, visibility: "hidden", display: "none" }
+              : { opacity: 1, visibility: "visible", display: "block" }
+          }
+        >
+          <SubComments
+            subComments={subComments}
+            commentIdSubComment={commentIdSubComment}
+            setActive={setActive}
+            active={active}
+            username={username}
+            img={img}
+            comment={comment}
+            fecha={fecha}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

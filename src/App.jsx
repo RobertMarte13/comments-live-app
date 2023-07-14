@@ -23,7 +23,6 @@ import RankingsComments from "./components/home/RankingsComments";
 import ChangePassword from "./components/auth/ChangePassword";
 import useApp from "./hooks/useApp";
 import { Toaster } from "react-hot-toast";
-
 function App() {
   const {
     id,
@@ -36,76 +35,81 @@ function App() {
     commentsTodo,
     updateDate,
     setIsActive,
-    closedSession
-  } = useApp()
+    closedSession,
+  } = useApp();
 
   return (
-    <div className="App">
-      <Toaster position="bottom-right" reverseOrder={false} />
-      <header className="header-mobil">
-        <NavbarMobile
-          username={username}
-          imgUser={imgUser}
-          closedSession={closedSession}
-          isValidation={isValidation}
-          isActive={isActive}
-        />
-      </header>
+      <div className="App">
+        <Toaster position="bottom-right" reverseOrder={false} />
+        <header className="header-mobil">
+          <NavbarMobile
+            username={username}
+            imgUser={imgUser}
+            closedSession={closedSession}
+            isValidation={isValidation}
+            isActive={isActive}
+          />
+        </header>
 
-      <button className="btn-hamburger" onClick={() => setIsActive(!isActive)}>
-        {isActive ? <ClosedSvg /> : <MenuHamburguer />}
-      </button>
-
-      {/* Rutas con react router dom */}
-      <Routes>
-        <Route
-          element={<ProtectedRouter isValidation={isValidation} redirect="/" />}
+        <button
+          className="btn-hamburger"
+          onClick={() => setIsActive(!isActive)}
         >
+          {isActive ? <ClosedSvg /> : <MenuHamburguer />}
+        </button>
+
+        {/* Rutas con react router dom */}
+        <Routes>
           <Route
-            path="/"
-            element={<HomePage authId={id} usersId={users_id} />}
+            element={
+              <ProtectedRouter isValidation={isValidation} redirect="/" />
+            }
+          >
+            <Route
+              path="/"
+              element={<HomePage authId={id} usersId={users_id} />}
+            />
+            <Route
+              path="/rankings_comments"
+              element={<RankingsComments authId={id} usersId={users_id} />}
+            />
+            <Route
+              path="/createComments"
+              element={<CreateComments commentsTodo={commentsTodo} id={id} />}
+            />
+            <Route path="/sub_comments" element={<SubComments />} />
+            <Route path="/profile" element={<ProfilePage auth_id={id} />} />
+            <Route
+              path="/config_profile"
+              element={<CreateProfileInfo auth_id={id} />}
+            />
+            <Route
+              path="/config_profile_update"
+              element={<UpdateProfile auth_id={id} />}
+            />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          <Route
+            path="/login"
+            element={
+              <Login
+                setIsValid={setIsValid}
+                updateDate={updateDate}
+                isValidation={isValidation}
+              />
+            }
           />
           <Route
-            path="/rankings_comments"
-            element={<RankingsComments authId={id} usersId={users_id} />}
+            path="/new_password"
+            element={<ChangePassword isValidation={isValidation} />}
           />
           <Route
-            path="/createComments"
-            element={<CreateComments commentsTodo={commentsTodo} id={id} />}
-          />
-          <Route path="/sub_comments" element={<SubComments />} />
-          <Route path="/profile" element={<ProfilePage auth_id={id} />} />
-          <Route
-            path="/config_profile"
-            element={<CreateProfileInfo auth_id={id} />}
-          />
-          <Route
-            path="/config_profile_update"
-            element={<UpdateProfile auth_id={id} />}
+            path="/register"
+            element={<Register isValidation={isValidation} />}
           />
           <Route path="*" element={<NotFound />} />
-        </Route>
-        <Route
-          path="/login"
-          element={
-            <Login
-              setIsValid={setIsValid}
-              updateDate={updateDate}
-              isValidation={isValidation}
-            />
-          }
-        />
-        <Route
-          path="/new_password"
-          element={<ChangePassword isValidation={isValidation} />}
-        />
-        <Route
-          path="/register"
-          element={<Register isValidation={isValidation} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </div>
+        </Routes>
+      </div>
   );
 }
 

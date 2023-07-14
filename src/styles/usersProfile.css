@@ -1,7 +1,6 @@
 .contain-user-perfile {
-    position: fixed;
+    position: absolute;
     top: 0;
-    bottom: 0;
     left: 0;
     right: 0;
     background: white;
@@ -10,6 +9,7 @@
     align-items: center;
     z-index: 1600;
     overflow-y: scroll;
+    padding-top: 20px;
 }
 
 .content-btn-back-profile {
@@ -32,4 +32,10 @@
 .btn-back-perfil:hover {
     color: rgb(255, 107, 107);
     transition: all .3s ease-in-out;
+}
+
+@media screen and (max-width: 458px) {
+    .contain-user-perfile {
+        padding-top: 0;
+    }
 }

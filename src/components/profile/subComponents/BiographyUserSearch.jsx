@@ -9,17 +9,15 @@ const BiographyUserSearch = ({ result, setIsActiveS, isActiveS }) => {
     <>
     <div className="content-img-header-profile">
         {result !== "" ? (
-          <img
+          <div
             className="front-page"
-            src={result[0].front_page}
-            alt="front-page"
-          />
+            style={{ backgroundImage: `url(${result[0].front_page})` }}
+          ></div>
         ) : (
-          <img
+          <div
             className="front-page"
-            src="https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000"
-            alt="front-page"
-          />
+            style={{backgroundImage: "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)"}}
+          ></div>
         )}
       </div>
     <div className="content-biografia">

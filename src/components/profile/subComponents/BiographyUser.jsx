@@ -13,10 +13,16 @@ const BiographyUser = ({
   return (
     <>
       <div className="content-img-header-profile" >
-        {frontPage !== "" ? (
-          <img className="front-page" src={frontPage} alt="front-page" />
+      {frontPage !== "" ? (
+          <div
+            className="front-page"
+            style={{ backgroundImage: `url(${frontPage})` }}
+          ></div>
         ) : (
-          <img className="front-page" src="https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000" alt="front-page" />
+          <div
+            className="front-page"
+            style={{backgroundImage: "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)"}}
+          ></div>
         )}
       </div>
       <div className="content-biografia">

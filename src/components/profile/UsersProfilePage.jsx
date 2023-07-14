@@ -15,9 +15,9 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
     <>
       {/* Este isActive es el que se activa cuando damos click algun username del usuario en el comentario. */}
       {isActive ? (
-        <div className="contain-user-perfile">
+        <>
           {dataUsers ? (
-            <>
+            <div className="contain-user-perfile">
               <BiographyUserClick
                 dataUsers={dataUsers} 
                 setIsActive={setIsActive} 
@@ -35,11 +35,11 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
                   <h>Cargando comentarios...</h>
                 )}
               </div>
-            </>
+            </div>
           ) : (
             <h1>Cargando Datos...</h1>
           )}
-        </div>
+        </>
       ) : null}
 
       {/* Este isActiveS es para cuando es una busqueda. */}

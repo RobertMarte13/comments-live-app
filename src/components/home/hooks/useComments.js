@@ -13,7 +13,8 @@ const useComments = (
   commentId,
   commentIdSubComment,
   deleteId,
-  usersId
+  usersId,
+  commentsId
 ) => {
   // * Aqui almaceno el comentarios que se escribe para poder crear el subcomentario.
   const [subComment, setSubComment] = useState([]);

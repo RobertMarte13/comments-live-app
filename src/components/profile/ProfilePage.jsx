@@ -18,6 +18,8 @@ const ProfilePage = ({ auth_id }) => {
     subComments,
   } = useProfilePage(auth_id);
 
+  
+
   return (
     <div className="box-profile">
       <BiographyUser

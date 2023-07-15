@@ -292,3 +292,38 @@ export const obtainUserName = async (username) => {
     console.log(error.message);
   }
 };
+
+// Follower
+export const setFollow = async (users_id, user_id) => {
+  try {
+    const delete_id = crypto.randomUUID()
+    await axios.post('https://server-anisearch-production.up.railway.app/api/follower', {
+      users_id,
+      user_id,
+      delete_id
+    })
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Show followers
+export const getFollowers = async () => {
+  try {
+    const response = await axios.get('https://server-anisearch-production.up.railway.app/api/follower')
+
+    return response.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+// Stop following
+export const removeFollower = async (delete_id) => {
+  try {
+    await axios.delete(`https://server-anisearch-production.up.railway.app/api/follower/${delete_id}`)
+  } catch (error) {
+    console.log(error)
+  }
+}

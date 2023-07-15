@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { getComments } from "../../../services/services";
+import { getComments, getFollowers, removeFollower, setFollow } from "../../../services/services";
 
-const useUsersProfilePages = () => {
+const useUsersProfilePages = (authId, userId) => {
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
+  const [followers, setFollowers] = useState(null);
 
   // * Este useEffect lo que hace es obtener todos los comentarios.
   useEffect(() => {
@@ -14,6 +15,11 @@ const useUsersProfilePages = () => {
           setSubComments(res.subcomment);
         }
       });
+
+      getFollowers()
+        .then(res => {
+          setFollowers(res)
+        })
     }, 1500);
 
     // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
@@ -22,9 +28,24 @@ const useUsersProfilePages = () => {
     };
   }, []);
 
+  function setFollowersUsers() {
+    console.log(`usuario al que visito: ${userId} Usuario que visita: ${authId}`)
+
+    const users_id = userId;
+    const user_id = authId;
+    setFollow(users_id, user_id)
+  }
+
+  function removeFollowersUsers(delete_id) {
+    removeFollower(delete_id)
+  }
+
   return {
     comments,
     subComments,
+    setFollowersUsers,
+    followers,
+    removeFollowersUsers
   };
 };
 

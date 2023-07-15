@@ -7,9 +7,9 @@ import useUsersProfilePages from "./hooks/useUsersProfilePage";
 
 //? NOTA: Este es el componente que se muestra si damos click en algun username o si buscamos un usuario.
 
-const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, setIsActiveS, isActiveS }) => {
+const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, authId, result, setIsActiveS, isActiveS }) => {
   // custom hooks
-  const {comments, subComments, } = useUsersProfilePages()
+  const {comments, subComments, setFollowersUsers, followers, removeFollowersUsers} = useUsersProfilePages(authId, userId)
 
   return (
     <>
@@ -22,6 +22,11 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, result, se
                 dataUsers={dataUsers} 
                 setIsActive={setIsActive} 
                 isActive={isActive} 
+                setFollowersUsers={setFollowersUsers}
+                followers={followers}
+                userId={userId}
+                authId={authId}
+                removeFollowersUsers={removeFollowersUsers}
               />
               <div className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>

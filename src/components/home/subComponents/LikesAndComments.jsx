@@ -12,7 +12,6 @@ const LikesAndComments = ({
   active,
   deleteLike,
 }) => {
-  console.log(usersId);
 
   return (
     <div className="box-interative">

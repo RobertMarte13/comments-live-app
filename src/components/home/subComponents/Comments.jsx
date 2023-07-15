@@ -57,8 +57,6 @@ const Comments = ({
     commentsId
   );
 
-  console.log(usersId);
-
   return (
     <>
       <UsersProfilePage
@@ -66,6 +64,7 @@ const Comments = ({
         setIsActive={setIsActive}
         dataUsers={dataUsers}
         userId={user_id}
+        authId={authId}
         result={result}
         setIsActiveS={setIsActiveS}
         isActiveS={isActiveS}

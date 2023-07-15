@@ -2,7 +2,16 @@ import ArrowBack from "../../svg/ArrowBack";
 
 import imgUserOptional from "../../../assets/users_img_opcional.png";
 
-const BiographyUserClick = ({ dataUsers, setIsActive, isActive }) => {
+const BiographyUserClick = ({
+  dataUsers,
+  setIsActive,
+  isActive,
+  setFollowersUsers,
+  followers,
+  userId,
+  authId,
+  removeFollowersUsers,
+}) => {
   return (
     <>
       <div className="content-img-header-profile">
@@ -14,7 +23,10 @@ const BiographyUserClick = ({ dataUsers, setIsActive, isActive }) => {
         ) : (
           <div
             className="front-page"
-            style={{backgroundImage: "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)"}}
+            style={{
+              backgroundImage:
+                "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)",
+            }}
           ></div>
         )}
       </div>
@@ -34,6 +46,34 @@ const BiographyUserClick = ({ dataUsers, setIsActive, isActive }) => {
                 alt="Imagen perfil"
               />
             )}
+
+            {/* Esta logica es para poder remover el follow que le di a un usuario */}
+            {followers.data_2 !== null ? (
+              followers.data_2.map((el_2, index) =>
+                userId === el_2.users_id ?
+                authId === el_2.user_id ? (
+                  <button
+                    key={index}
+                    onClick={() => removeFollowersUsers(el_2.delete_id)}
+                  >
+                    Un Follower
+                  </button>
+                ) : null
+                :null
+              )
+            ) : (
+              <h1>...Cargando</h1>
+            )}
+
+            {/* Aqui estoy validando que donde entro el usuario no es el mismo para que no pueda dar like */}
+            {
+              authId !== userId ? <button onClick={() => setFollowersUsers()}>Follow</button> : null
+            }
+            
+            {/* Esta logica sirve para saber cuantos seguidores tiene un usuario. */}
+            {userId && userId === followers.data[0].users_id ? (
+              <span>{followers.data[0].follow_count}</span>
+            ) : null}
           </div>
         </div>
         <div>

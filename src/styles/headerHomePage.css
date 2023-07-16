@@ -1,0 +1,26 @@
+.header-home-page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-nav {
+    margin: 0 50px;
+    border: none;
+    background: none;
+    font-size: 1.2em;
+    font-family: inherit;
+    font-weight: 400;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.btn-nav:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width:458px) {
+    .btn-nav {
+        padding: 5px 10px;
+    }
+}

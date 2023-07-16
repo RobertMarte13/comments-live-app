@@ -74,6 +74,8 @@
   height: 100vh;
   width: 100%;
   padding-top: 20px;
+  display: flex;
+  flex-direction: row;
 }
 
 .content-post-ranking {

@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { contentHeaderNavbar, styleTitleLogo } from "../home/styles/styles";
 
+import logoTransparent from '../../assets/logo-transparent.png'
+
 const NavbarMobile = ({
   username,
   imgUser,
@@ -20,15 +22,15 @@ const NavbarMobile = ({
       >
         <ul className="content-ul" id="content-ul ">
           <div style={contentHeaderNavbar}>
-            {/* <img
+            <img
               style={{
                 width: 50,
                 height: 50,
               }}
-              src="/logo-commentsLive.png"
+              src={logoTransparent}
               alt="logo comments live"
-            /> */}
-            <h3 style={styleTitleLogo}><span style={{ color:'#227ef0' }}>Comments</span> Live</h3>
+            />
+            {/* <h3 style={styleTitleLogo}><span style={{ color:'#227ef0' }}>Comments</span> Live</h3> */}
           </div>
           {!isValidation ? null : (
             <li className="content-li">

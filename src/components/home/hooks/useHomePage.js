@@ -8,6 +8,7 @@ const useHomePage = () => {
   const [search, setSearch] = useState("");
   const [isActiveS, setIsActiveS] = useState(false);
   const [result, setResult] = useState(null);
+  const [copyComments, setCopyComments] = useState(null)
 
   // Este useEffect sirve para capturar todos los comments y subcomments de la aplicacion.
   useEffect(() => {
@@ -15,6 +16,7 @@ const useHomePage = () => {
       // * Funcion que me permite recuperar todos los comentarios de los usuarios.
       getComments().then((res) => {
         setComments(res.comment);
+        setCopyComments(res.comment)
         setSubComments(res.subcomment);
       });
     }, 1500);
@@ -52,7 +54,8 @@ const useHomePage = () => {
     subComments,
     result,
     setIsActiveS,
-    isActiveS
+    isActiveS,
+    copyComments
   };
 };
 

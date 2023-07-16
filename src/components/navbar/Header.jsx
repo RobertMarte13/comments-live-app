@@ -1,12 +1,12 @@
 import SearchSvg from "../svg/SearchSvg";
-import logo from "../../../public/logo-commentsLive.png"
+import logoTransparent from '../../assets/logo-transparent.png'
 
 const Header = ({ handleSubmit, search, setSearch }) => {
   return (
     <header className="header-page">
       <img
         style={{ width: 40, height: 40 }}
-        src={logo}
+        src={logoTransparent}
         alt="logo comments live"
       />
       <div style={{ position: 'relative' }}>

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import UpdateSvg from "../../svg/UpdateSvg";
 import imgUserOptional from "../../../assets/users_img_opcional.png";
+import Followers from "./Followers";
 
 const BiographyUser = ({
   img,
@@ -9,11 +10,13 @@ const BiographyUser = ({
   username,
   biografia,
   fecha,
+  followers,
+  userId,
 }) => {
   return (
     <>
-      <div className="content-img-header-profile" >
-      {frontPage !== "" ? (
+      <div className="content-img-header-profile">
+        {frontPage !== "" ? (
           <div
             className="front-page"
             style={{ backgroundImage: `url(${frontPage})` }}
@@ -21,7 +24,10 @@ const BiographyUser = ({
         ) : (
           <div
             className="front-page"
-            style={{backgroundImage: "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)"}}
+            style={{
+              backgroundImage:
+                "url(https://img.freepik.com/vector-premium/fondo-dibujo-brillo-cielo-azul_659844-280.jpg?w=2000)",
+            }}
           ></div>
         )}
       </div>
@@ -36,6 +42,13 @@ const BiographyUser = ({
               alt="Imagen perfil"
             />
           )}
+
+          {/* Este codigo me permite obtener los followers de los perfiles personales y mostrarlos. */}
+          <Followers
+            followers={followers}
+            userId={userId}
+          />
+
           {infoProfile !== undefined ? (
             <nav>
               <Link to="/config_profile_update" className="box-config-prof">

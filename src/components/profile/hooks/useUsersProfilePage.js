@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { getComments, getFollowers, removeFollower, setFollow } from "../../../services/services";
+import {
+  getComments,
+  getFollowers,
+  removeFollower,
+  setFollow,
+} from "../../../services/services";
 
 const useUsersProfilePages = (authId, userId) => {
   const [comments, setComments] = useState(null);
@@ -16,10 +21,9 @@ const useUsersProfilePages = (authId, userId) => {
         }
       });
 
-      getFollowers()
-        .then(res => {
-          setFollowers(res)
-        })
+      getFollowers().then((res) => {
+        setFollowers(res);
+      });
     }, 1500);
 
     // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
@@ -29,15 +33,14 @@ const useUsersProfilePages = (authId, userId) => {
   }, []);
 
   function setFollowersUsers() {
-    console.log(`usuario al que visito: ${userId} Usuario que visita: ${authId}`)
 
     const users_id = userId;
     const user_id = authId;
-    setFollow(users_id, user_id)
+    setFollow(users_id, user_id);
   }
 
   function removeFollowersUsers(delete_id) {
-    removeFollower(delete_id)
+    removeFollower(delete_id);
   }
 
   return {
@@ -45,8 +48,8 @@ const useUsersProfilePages = (authId, userId) => {
     subComments,
     setFollowersUsers,
     followers,
-    removeFollowersUsers
+    removeFollowersUsers,
   };
 };
 
-export default useUsersProfilePages
+export default useUsersProfilePages;

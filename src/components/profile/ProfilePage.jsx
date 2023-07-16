@@ -16,9 +16,8 @@ const ProfilePage = ({ auth_id }) => {
     infoProfile,
     comments,
     subComments,
+    followers
   } = useProfilePage(auth_id);
-
-  
 
   return (
     <div className="box-profile">
@@ -29,6 +28,8 @@ const ProfilePage = ({ auth_id }) => {
         username={username}
         biografia={biografia}
         fecha={fecha}
+        followers={followers}
+        userId={auth_id}
       />
       <h1 style={{ paddingTop: "30px" }}>Mis Comentarios:</h1>
       {comments !== null ? (

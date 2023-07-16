@@ -1,0 +1,19 @@
+.content-followers {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 3px;
+}
+
+.btn-follow {
+    margin: 5px;
+    padding: .3em .6em;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.146);
+    border-radius: 25px;
+    font-size: 18px;
+    font-family: inherit;
+    font-weight: 400;
+}

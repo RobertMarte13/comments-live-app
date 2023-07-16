@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getComments, getUserInfo } from "../../../services/services";
+import { getComments, getFollowers, getUserInfo } from "../../../services/services";
 
 const useProfilePage = (auth_id) => {
   // * Estado
@@ -11,6 +11,7 @@ const useProfilePage = (auth_id) => {
   const [comments, setComments] = useState(null);
   const [subComments, setSubComments] = useState([]);
   const [frontPage, setFrontPage] = useState([]);
+  const [followers, setFollowers] = useState(null);
 
   // * Esta funcion lo que hace es obtener la informacion que el usuario creo para su perfil.
   useEffect(() => {
@@ -20,10 +21,9 @@ const useProfilePage = (auth_id) => {
         setBiografia(res.bio);
         setFecha(res.fechaNacimiento);
         setImg(res.img);
-        setFrontPage(res.front_page)
+        setFrontPage(res.front_page);
       }
       setInfoProfile(res);
-      console.log(res)
     });
 
     // * Este me devuleve todos los comentarios y subcomentarios que luego pondre en el perfil
@@ -36,10 +36,16 @@ const useProfilePage = (auth_id) => {
       });
     }, 1500);
 
+    // * Este es el metodo que me permite obtener los followers de las personas que siguen algun perfil.
+    getFollowers().then((res) => {
+      setFollowers(res);
+    });
+
     // * Con este return limpio el setTimeout cuando el usuario no este en la pagina principal optimizando memoria.
     return () => {
       clearTimeout();
       getUserInfo();
+      getFollowers();
     };
   }, [auth_id]);
 
@@ -51,8 +57,9 @@ const useProfilePage = (auth_id) => {
     fecha,
     infoProfile,
     comments,
-    subComments
-  }
+    subComments,
+    followers
+  };
 };
 
-export default useProfilePage
+export default useProfilePage;

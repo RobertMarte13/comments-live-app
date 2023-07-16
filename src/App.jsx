@@ -67,7 +67,7 @@ function App() {
           >
             <Route
               path="/"
-              element={<HomePage authId={id} usersId={users_id} />}
+              element={<HomePage authId={id} />}
             />
             <Route
               path="/rankings_comments"
@@ -78,7 +78,7 @@ function App() {
               element={<CreateComments commentsTodo={commentsTodo} id={id} />}
             />
             <Route path="/sub_comments" element={<SubComments />} />
-            <Route path="/profile" element={<ProfilePage auth_id={id} />} />
+            <Route path="/profile" element={<ProfilePage auth_id={id} userId={users_id} />} />
             <Route
               path="/config_profile"
               element={<CreateProfileInfo auth_id={id} />}

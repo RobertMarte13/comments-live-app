@@ -1,6 +1,9 @@
 import ArrowBack from "../../svg/ArrowBack";
 
 import imgUserOptional from "../../../assets/users_img_opcional.png";
+import Followers from "./Followers";
+
+import '../../../styles/followers.css'
 
 const BiographyUserClick = ({
   dataUsers,
@@ -12,6 +15,7 @@ const BiographyUserClick = ({
   authId,
   removeFollowersUsers,
 }) => {
+
   return (
     <>
       <div className="content-img-header-profile">
@@ -47,33 +51,43 @@ const BiographyUserClick = ({
               />
             )}
 
-            {/* Esta logica es para poder remover el follow que le di a un usuario */}
-            {followers.data_2 !== null ? (
-              followers.data_2.map((el_2, index) =>
-                userId === el_2.users_id ?
-                authId === el_2.user_id ? (
-                  <button
-                    key={index}
-                    onClick={() => removeFollowersUsers(el_2.delete_id)}
-                  >
-                    Un Follower
-                  </button>
-                ) : null
-                :null
-              )
-            ) : (
-              <h1>...Cargando</h1>
-            )}
+            <div className="content-followers">
+              {/* Esta logica es para poder remover el follow que le di a un usuario */}
+              {followers !== null ? (
+                followers.data_2 !== null ? (
+                  followers.data_2.map((el_2, index) =>
+                    userId === el_2.users_id ? (
+                      authId === el_2.user_id ? (
+                        <button
+                          className="btn-follow"
+                          key={index}
+                          onClick={() => removeFollowersUsers(el_2.delete_id)}
+                        >
+                          Stop Following
+                        </button>
+                      ) : null
+                    ) : null
+                  )
+                ) : (
+                  <p>...Cargando</p>
+                )
+              ) : (
+                <p>...Cargando</p>
+              )}
 
-            {/* Aqui estoy validando que donde entro el usuario no es el mismo para que no pueda dar like */}
-            {
-              authId !== userId ? <button onClick={() => setFollowersUsers()}>Follow</button> : null
-            }
-            
-            {/* Esta logica sirve para saber cuantos seguidores tiene un usuario. */}
-            {userId && userId === followers.data[0].users_id ? (
-              <span>{followers.data[0].follow_count}</span>
-            ) : null}
+              
+              {authId !== userId ? (
+                <button
+                  className="btn-follow"
+                  onClick={() => setFollowersUsers()}
+                >
+                  Follow
+                </button>
+              ) : null}
+
+              {/* Esta logica sirve para saber cuantos seguidores tiene un usuario. */}
+              <Followers followers={followers} userId={userId} />
+            </div>
           </div>
         </div>
         <div>

@@ -45,7 +45,7 @@ const HeaderComments = ({
           Editar comentario <UpdateSvg />
         </button>
         <button
-          disabled="true"
+          disabled={true}
           type="button"
           className="clear"
           onClick={() => deleteComments()}

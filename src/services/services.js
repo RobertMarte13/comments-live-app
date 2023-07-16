@@ -39,7 +39,7 @@ export const getComments = async () => {
 
     return {
       comment: result,
-      subcomment: result2
+      subcomment: result2,
     };
   } catch (error) {
     console.log(error);
@@ -68,13 +68,16 @@ export const registerService = async (username, password) => {
 
 // Change Password
 export const setNewPassword = async (email, newPasword) => {
-  const data = await axios.patch("https://server-anisearch-production.up.railway.app/api/recover_password", {
-    username: email,
-    password: newPasword
-  });
+  const data = await axios.patch(
+    "https://server-anisearch-production.up.railway.app/api/recover_password",
+    {
+      username: email,
+      password: newPasword,
+    }
+  );
 
-  return data
-}
+  return data;
+};
 
 // Get Likes
 export const getLikes = async () => {
@@ -92,13 +95,13 @@ export const getLikes = async () => {
 // Create Likes
 export const createLikes = async (users_id, comments_id) => {
   try {
-    const id_delete = crypto.randomUUID()
+    const id_delete = crypto.randomUUID();
     const response = await axios.post(
       "https://server-anisearch-production.up.railway.app/api/comments_likes",
       {
         users_id,
         comments_id,
-        id_delete
+        id_delete,
       }
     );
 
@@ -111,25 +114,23 @@ export const createLikes = async (users_id, comments_id) => {
 // Remove Likes
 export const removeLikes = async (id_delete) => {
   try {
+    console.log(id_delete);
 
-    console.log(id_delete)
-
-    await axios.delete(`https://server-anisearch-production.up.railway.app/api/comments_likes/${id_delete}`)
-
+    await axios.delete(
+      `https://server-anisearch-production.up.railway.app/api/comments_likes/${id_delete}`
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // servicio de logueo.
 export const loginService = async (username, password) => {
-  
-    const response = await axios.get(
-      `https://server-anisearch-production.up.railway.app/api/login/${username}/${password}`
-    );
+  const response = await axios.get(
+    `https://server-anisearch-production.up.railway.app/api/login/${username}/${password}`
+  );
 
-    return response.data;
-  
+  return response.data;
 };
 
 // Creador de comentarios
@@ -233,7 +234,7 @@ export const createUserInfo = async (
         bio,
         fechaNacimiento,
         user_id: auth_id,
-        front_page: frontPage
+        front_page: frontPage,
       }
     );
   } catch (error) {
@@ -296,34 +297,40 @@ export const obtainUserName = async (username) => {
 // Follower
 export const setFollow = async (users_id, user_id) => {
   try {
-    const delete_id = crypto.randomUUID()
-    await axios.post('https://server-anisearch-production.up.railway.app/api/follower', {
-      users_id,
-      user_id,
-      delete_id
-    })
-
+    const delete_id = crypto.randomUUID();
+    await axios.post(
+      "https://server-anisearch-production.up.railway.app/api/follower",
+      {
+        users_id,
+        user_id,
+        delete_id,
+      }
+    );
   } catch (error) {
-    console.log(error)
+    console.error(error.response.data.message, "!");
   }
-}
+};
 
 // Show followers
 export const getFollowers = async () => {
   try {
-    const response = await axios.get('https://server-anisearch-production.up.railway.app/api/follower')
+    const response = await axios.get(
+      "https://server-anisearch-production.up.railway.app/api/follower"
+    );
 
-    return response.data
+    return response.data;
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};
 
 // Stop following
 export const removeFollower = async (delete_id) => {
   try {
-    await axios.delete(`https://server-anisearch-production.up.railway.app/api/follower/${delete_id}`)
+    await axios.delete(
+      `https://server-anisearch-production.up.railway.app/api/follower/${delete_id}`
+    );
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-}
+};

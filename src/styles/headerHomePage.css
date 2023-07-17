@@ -19,6 +19,13 @@
     text-decoration: underline;
 }
 
+.post-follow {
+  opacity: 0;
+  visibility:hidden;
+  display: none;
+  width: 100%;
+}
+
 @media screen and (max-width:458px) {
     .btn-nav {
         padding: 5px 10px;

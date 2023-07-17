@@ -67,7 +67,7 @@ function App() {
           >
             <Route
               path="/"
-              element={<HomePage authId={id} />}
+              element={<HomePage authId={id} usersId={users_id} />}
             />
             <Route
               path="/rankings_comments"

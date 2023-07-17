@@ -28,7 +28,6 @@ const RankingsComments = ({ authId, usersId }) => {
         <div
           className="content-post content-post-ranking"
           id="content-post-ranking"
-          style={{  }}
         >
           <h1 style={{ textAlign: 'center' }}>Comentarios más populares</h1>
           {commentRankings !== null ? (

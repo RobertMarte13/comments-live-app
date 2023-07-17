@@ -166,7 +166,6 @@ export const deleteComment = async (delete_id) => {
 
 export const updateComments = async (comment, delete_id) => {
   try {
-    console.log(comment, delete_id);
     await axios.patch(
       `https://server-anisearch-production.up.railway.app/api/comment/${delete_id}`,
       {

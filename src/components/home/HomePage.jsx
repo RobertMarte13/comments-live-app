@@ -10,15 +10,15 @@ import "../../styles/comments.css";
 import '../../styles/headerHomePage.css'
 
 const visible = {
-  opasity: 1,
-  visivility:'visible',
+  opacity: 1,
+  visibility:'visible',
   display: 'block',
   width: '100%'
 }
 
 const inVisible = {
-  opasity: 0,
-  visivility:'hidden',
+  opacity: 0,
+  visibility:'hidden',
   display: 'none',
   width: '100%'
 }
@@ -57,7 +57,7 @@ const HomePage = ({ authId, usersId }) => {
       </header>
       <div className="content-main-post">
         <div className="content-post" id="content-post">
-          <div style={isActive ? visible : inVisible}>
+          <div className="post-follow" style={isActive ? visible : inVisible}>
             {copyComments2[0] !== undefined
               ? copyComments2.map((comment, index) => (
                   <div key={index}>

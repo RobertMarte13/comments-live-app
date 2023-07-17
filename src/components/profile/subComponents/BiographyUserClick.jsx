@@ -13,7 +13,7 @@ const BiographyUserClick = ({
   followers,
   userId,
   authId,
-  removeFollowersUsers,
+  removeFollowersUsers
 }) => {
 
   return (

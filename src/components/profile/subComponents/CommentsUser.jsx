@@ -3,11 +3,11 @@ import Comments from "../../home/subComponents/Comments";
 
 const CommetsUser = ({ comments, auth_id, subComments }) => {
   return (
-    <div className="content-comment-perfil">
+    <article className="content-comment-perfil">
       {comments &&
         comments.map((comment, index) =>
           comment.user_id === auth_id ? (
-            <div className="comments-perfil" key={index}>
+            <section className="comments-perfil" key={index}>
               <Comments
                 comment={comment.comment}
                 subComments={subComments}
@@ -19,10 +19,10 @@ const CommetsUser = ({ comments, auth_id, subComments }) => {
                 commentsId={comment.comments_id}
                 commentIdSubComment={comment.commentIdSubComment}
               />
-            </div>
+            </section>
           ) : null
         )}
-    </div>
+    </article>
   );
 };
 

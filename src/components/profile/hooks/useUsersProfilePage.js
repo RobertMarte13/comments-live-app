@@ -34,6 +34,10 @@ const useUsersProfilePages = (authId, userId) => {
 
   function setFollowersUsers() {
 
+    console.log(userId)
+    if(authId === undefined) return
+    if(userId === '') return
+    
     const users_id = userId;
     const user_id = authId;
     setFollow(users_id, user_id);
@@ -43,12 +47,13 @@ const useUsersProfilePages = (authId, userId) => {
     removeFollower(delete_id);
   }
 
+
   return {
     comments,
     subComments,
     setFollowersUsers,
     followers,
-    removeFollowersUsers,
+    removeFollowersUsers
   };
 };
 

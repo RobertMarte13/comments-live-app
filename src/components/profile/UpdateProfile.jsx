@@ -9,7 +9,7 @@ const UpdateProfile = ({ auth_id }) => {
   return (
     <div className="box-config-profile">
       <form className="form-config-profile" onSubmit={handleSubmit}>
-        <h1>Create Profile</h1>
+        <h2>Create Profile</h2>
         <input
           type="text"
           name="username"

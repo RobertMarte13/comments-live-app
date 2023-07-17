@@ -85,7 +85,6 @@ export const getLikes = async () => {
     const response = await axios.get(
       "https://server-anisearch-production.up.railway.app/api/comments_likes"
     );
-
     return response.data;
   } catch (error) {
     console.log(error);
@@ -114,7 +113,6 @@ export const createLikes = async (users_id, comments_id) => {
 // Remove Likes
 export const removeLikes = async (id_delete) => {
   try {
-    console.log(id_delete);
 
     await axios.delete(
       `https://server-anisearch-production.up.railway.app/api/comments_likes/${id_delete}`

@@ -1,4 +1,5 @@
 const Followers = ({ followers, userId }) => {
+
   return (
     <>
       {followers !== null ? (
@@ -11,7 +12,7 @@ const Followers = ({ followers, userId }) => {
             ) : null
           )
         ) : (
-          <p>...Cargando</p>
+          <p>...Cargando Followers</p>
         )
       ) : null}
     </>

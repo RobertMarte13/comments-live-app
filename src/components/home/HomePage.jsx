@@ -57,10 +57,10 @@ const HomePage = ({ authId, usersId }) => {
       </header>
       <div className="content-main-post">
         <div className="content-post" id="content-post">
-          <div className="post-follow" style={isActive ? visible : inVisible}>
+          <section className="post-follow" style={isActive ? visible : inVisible}>
             {copyComments2[0] !== undefined
               ? copyComments2.map((comment, index) => (
-                  <div key={index}>
+                  <article className="content-comments" key={index}>
                     <ProfilesFollow
                       comment={comment.comment}
                       subComments={subComments}
@@ -77,16 +77,16 @@ const HomePage = ({ authId, usersId }) => {
                       setIsActiveS={setIsActiveS}
                       isActiveS={isActiveS}
                     />
-                  </div>
+                  </article>
                 ))
-              : <h1>
+              : <p>
                 No sigues a nadie
-              </h1>}
-          </div>
-          <div style={isActive ? inVisible : visible}>
+              </p>}
+          </section>
+          <section style={isActive ? inVisible : visible}>
             {comments !== null ? (
               comments.map((comment, index) => (
-                <div className="content-comments" key={index}>
+                <article className="content-comments" key={index}>
                   <Comments
                     comment={comment.comment}
                     subComments={subComments}
@@ -103,12 +103,12 @@ const HomePage = ({ authId, usersId }) => {
                     setIsActiveS={setIsActiveS}
                     isActiveS={isActiveS}
                   />
-                </div>
+                </article>
               ))
             ) : (
-              <h1>Cargando Comentarios...</h1>
+              <p>Cargando Comentarios...</p>
             )}
-          </div>
+          </section>
         </div>
       </div>
     </div>

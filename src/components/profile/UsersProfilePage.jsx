@@ -8,16 +8,16 @@ import useUsersProfilePages from "./hooks/useUsersProfilePage";
 //? NOTA: Este es el componente que se muestra si damos click en algun username o si buscamos un usuario.
 
 const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, authId, result, setIsActiveS, isActiveS }) => {
+
   // custom hooks
   const {comments, subComments, setFollowersUsers, followers, removeFollowersUsers} = useUsersProfilePages(authId, userId)
-
   return (
     <>
       {/* Este isActive es el que se activa cuando damos click algun username del usuario en el comentario. */}
       {isActive ? (
         <>
           {dataUsers ? (
-            <div className="contain-user-perfile">
+            <article className="contain-user-perfile">
               <BiographyUserClick
                 dataUsers={dataUsers} 
                 setIsActive={setIsActive} 
@@ -28,7 +28,7 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, authId, re
                 authId={authId}
                 removeFollowersUsers={removeFollowersUsers}
               />
-              <div className="content-comments-perfil">
+              <section className="content-comments-perfil">
                 <h1 className="title-comments-user">Mis Comentarios</h1>
                 {comments !== null ? (
                   <CommentsUsersPerfil
@@ -39,26 +39,31 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, authId, re
                 ) : (
                   <h>Cargando comentarios...</h>
                 )}
-              </div>
-            </div>
+              </section>
+            </article>
           ) : (
-            <h1>Cargando Datos...</h1>
+            <p>Cargando Datos...</p>
           )}
         </>
       ) : null}
 
       {/* Este isActiveS es para cuando es una busqueda. */}
       {isActiveS ? (
-        <div className="contain-user-perfile">
+        <article className="contain-user-perfile">
           {result ? (
             <>
               <BiographyUserSearch
                 result={result}
                 setIsActiveS={setIsActiveS}
                 isActiveS={isActiveS} 
+                setFollowersUsers={setFollowersUsers}
+                followers={followers}
+                userId={userId}
+                authId={authId}
+                removeFollowersUsers={removeFollowersUsers}
               />
-              <div className="content-comments-perfil">
-                <h1 className="title-comments-user">Mis Comentarios</h1>
+              <section className="content-comments-perfil">
+                <h2 className="title-comments-user">Mis Comentarios</h2>
                 {comments !== null ? (
                   <CommentsUsersPerfil
                     userId={userId}
@@ -67,14 +72,14 @@ const UsersProfilePage = ({ isActive, setIsActive, dataUsers, userId, authId, re
                     result={result}
                   />
                 ) : (
-                  <h>Cargando comentarios...</h>
+                  <p>Cargando comentarios...</p>
                 )}
-              </div>
+              </section>
             </>
           ) : (
-            <h1>Cargando Datos...</h1>
+            <p>Cargando Datos...</p>
           )}
-        </div>
+        </article>
       ) : null}
     </>
   );

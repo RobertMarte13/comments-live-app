@@ -20,7 +20,7 @@ const ProfilePage = ({ auth_id }) => {
   } = useProfilePage(auth_id);
 
   return (
-    <div className="box-profile">
+    <article className="box-profile">
       <BiographyUser
         img={img}
         frontPage={frontPage}
@@ -31,7 +31,7 @@ const ProfilePage = ({ auth_id }) => {
         followers={followers}
         userId={auth_id}
       />
-      <h1 style={{ paddingTop: "30px" }}>Mis Comentarios:</h1>
+      <h2 style={{ paddingTop: "30px" }}>Mis Comentarios:</h2>
       {comments !== null ? (
         <CommetsUser
           comments={comments}
@@ -39,9 +39,9 @@ const ProfilePage = ({ auth_id }) => {
           subComments={subComments}
         />
       ) : (
-        <h>Cargando comentarios...</h>
+        <p>Cargando comentarios...</p>
       )}
-    </div>
+    </article>
   );
 };
 

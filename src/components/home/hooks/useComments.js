@@ -37,10 +37,12 @@ const useComments = (
   useEffect(() => {
     getLikes().then((res) => {
       setLikes(res.data);
-      setDislike(res.delete_data)
+      setDislike(res.delete_data);
     });
   }, []);
+  
 
+  
   // * Esta funcion me permite crear sub comentarios que luego podran ver los usuarios.
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -89,12 +91,11 @@ const useComments = (
   function createLikesComments() {
     const users_id = usersId;
     const comments_id = commentsId;
-
     createLikes(users_id, comments_id);
   }
 
-  function deleteLike (id_delete) {
-    removeLikes(id_delete)
+  function deleteLike(id_delete) {
+    removeLikes(id_delete);
   }
 
   return {
@@ -119,7 +120,7 @@ const useComments = (
     setIsActive,
     dataUsers,
     user_id,
-    deleteLike
+    deleteLike,
   };
 };
 

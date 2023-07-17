@@ -21,13 +21,13 @@ const CreateComments = ({ commentsTodo, id }) => {
             <Navigate to="/config_profile" />
           ) : (
             <div className="content-create-comment">
-              <h1
+              <h2
                 className="title-create-comment">
                 <span style={{ paddingRight: 20 }}>
                   create comment
                 </span>
                 <CommentSvg />
-              </h1>
+              </h2>
               <FormCreateComments 
                 handleSubmit={handleSubmit}  
                 setComment={setComment}

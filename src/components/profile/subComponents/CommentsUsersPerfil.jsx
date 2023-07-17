@@ -4,12 +4,12 @@ import Comments from "../../home/subComponents/Comments";
 const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
   
   return (
-    <div className="content-comments-perfil">
+    <article className="content-comments-perfil">
       {/* Este map sirve para cuando demos click sobre el nombre dde un usuario estenos lleve a su perfil. */}
       {userId &&
         comments.map((comment, index) =>
           comment.user_id === userId ? (
-            <div className="comments-perfil" key={index}>
+            <section className="comments-perfil" key={index}>
               <Comments
                 comment={comment.comment}
                 subComments={subComments}
@@ -21,7 +21,7 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
                 commentsId={comment.comments_id}
                 commentIdSubComment={comment.commentIdSubComment}
               />
-            </div>
+            </section>
           ) : null
         )}
 
@@ -29,7 +29,7 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
         {result &&
           comments.map((comment, index) =>
             comment.user_id === result[0].user_id ? (
-              <div className="comments-perfil" key={index}>
+              <section className="comments-perfil" key={index}>
                 <Comments
                   comment={comment.comment}
                   subComments={subComments}
@@ -41,10 +41,10 @@ const CommentsUsersPerfil = ({ userId, comments, subComments, result }) => {
                   commentsId={comment.comments_id}
                   commentIdSubComment={comment.commentIdSubComment}
                 />
-              </div>
+              </section>
             ) : null
           )}
-    </div>
+    </article>
   );
 };
 

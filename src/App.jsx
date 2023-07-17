@@ -39,7 +39,7 @@ function App() {
   } = useApp();
 
   return (
-      <div className="App">
+      <main className="App">
         <Toaster position="bottom-right" reverseOrder={false} />
         <header className="header-mobil">
           <NavbarMobile
@@ -60,11 +60,7 @@ function App() {
 
         {/* Rutas con react router dom */}
         <Routes>
-          <Route
-            element={
-              <ProtectedRouter isValidation={isValidation} redirect="/" />
-            }
-          >
+          <Route element={<ProtectedRouter isValidation={isValidation} />}>
             <Route
               path="/"
               element={<HomePage authId={id} usersId={users_id} />}
@@ -109,7 +105,7 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
+      </main>
   );
 }
 

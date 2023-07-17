@@ -4,7 +4,7 @@ import UsersProfilePage from "../profile/UsersProfilePage";
 import useComments from "./hooks/useComments";
 import FormResponseComments from "./subComponents/FormResponseComments";
 import HeaderComments from "./subComponents/HeaderComments";
-import LikesAndComments from "./subComponents/LikesAndComments";
+import LikesAndComments from "./LikesAndComments";
 import imgUserOptional from "../../assets/users_img_opcional.png";
 
 const ProfilesFollow = ({
@@ -55,6 +55,10 @@ const ProfilesFollow = ({
     commentsId
   );
 
+  const newFecha = fecha
+  const meses = newFecha.slice(0, 9)
+  const horas = newFecha.slice(11, 16)
+
   return (
     <>
       <UsersProfilePage
@@ -67,8 +71,8 @@ const ProfilesFollow = ({
         setIsActiveS={setIsActiveS}
         isActiveS={isActiveS}
       />
-      <div className="box-main-comment">
-        <div className="box-comment">
+      <section className="box-main-comment">
+        <article className="box-comment">
           {img !== "" ? (
             <img className="img-perfil" src={img} alt="Imagen perfil" />
           ) : (
@@ -81,7 +85,7 @@ const ProfilesFollow = ({
 
           <p onClick={() => getUserId(commentId)}>
             <span style={{ cursor: "pointer" }}>@{username} </span>
-            <span className="fecha">{fecha}</span>
+            <span className="fecha">Fecha: {meses}  Horas: {horas}</span>
           </p>
           <HeaderComments
             comment={comment}
@@ -111,8 +115,8 @@ const ProfilesFollow = ({
             active={active}
             deleteLike={deleteLike}
           />
-        </div>
-        <div
+        </article>
+        <article
           style={
             !active
               ? { opacity: 0, visibility: "hidden", display: "none" }
@@ -129,8 +133,8 @@ const ProfilesFollow = ({
             comment={comment}
             fecha={fecha}
           />
-        </div>
-      </div>
+        </article>
+      </section>
     </>
   );
 };

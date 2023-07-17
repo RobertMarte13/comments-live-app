@@ -1,4 +1,4 @@
-import Header from "../navbar/Header"
+import Header from "../navbar/Header";
 import CommentsRankings from "./subComponents/CommentsRankings";
 import commentsRankingsTools from "../../tools/commentsRankings";
 import useRankingsComments from "./hooks/useRankingsComments";
@@ -14,25 +14,29 @@ const RankingsComments = ({ authId, usersId }) => {
     likes,
     setSearch,
     search,
-    result
-  } = useRankingsComments()
-  
+    result,
+  } = useRankingsComments();
+
   // TODO: Haciendo un ranking de los comentarios que mas an gustado a las personas.
   const commentRankings = commentsRankingsTools(comments, likes);
 
-    return (
-        <div className="content-home">
-      <Header handleSubmit={handleSubmit} search={search} setSearch={setSearch} />
+  return (
+    <div className="content-home">
+      <Header
+        handleSubmit={handleSubmit}
+        search={search}
+        setSearch={setSearch}
+      />
       <div className="content-main-post">
         {/* Agreagndo el rankig de commentarios por me gustas. */}
-        <div
+        <section
           className="content-post content-post-ranking"
           id="content-post-ranking"
         >
-          <h1 style={{ textAlign: 'center' }}>Comentarios más populares</h1>
+          <h3 style={{ textAlign: "center" }}>Comentarios más populares</h3>
           {commentRankings !== null ? (
             commentRankings.map((comment, index) => (
-              <div className="content-comments" key={index}>
+              <article className="content-comments" key={index}>
                 <CommentsRankings
                   comment={comment.comment}
                   subComments={subComments}
@@ -49,15 +53,15 @@ const RankingsComments = ({ authId, usersId }) => {
                   setIsActiveS={setIsActiveS}
                   isActiveS={isActiveS}
                 />
-              </div>
+              </article>
             ))
           ) : (
-            <h1>Cargando Comentarios...</h1>
+            <p>Cargando Comentarios...</p>
           )}
-        </div>
+        </section>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default RankingsComments
+export default RankingsComments;

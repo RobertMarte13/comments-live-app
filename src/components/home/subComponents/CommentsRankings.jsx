@@ -2,9 +2,10 @@ import SubComments from "../../createComments/SubComments";
 import UsersProfilePage from "../../profile/UsersProfilePage";
 import imgUserOptional from "../../../assets/users_img_opcional.png";
 import useComments from "../hooks/useComments";
-import LikesAndComments from "./LikesAndComments";
+
 import HeaderComments from "./HeaderComments";
 import FormResponseComments from "./FormResponseComments";
+import LikesAndComments from "../LikesAndComments";
 
 import "../../../styles/usersProfile.css";
 
@@ -57,9 +58,22 @@ const CommentsRankings = ({
     commentId
   );
 
+  const newFecha = fecha
+  const meses = newFecha.slice(0, 9)
+  const horas = newFecha.slice(11, 16)
+
   return (
-    <div className="box-main-comment">
-      <div className="box-comment">
+    <section className="box-main-comment">
+      <UsersProfilePage
+        isActive={isActive}
+        setIsActive={setIsActive}
+        dataUsers={dataUsers}
+        userId={user_id}
+        result={result}
+        setIsActiveS={setIsActiveS}
+        isActiveS={isActiveS}
+      />
+      <article className="box-comment">
         {img !== "" ? (
           <img className="img-perfil" src={img} alt="Imagen perfil" />
         ) : (
@@ -71,7 +85,7 @@ const CommentsRankings = ({
         )}
         <p onClick={() => getUserId(commentId)}>
           <span style={{ cursor: "pointer" }}>@{username}</span>{" "}
-          <span className="fecha">{fecha}</span>
+          <span className="fecha">Fecha: {meses}  Horas: {horas}</span>
         </p>
         <HeaderComments
           comment={comment}
@@ -100,8 +114,8 @@ const CommentsRankings = ({
           active={active}
           deleteLike={deleteLike}
         />
-      </div>
-      <div
+      </article>
+      <article
         style={
           !active
             ? { opacity: 0, visibility: "hidden", display: "none" }
@@ -118,17 +132,8 @@ const CommentsRankings = ({
           comment={comment}
           fecha={fecha}
         />
-      </div>
-      <UsersProfilePage
-        isActive={isActive}
-        setIsActive={setIsActive}
-        dataUsers={dataUsers}
-        userId={user_id}
-        result={result}
-        setIsActiveS={setIsActiveS}
-        isActiveS={isActiveS}
-      />
-    </div>
+      </article>
+    </section>
   );
 };
 

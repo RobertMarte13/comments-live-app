@@ -4,8 +4,8 @@ import "../../styles/subComentario.css";
 
 const SubComments = ({ subComments, commentIdSubComment, setActive, active, username, img, comment, fecha }) => {
   return (
-    <div className="content-sub-comentario">
-      <div className="sub-comentario">
+    <article className="content-sub-comentario">
+      <section className="sub-comentario">
         <HeaderSubComments
           setActive={setActive}
           active={active}
@@ -21,8 +21,8 @@ const SubComments = ({ subComments, commentIdSubComment, setActive, active, user
           subComments={subComments}
           commentIdSubComment={commentIdSubComment}
         />
-      </div>
-    </div>
+      </section>
+    </article>
   );
 };
 

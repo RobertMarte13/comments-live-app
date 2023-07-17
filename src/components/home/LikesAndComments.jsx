@@ -1,5 +1,7 @@
-import CommentSvg from "../../svg/CommentSvg";
-import HandSvg from "../../svg/HandSvg";
+
+import CommentSvg from "../svg/CommentSvg";
+import HandSvg from "../svg/HandSvg";
+import HandSvg2 from "../svg/HandSvg2";
 
 // eslint-disable-next-line react/prop-types
 const LikesAndComments = ({
@@ -35,8 +37,10 @@ const LikesAndComments = ({
                       className="content-disLike"
                       onClick={() => deleteLike(dLike.id_delete)}
                     >
+                      
+                      <HandSvg2 />
+                        
                     
-                      <HandSvg />
                     </div> : null
                     : null
                   ))}

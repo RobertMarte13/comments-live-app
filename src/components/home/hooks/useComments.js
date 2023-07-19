@@ -41,8 +41,6 @@ const useComments = (
     });
   }, []);
   
-
-  
   // * Esta funcion me permite crear sub comentarios que luego podran ver los usuarios.
   const handleSubmit = (event) => {
     event.preventDefault();

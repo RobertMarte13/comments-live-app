@@ -4,6 +4,7 @@ import imgUserOptional from "../../../assets/users_img_opcional.png";
 import Followers from "./Followers";
 
 import '../../../styles/followers.css'
+import { toast } from "react-hot-toast";
 
 const BiographyUserClick = ({
   dataUsers,
@@ -15,6 +16,46 @@ const BiographyUserClick = ({
   authId,
   removeFollowersUsers
 }) => {
+
+  const notify3 = () => toast('Empezaste a seguir este usuario ✔️!', {
+    duration: 4000,
+    position: 'right-bottom',
+
+    // Custom Icon
+    icon: '🙃',
+  
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#000',
+      secondary: '#fff',
+    },
+  
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
+
+  const notify4 = () => toast('Dejaste de seguir a este usuario ✔️!', {
+    duration: 4000,
+    position: 'right-bottom',
+
+    // Custom Icon
+    icon: '🙃',
+  
+    // Change colors of success/error/loading icon
+    iconTheme: {
+      primary: '#000',
+      secondary: '#fff',
+    },
+  
+    // Aria
+    ariaProps: {
+      role: 'status',
+      'aria-live': 'polite',
+    },
+  });
 
   return (
     <>
@@ -63,7 +104,9 @@ const BiographyUserClick = ({
                           key={index}
                           onClick={() => removeFollowersUsers(el_2.delete_id)}
                         >
-                          Stop Following
+                          <div onClick={() => notify4()}>
+                            Stop Following
+                          </div>
                         </button>
                       ) : null
                     ) : null
@@ -81,7 +124,9 @@ const BiographyUserClick = ({
                   className="btn-follow"
                   onClick={() => setFollowersUsers()}
                 >
-                  Follow
+                  <div onClick={() => notify3()}>
+                    Follow
+                  </div>
                 </button>
               ) : null}
 

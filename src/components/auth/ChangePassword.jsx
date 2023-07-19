@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { setNewPassword } from "../../services/services";
 
-import "../../styles/autenticacion.css";
+import imgLogo from "../../assets/logo.png";
+
 import { errorStyle, successStyle } from "./styleAuth/style";
 import { Link } from "react-router-dom";
+import "../../styles/autenticacion.css";
 
-
-// eslint-disable-next-line react/prop-types
 const ChangePassword = ({ isValidation }) => {
   const [email, setEmail] = useState(null);
   const [newPassword, setPassword] = useState(null);
@@ -52,15 +52,23 @@ const ChangePassword = ({ isValidation }) => {
         </div>
       );
     }
-
   }
 
   return (
     <div className="box-autenticated">
       <form className="form-autenticated" onSubmit={handleSubmit}>
+        <img
+          src={imgLogo}
+          alt="Logo de la pagina"
+          width="100px"
+          height="100px"
+          style={{ borderRadius: "10%" }}
+        />
         <p className="title-autenticated">Change Password</p>
         {/* NOTA: IMPORTANTE!! aqui debe haber mas validaciones para que funciones mejor. */}
-        {sucessMessage === null ? controllerErrorAndSucess() : controllerErrorAndSucess()}
+        {sucessMessage === null
+          ? controllerErrorAndSucess()
+          : controllerErrorAndSucess()}
         <input
           type="email"
           name="email"

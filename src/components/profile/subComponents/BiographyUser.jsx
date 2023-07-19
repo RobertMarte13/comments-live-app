@@ -59,7 +59,7 @@ const BiographyUser = ({
           {infoProfile !== undefined ? null : (
             <nav>
               <Link className="box-config-prof" to="/config_profile">
-                configurar perfil
+                Configurar perfil <UpdateSvg />
               </Link>
             </nav>
           )}

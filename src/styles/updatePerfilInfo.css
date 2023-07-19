@@ -22,9 +22,28 @@
     justify-content: center;
     width: 100%;
     min-height: 100vh;
-    
 }
 
+.box-config-profile h2 {
+    text-align: center;
+}
+
+.box-config-profile label {
+    font-weight: 500;
+    font-family: inherit;  
+}
+
+.box-config-profile section {
+    margin-left: 30px;
+}
+
+.box-config-profile section h2 {
+    text-align: left;
+}
+
+.box-config-profile video {
+    width: 90%;
+}
 .form-config-profile {
     display: flex;
     justify-content: center;

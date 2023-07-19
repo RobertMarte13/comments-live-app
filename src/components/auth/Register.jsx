@@ -2,10 +2,11 @@ import { useState } from "react";
 import { registerService } from "../../services/services";
 import { Link } from "react-router-dom";
 
+import imgLogo from "../../assets/logo.png";
+
 // Estilos
 import "../../styles/autenticacion.css";
 
-// eslint-disable-next-line react/prop-types
 const Register = ({ isValidation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +18,14 @@ const Register = ({ isValidation }) => {
   return (
     <div className="box-autenticated">
       <form className="form-autenticated" onSubmit={handleSubmit}>
-        <h1 className="title-autenticated">Register</h1>
+        <img
+          src={imgLogo}
+          alt="Logo de la pagina"
+          width="100px"
+          height="100px"
+          style={{ borderRadius: "10%" }}
+        />
+        <h1 className="title-autenticated" style={{textAlign: 'center'}}>Register In To Comments Live</h1>
         <input
           type="text"
           name="username"

@@ -3,11 +3,11 @@ import { loginService } from "../../services/services";
 import { Link, useNavigate } from "react-router-dom";
 
 // Estilos
-import "../../styles/autenticacion.css";
 import WarningSvg from "../svg/WarningSvg";
 import { errorStyle } from "./styleAuth/style";
+import imgLogo from "../../assets/logo.png";
+import "../../styles/autenticacion.css";
 
-// eslint-disable-next-line react/prop-types
 const Login = ({ setIsValid, updateDate, isValidation }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +33,14 @@ const Login = ({ setIsValid, updateDate, isValidation }) => {
   return (
     <div className="box-autenticated">
       <form className="form-autenticated" onSubmit={handleSubmit}>
-        <p className="title-autenticated">Log In To AniSearch</p>
+        <img
+          src={imgLogo}
+          alt="Logo de la pagina"
+          width="100px"
+          height="100px"
+          style={{ borderRadius: "10%" }}
+        />
+        <p className="title-autenticated">Log In To Comments Live</p>
         {error ? (
           <div className="content-err" style={errorStyle}>
             <WarningSvg />

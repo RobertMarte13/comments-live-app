@@ -52,6 +52,7 @@
   align-items: center;
   width: 90%;
   height: 90%;
+  height: 90dvh;
   background: white;
   border-radius: 10px;
   z-index: 1000;

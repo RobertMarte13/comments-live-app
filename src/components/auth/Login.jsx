@@ -63,9 +63,9 @@ const Login = ({ setIsValid, updateDate, isValidation }) => {
         />
         <button className="btn-autenticated">Login</button>
         {isValidation ? null : (
-          <div style={{ paddingTop: 30 }}>
+          <div style={{ paddingTop: 30, display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
             <Link className="links-autenticated" to="/register">
-              Sign Up For AniSearch
+              Sign Up For Comments Live
             </Link>
             <Link className="links-autenticated" to="/new_password">
               Did you forget your password?

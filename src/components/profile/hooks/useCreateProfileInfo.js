@@ -8,7 +8,7 @@ const useCreateProfileInfo = (auth_id) => {
   const [img, setImg] = useState("");
   const [bio, setBio] = useState("");
   const [fechaNacimiento, setFechaNacimiento] = useState("");
-  const [frontPage, setFrontPage] = useState("");
+  const [frontPage, setFrontPage] = useState(null);
   const [isValidation, setIsValidation] = useState(false);
 
   const navigate = useNavigate();

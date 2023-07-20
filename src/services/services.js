@@ -207,6 +207,7 @@ export const getUserInfo = async (auth_id) => {
     const res = await axios.get(
       `https://server-anisearch-production.up.railway.app/api/users/${auth_id}`
     );
+    console.log(res.data)
     return res.data;
   } catch (error) {
     console.log(error);
@@ -231,7 +232,7 @@ export const createUserInfo = async (
         bio,
         fechaNacimiento,
         user_id: auth_id,
-        front_page: frontPage,
+        front_page: frontPage
       }
     );
   } catch (error) {
